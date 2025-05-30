@@ -4,6 +4,9 @@
  */
 package cookbook_groupa;
 
+import View.LandingPage;
+import controller.Langinpage;
+
 /**
  *
  * @author LEGION
@@ -15,6 +18,10 @@ public class CookBook_GroupA {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+
+        LandingPage LandingpageForm = new LandingPage();
+        Langinpage controller = new Langinpage();
+        
     }
     
 }

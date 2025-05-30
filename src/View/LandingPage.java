@@ -4,6 +4,9 @@
  */
 package View;
 
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author LEGION
@@ -26,91 +29,248 @@ public class LandingPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        btnRegister = new javax.swing.JButton();
+        btnSignIN = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        LowerTxtField = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Landing Page");
+        setBackground(new java.awt.Color(255, 204, 255));
 
-        jLabel1.setText("CookBook");
+        jPanel1.setBackground(new java.awt.Color(255, 223, 223));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Discover \nWhat to cook,\nwith what you have....");
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jButton1.setText("Sign Up");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegister.setBackground(new java.awt.Color(127, 1, 31));
+        btnRegister.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnRegister.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegister.setText("Register");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegisterActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Sign in");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSignIN.setBackground(new java.awt.Color(127, 1, 31));
+        btnSignIN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSignIN.setForeground(new java.awt.Color(255, 255, 255));
+        btnSignIN.setText("Sign In");
+        btnSignIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSignINActionPerformed(evt);
             }
         });
 
-        jTextField1.setText("We Provide The Best Recipes");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/images/Screenshot 2025-05-25 153115.png"))); // NOI18N
+
+        LowerTxtField.setEditable(false);
+        LowerTxtField.setBackground(new java.awt.Color(255, 223, 223));
+        LowerTxtField.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        LowerTxtField.setText("We Provide The Best Recipies");
+        LowerTxtField.setAutoscrolls(false);
+        LowerTxtField.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        LowerTxtField.setCaretColor(new java.awt.Color(255, 255, 255));
+        LowerTxtField.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        LowerTxtField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LowerTxtFieldActionPerformed(evt);
+            }
+        });
+
+        jTextField1.setEditable(false);
+        jTextField1.setBackground(new java.awt.Color(255, 223, 223));
+        jTextField1.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(127, 1, 31));
+        jTextField1.setText(" Discover ");
+        jTextField1.setAutoscrolls(false);
+        jTextField1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextField1.setCaretColor(new java.awt.Color(255, 255, 255));
+        jTextField1.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
+        jTextField2.setEditable(false);
+        jTextField2.setBackground(new java.awt.Color(255, 223, 223));
+        jTextField2.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(127, 1, 31));
+        jTextField2.setText("what to cook");
+        jTextField2.setToolTipText("");
+        jTextField2.setAutoscrolls(false);
+        jTextField2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextField2.setCaretColor(new java.awt.Color(255, 255, 255));
+        jTextField2.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jTextField3.setEditable(false);
+        jTextField3.setBackground(new java.awt.Color(255, 223, 223));
+        jTextField3.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jTextField3.setForeground(new java.awt.Color(127, 1, 31));
+        jTextField3.setText("with what you have.");
+        jTextField3.setAutoscrolls(false);
+        jTextField3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextField3.setCaretColor(new java.awt.Color(255, 255, 255));
+        jTextField3.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jTextField5.setEditable(false);
+        jTextField5.setBackground(new java.awt.Color(255, 223, 223));
+        jTextField5.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jTextField5.setText("No more wondering what's for dinner. Just tell us  ");
+        jTextField5.setAutoscrolls(false);
+        jTextField5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextField5.setCaretColor(new java.awt.Color(255, 255, 255));
+        jTextField5.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jTextField6.setEditable(false);
+        jTextField6.setBackground(new java.awt.Color(255, 223, 223));
+        jTextField6.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jTextField6.setText("what's in your kitchen - we'll serve up delicious recipes");
+        jTextField6.setAutoscrolls(false);
+        jTextField6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextField6.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jTextField7.setEditable(false);
+        jTextField7.setBackground(new java.awt.Color(255, 223, 223));
+        jTextField7.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jTextField7.setText("in seconds.");
+        jTextField7.setAutoscrolls(false);
+        jTextField7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextField7.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/images/Screenshot 2025-05-25 154011.png"))); // NOI18N
+
+        jTextField4.setEditable(false);
+        jTextField4.setBackground(new java.awt.Color(255, 223, 223));
+        jTextField4.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jTextField4.setText("Tailored to your ingredient, preferences and lifestyle - so you spend ");
+        jTextField4.setAutoscrolls(false);
+        jTextField4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jTextField4.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jLabel4.setBackground(new java.awt.Color(255, 223, 223));
+        jLabel4.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jLabel4.setText("less time searching and more time savoring.");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(33, 33, 33))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnRegister)
+                        .addGap(32, 32, 32)
+                        .addComponent(btnSignIN)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(215, 215, 215)
+                .addComponent(LowerTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(182, 182, 182))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegister)
+                    .addComponent(btnSignIN))
+                .addGap(18, 18, 18)
+                .addComponent(LowerTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(201, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        JOptionPane.showMessageDialog(LandingPage.this,"Registration Page under making.");
+    }//GEN-LAST:event_btnRegisterActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSignINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignINActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        JOptionPane.showMessageDialog(LandingPage.this,"Sign In page under making.");
+    }//GEN-LAST:event_btnSignINActionPerformed
+
+    private void LowerTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LowerTxtFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LowerTxtFieldActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -147,11 +307,19 @@ public class LandingPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTextField LowerTxtField;
+    private javax.swing.JButton btnRegister;
+    private javax.swing.JButton btnSignIN;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }
