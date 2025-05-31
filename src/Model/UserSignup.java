@@ -13,16 +13,16 @@ public class UserSignup {
     private int id;
     private String email;
     
-    private String full_name;
+    private String username;
     
-    private String create_password;
+    private String set_password;
     
     private String confirm_password;
   
-    public UserSignup(String email,String full_name,String create_password,String confirm_password){
+    public UserSignup(String email,String username,String set_password,String confirm_password){
         this.email=email;
-        this.full_name=full_name;
-        this.create_password=create_password;
+        this.username=username;
+        this.set_password=set_password;
         this.confirm_password=confirm_password;
        
     }
@@ -36,17 +36,17 @@ public class UserSignup {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getFull_name() {
-        return full_name;
+    public String getUsername() {
+        return username;
     }
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
+    public void setUsername(String username) {
+        this.username = username;
     }
-    public String getCreate_password() {
-        return create_password;
+    public String getSet_password() {
+        return set_password;
     }
-    public void setCreate_password(String create_password) {
-        this.create_password = create_password;
+    public void setSet_password(String set_password) {
+        this.set_password = set_password;
     }
     public String getConfirm_password() {
         return confirm_password;
