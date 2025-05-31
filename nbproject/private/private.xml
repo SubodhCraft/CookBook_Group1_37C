@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group/>
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Sigininframe.java</file>
             <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Images/WhatsApp%20Image%202025-05-23%20at%2010.25.28_2a4a1099.jpg</file>
             <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Images/WhatsApp%20Image%202025-05-23%20at%2021.31.54_d51e8939%20(1).jpg</file>
@@ -16,6 +17,9 @@
             <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/LoginController.java</file>
             <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/cookbook_groupa/CookBook_GroupA.java</file>
             <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/Database/Database.java</file>
+=======
+            <file>file:/C:/Users/Jay%20pradhan/Documents/NetBeansProjects/CookBook_Group1/src/cookbook/Dashboard.java</file>
+>>>>>>> Dashboard
         </group>
     </open-files>
 </project-private>
