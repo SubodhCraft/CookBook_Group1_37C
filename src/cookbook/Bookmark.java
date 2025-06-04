@@ -4,6 +4,9 @@
  */
 package cookbook;
 
+import java.awt.FlowLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Jay pradhan
@@ -15,7 +18,17 @@ public class Bookmark extends javax.swing.JPanel {
      */
     public Bookmark() {
         initComponents();
+        bookmarkRecipePanel = new JPanel();
+    bookmarkRecipePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+    bookmarkScrollPane.setViewportView(bookmarkRecipePanel);
     }
+    
+    public void addBookmarkedRecipe(JPanel recipeCard) {
+    bookmarkRecipePanel.add(recipeCard);
+    bookmarkRecipePanel.revalidate();
+    bookmarkRecipePanel.repaint();
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,6 +41,8 @@ public class Bookmark extends javax.swing.JPanel {
 
         Bookmarkpanel = new javax.swing.JPanel();
         Popularthisweek_label = new javax.swing.JLabel();
+        bookmarkScrollPane = new javax.swing.JScrollPane();
+        bookmarkRecipePanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         Bookmarkpanel1 = new javax.swing.JPanel();
         Popularthisweek_label1 = new javax.swing.JLabel();
@@ -41,21 +56,32 @@ public class Bookmark extends javax.swing.JPanel {
         Popularthisweek_label.setForeground(new java.awt.Color(127, 1, 31));
         Popularthisweek_label.setText("Saved Bookmarks");
 
+        bookmarkScrollPane.setBackground(new java.awt.Color(255, 255, 255));
+
+        bookmarkRecipePanel.setBackground(new java.awt.Color(255, 255, 255));
+        bookmarkScrollPane.setViewportView(bookmarkRecipePanel);
+
         javax.swing.GroupLayout BookmarkpanelLayout = new javax.swing.GroupLayout(Bookmarkpanel);
         Bookmarkpanel.setLayout(BookmarkpanelLayout);
         BookmarkpanelLayout.setHorizontalGroup(
             BookmarkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BookmarkpanelLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(Popularthisweek_label, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addGroup(BookmarkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bookmarkScrollPane)
+                    .addGroup(BookmarkpanelLayout.createSequentialGroup()
+                        .addComponent(Popularthisweek_label, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 274, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         BookmarkpanelLayout.setVerticalGroup(
             BookmarkpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BookmarkpanelLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(Popularthisweek_label, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(502, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bookmarkScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         add(Bookmarkpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
@@ -97,6 +123,14 @@ public class Bookmark extends javax.swing.JPanel {
     public javax.swing.JPanel Bookmarkpanel1;
     private javax.swing.JLabel Popularthisweek_label;
     private javax.swing.JLabel Popularthisweek_label1;
+    private javax.swing.JPanel bookmarkRecipePanel;
+    private javax.swing.JScrollPane bookmarkScrollPane;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+public JPanel getRecipePanel() {
+    return bookmarkRecipePanel;
 }
+
+
+}
+
