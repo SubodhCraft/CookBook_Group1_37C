@@ -12,7 +12,16 @@ import javax.swing.JPasswordField;
  * @author chandrabahadurkc
  */
 public class NewPassword extends javax.swing.JFrame {
-
+    private String userEmail;
+    
+    public NewPassword(String email){
+        this.userEmail = email;
+        
+        initComponents();
+    }
+    private void initCompoenets(){
+        
+    }
     /**
      * Creates new form NewPassword
      */

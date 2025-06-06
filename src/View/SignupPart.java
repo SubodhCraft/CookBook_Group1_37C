@@ -4,7 +4,8 @@
  */
 package View;
 
-import javax.swing.JOptionPane;
+import java.awt.event.ActionListener;
+//import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,18 +42,17 @@ public class SignupPart extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        TxtName = new javax.swing.JTextField();
+        jUsername = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        TxtEmail = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jEmail = new javax.swing.JTextField();
+        BsignUp = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        BsignIn = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        txtCreate = new javax.swing.JTextField();
+        txtsetpass = new javax.swing.JTextField();
         TxtConfirm = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,31 +86,31 @@ public class SignupPart extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(88, 88, 88))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 580));
 
         jPanel2.setBackground(new java.awt.Color(255, 231, 195));
 
         jLabel3.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         jLabel3.setText("Create Account ");
 
-        TxtName.setText("Enter your name");
-        TxtName.setAutoscrolls(false);
-        TxtName.addFocusListener(new java.awt.event.FocusAdapter() {
+        jUsername.setText("Enter your name");
+        jUsername.setAutoscrolls(false);
+        jUsername.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TxtNameFocusGained(evt);
+                jUsernameFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TxtNameFocusLost(evt);
+                jUsernameFocusLost(evt);
             }
         });
-        TxtName.addActionListener(new java.awt.event.ActionListener() {
+        jUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtNameActionPerformed(evt);
+                jUsernameActionPerformed(evt);
             }
         });
 
@@ -118,52 +118,66 @@ public class SignupPart extends javax.swing.JFrame {
 
         jLabel5.setText("Email");
 
-        TxtEmail.setText("Enter your email");
-        TxtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+        jEmail.setText("Enter your email");
+        jEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                TxtEmailFocusGained(evt);
+                jEmailFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                TxtEmailFocusLost(evt);
+                jEmailFocusLost(evt);
             }
         });
-        TxtEmail.addActionListener(new java.awt.event.ActionListener() {
+        jEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtEmailActionPerformed(evt);
+                jEmailActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(127, 1, 31));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Sign Up");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BsignUp.setBackground(new java.awt.Color(127, 1, 31));
+        BsignUp.setForeground(new java.awt.Color(255, 255, 255));
+        BsignUp.setText("Sign Up");
+        BsignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BsignUpActionPerformed(evt);
             }
         });
 
         jLabel6.setText("Already have an account? ");
 
-        jButton2.setBackground(new java.awt.Color(255, 231, 195));
-        jButton2.setText("Sign In");
-
-        txtCreate.setText("Create password");
-        txtCreate.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCreateFocusGained(evt);
+        BsignIn.setBackground(new java.awt.Color(255, 231, 195));
+        BsignIn.setText("Sign In");
+        BsignIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BsignInActionPerformed(evt);
             }
         });
-        txtCreate.addActionListener(new java.awt.event.ActionListener() {
+
+        txtsetpass.setText("Create password");
+        txtsetpass.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtsetpassFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtsetpassFocusLost(evt);
+            }
+        });
+        txtsetpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCreateActionPerformed(evt);
+                txtsetpassActionPerformed(evt);
             }
         });
 
         TxtConfirm.setText("Confirm Password");
+        TxtConfirm.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                TxtConfirmFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TxtConfirmFocusLost(evt);
+            }
+        });
 
         jLabel8.setText("Set Password");
-
-        jLabel9.setText("jLabel9");
 
         jLabel10.setText("Confirm Password ");
 
@@ -177,10 +191,10 @@ public class SignupPart extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2))
+                        .addComponent(BsignIn))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(119, 119, 119)
-                        .addComponent(jButton1))
+                        .addComponent(BsignUp))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,111 +202,130 @@ public class SignupPart extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(TxtConfirm)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TxtName, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                                    .addComponent(jUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TxtEmail)
-                                    .addComponent(txtCreate)
+                                    .addComponent(jEmail)
+                                    .addComponent(txtsetpass)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jLabel3)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel3)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(txtCreate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel9)))
+                    .addComponent(jLabel7)
+                    .addComponent(txtsetpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TxtConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
-                .addComponent(jButton1)
+                .addComponent(BsignUp)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jButton2))
-                .addContainerGap(255, Short.MAX_VALUE))
+                    .addComponent(BsignIn))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 0, 330, 693));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 0, 280, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BsignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BsignUpActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(SignupPart.this,"Account created successfully!");
-    }//GEN-LAST:event_jButton1ActionPerformed
+//        JOptionPane.showMessageDialog(SignupPart.this,"Account created successfully!");
+    }//GEN-LAST:event_BsignUpActionPerformed
 
-    private void TxtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtEmailActionPerformed
+    private void jEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtEmailActionPerformed
+    }//GEN-LAST:event_jEmailActionPerformed
 
-    private void TxtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtEmailFocusLost
+    private void jEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jEmailFocusLost
         // TODO add your handling code here:
-        if (TxtEmail.getText().isEmpty()){
-            TxtEmail.setText("Enter your email");
+        if (jEmail.getText().isEmpty()){
+            jEmail.setText("Enter your email");
         }
-    }//GEN-LAST:event_TxtEmailFocusLost
+    }//GEN-LAST:event_jEmailFocusLost
 
-    private void TxtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtEmailFocusGained
+    private void jEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jEmailFocusGained
         // TODO add your handling code here:
-        if (TxtEmail.getText().equals("Enter your email")){
-            TxtEmail.setText("");
+        if (jEmail.getText().equals("Enter your email")){
+            jEmail.setText("");
         }
-    }//GEN-LAST:event_TxtEmailFocusGained
+    }//GEN-LAST:event_jEmailFocusGained
 
-    private void TxtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNameActionPerformed
+    private void jUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtNameActionPerformed
+    }//GEN-LAST:event_jUsernameActionPerformed
 
-    private void TxtNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtNameFocusLost
+    private void jUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jUsernameFocusLost
         // TODO add your handling code here:
-        if (TxtName.getText().isEmpty()){
-            TxtName.setText("Enter your name");
+        if (jUsername.getText().isEmpty()){
+            jUsername.setText("Enter your name");
         }
-    }//GEN-LAST:event_TxtNameFocusLost
+    }//GEN-LAST:event_jUsernameFocusLost
 
-    private void TxtNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtNameFocusGained
+    private void jUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jUsernameFocusGained
         // TODO add your handling code here:
-        if (TxtName.getText().equals("Enter your name")){
-            TxtName.setText("");
+        if (jUsername.getText().equals("Enter your name")){
+            jUsername.setText("");
         }
-    }//GEN-LAST:event_TxtNameFocusGained
+    }//GEN-LAST:event_jUsernameFocusGained
 
-    private void txtCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCreateActionPerformed
+    private void txtsetpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsetpassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCreateActionPerformed
+    }//GEN-LAST:event_txtsetpassActionPerformed
 
-    private void txtCreateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCreateFocusGained
+    private void txtsetpassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtsetpassFocusGained
         // TODO add your handling code here:
-        if (txtCreate.getText().equals("Enter your email")){
-            TxtEmail.setText("");
+        if (txtsetpass.getText().equals("Create password")){
+            txtsetpass.setText("");
         }
-    }//GEN-LAST:event_txtCreateFocusGained
+    }//GEN-LAST:event_txtsetpassFocusGained
+
+    private void BsignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BsignInActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BsignInActionPerformed
+
+    private void txtsetpassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtsetpassFocusLost
+        // TODO add your handling code here:
+        if (txtsetpass.getText().isEmpty()){
+            txtsetpass.setText("Create password");
+        }
+    }//GEN-LAST:event_txtsetpassFocusLost
+
+    private void TxtConfirmFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtConfirmFocusGained
+        // TODO add your handling code here:
+        if (TxtConfirm.getText().equals("Confirm Password")){
+            TxtConfirm.setText("");
+        }
+    }//GEN-LAST:event_TxtConfirmFocusGained
+
+    private void TxtConfirmFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtConfirmFocusLost
+        // TODO add your handling code here:
+        if (TxtConfirm.getText().isEmpty()){
+            TxtConfirm.setText("Confirm Password");
+        }
+    }//GEN-LAST:event_TxtConfirmFocusLost
 
     /**
      * @param args the command line arguments
@@ -330,11 +363,10 @@ public class SignupPart extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BsignIn;
+    private javax.swing.JButton BsignUp;
     private javax.swing.JTextField TxtConfirm;
-    private javax.swing.JTextField TxtEmail;
-    private javax.swing.JTextField TxtName;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTextField jEmail;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -344,9 +376,51 @@ public class SignupPart extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txtCreate;
+    private javax.swing.JTextField jUsername;
+    private javax.swing.JTextField txtsetpass;
     // End of variables declaration//GEN-END:variables
+
+public void addAddUserListener(ActionListener listener) {
+        BsignUp.addActionListener(listener);
+    }
+public void addLoginListener(ActionListener listener) {
+        BsignIn.addActionListener(listener);
+    }
+    
+
+    
+    /**
+     * @return the companynameField
+     */
+    public javax.swing.JTextField getUsernameField() {
+        return jUsername;
+        
+    }
+    
+    
+    /**
+     * @return the emailField
+     */
+    public javax.swing.JTextField getEmailField() {
+        return jEmail;
+        
+    }
+
+    /**
+     * @return the passwordField
+     */
+     public javax.swing.JTextField getSetPasswordField() {
+         return txtsetpass;
+     }
+
+    /**
+     * @return the usernameField
+     */
+    public javax.swing.JTextField getConfrimPassword() {
+        return TxtConfirm;
+    }
+
+
 }

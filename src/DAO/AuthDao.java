@@ -1,0 +1,211 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package DAO;
+
+import Database.MySqlConnection;
+import Model.SecAnswers;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class AuthDao {
+    MySqlConnection mysql = new MySqlConnection();
+
+    // ✅ New method to insert answers
+ public void insertSecurityAnswers(SecAnswers user) {
+    Connection conn = mysql.openConnection(); 
+    String query = "INSERT INTO user_security (Email, answer1, answer2, answer3) VALUES (?, ?, ?, ?)";
+    
+    try (PreparedStatement stmt = conn.prepareStatement(query)) {
+        stmt.setString(1, user.getEmail());
+        stmt.setString(2, user.getanswer1());
+        stmt.setString(3, user.getanswer2());
+        stmt.setString(4, user.getanswer3());
+        
+        stmt.executeUpdate();
+        System.out.println("Security answers inserted successfully for: " + user.getEmail());
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        mysql.closeConnection(conn);
+    }
+}
+
+
+
+    public boolean validateSecurityAnswers(String email, String[] answers) {
+        Connection conn = mysql.openConnection();
+        String query = "SELECT answer1, answer2, answer3 FROM user_security WHERE email = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("answer1").equalsIgnoreCase(answers[0]) &&
+                       rs.getString("answer2").equalsIgnoreCase(answers[1]) &&
+                       rs.getString("answer3").equalsIgnoreCase(answers[2]);
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(AuthDao.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            mysql.closeConnection(conn);
+        }
+        return false;
+    }
+
+    public boolean updatePassword(String email, String newPassword) {
+        Connection conn = mysql.openConnection();
+        String query = "UPDATE users SET set_password = ? WHERE email = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, newPassword);
+            stmt.setString(2, email);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            Logger.getLogger(AuthDao.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            mysql.closeConnection(conn);
+        }
+        return false;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//package DAO;
+//import Database.Database;
+//import java.sql.*;
+//import Database.MySqlConnection;
+//import Model.SecAnswers;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+///**
+// *
+// * @author LEGION
+// */
+//public class AuthDao {
+//    MySqlConnection mysql = new MySqlConnection();
+////    private Connection conn;
+//    
+//    public void AuthDao(SecAnswers user){
+//         Connection conn = mysql.openConnection(); 
+//        String query = "INSERT INTO user_security (answer1,answer2,answer3)VALUES (?,?,?,?)";
+//        try(PreparedStatement stmt = conn.prepareStatement(query)){
+////            stmt.setString(1, user.getEmail());
+//            stmt.setString(2, user.getanswer1());
+//            stmt.setString(3,user.getanswer2());
+//            stmt.setString(4, user.getanswer3());
+//            
+//            stmt.executeUpdate();
+//        }catch(SQLException e){
+//            e.printStackTrace();
+////            Logger.getLogger(AuthDao.class.getName()).log(Level.SEVERE, null, ex)
+//        }finally {
+//            mysql.closeConnection(conn);
+//        }
+////        Connection conn = mysql.openConnection();
+////        conn = Database.getConnection();
+//    }
+////    public void insertAnswers(SecAnswers user){
+////        Connection conn = mysql.openConnection(); 
+////        String query = "INSERT INTO user_security (answer1,answer2,answer3)VALUES (?,?,?,?)";
+////        try(PreparedStatement stmt = conn.prepareStatement(query)){
+//////            stmt.setString(1, user.getEmail());
+////            stmt.setString(2, user.getanswer1());
+////            stmt.setString(3,user.getanswer2());
+////            stmt.setString(4, user.getanswer3());
+////            
+////            stmt.executeUpdate();
+////        }catch(SQLException e){
+////            e.printStackTrace();
+//////            Logger.getLogger(AuthDao.class.getName()).log(Level.SEVERE, null, ex)
+////        }finally {
+////            mysql.closeConnection(conn);
+////        }
+////    }
+//    
+//    public boolean validateSecurityAnswers(String email, String[] answers){
+//        Connection conn = mysql.openConnection();
+//        String query = "SELECT answer1, answer2, answer3 FROM user_security WHERE email = ?";
+//        try (PreparedStatement stmt = conn. prepareStatement(query)){
+//            stmt.setString(1, email);
+//            ResultSet rs = stmt.executeQuery();
+//            if (rs.next()){
+//                return rs.getString("answer1").equalsIgnoreCase(answers[0]) &&
+//                       rs.getString("answer2").equalsIgnoreCase(answers[1]) &&
+//                       rs.getString("answer3").equalsIgnoreCase(answers[2]);
+//            }
+//        } catch (SQLException e){
+//            Logger.getLogger(AuthDao.class.getName()).log(Level.SEVERE,null,e);
+////            e.printStackTrace();
+//        }
+//       finally {
+//            mysql.closeConnection(conn);
+//        }
+//        return false;
+//    }
+//    public boolean updatePassword(String email, String set_password){
+//        Connection conn = mysql.openConnection();
+//        String query = "UPDATE users SET set_password = ? WHERE email = ?";
+//        try (PreparedStatement stmt = conn. prepareStatement(query)){
+//            stmt.setString(1, set_password);
+//            stmt.setString(2, email);
+//            return stmt.executeUpdate()>0;
+//            
+//        } catch (SQLException e){
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
+//}
+

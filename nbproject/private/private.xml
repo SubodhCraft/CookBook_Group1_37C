@@ -2,24 +2,33 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Sigininframe.java</file>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Images/WhatsApp%20Image%202025-05-23%20at%2010.25.28_2a4a1099.jpg</file>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Images/WhatsApp%20Image%202025-05-23%20at%2021.31.54_d51e8939%20(1).jpg</file>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Images/WhatsApp%20Image%202025-05-23%20at%2021.31.54_d51e8939.jpg</file>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/LandingPage.java</file>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/DAO/UserDAO.java</file>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/DAO/UserLoginDAO.java</file>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Login.java</file>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Logout.java</file>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/LoginController.java</file>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/cookbook_groupa/CookBook_GroupA.java</file>
-            <file>file:/C:/Users/ACER/Documents/NetBeansProjects/CookBook_Group1_37C/src/Database/Database.java</file>
-=======
-            <file>file:/C:/Users/Jay%20pradhan/Documents/NetBeansProjects/CookBook_Group1/src/cookbook/Dashboard.java</file>
->>>>>>> Dashboard
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Security_Questions.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/AuthController.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/SignUpController.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/LoginController.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/ResetPass.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/DAO/AuthDao.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/Langinpage.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/EmailCheck.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/SignupPart.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/Model/SecAnswers.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/Model/LoginRequest.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/DAO/UserDao.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/cookbook_groupa/CookBook_GroupA.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/LandingPage.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/DAO/LoginDao.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/Database/Database.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/Database/MySqlConnection.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/Model/UserData.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/NewPassword.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Sigininframe.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/cookbook/COOKBOOK.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/cookbook/Dashboard.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/verify.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Self_Note.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Searching.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Categorization.java</file>
         </group>
     </open-files>
 </project-private>

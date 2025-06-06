@@ -1,7 +1,7 @@
 package Database;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
+import java.sql.*;
+//import java.sql.Connection;
+//import java.sql.ResultSet;
 
 public interface Database {
     Connection openConnection();

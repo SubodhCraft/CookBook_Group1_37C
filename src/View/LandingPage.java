@@ -4,8 +4,9 @@
  */
 package View;
 
-import javax.swing.BorderFactory;
-import javax.swing.JOptionPane;
+import java.awt.event.ActionListener;
+//import javax.swing.BorderFactory;
+//import javax.swing.JOptionPane;
 
 /**
  *
@@ -182,7 +183,7 @@ public class LandingPage extends javax.swing.JFrame {
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addGap(33, 33, 33))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -238,7 +239,10 @@ public class LandingPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,12 +255,12 @@ public class LandingPage extends javax.swing.JFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(LandingPage.this,"Registration Page under making.");
+//        JOptionPane.showMessageDialog(LandingPage.this,"Registration Page under making.");
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnSignINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignINActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(LandingPage.this,"Sign In page under making.");
+//        JOptionPane.showMessageDialog(LandingPage.this,"Sign In page under making.");
     }//GEN-LAST:event_btnSignINActionPerformed
 
     private void LowerTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LowerTxtFieldActionPerformed
@@ -322,4 +326,13 @@ public class LandingPage extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
+public void addRegisterListener(ActionListener listener) {
+    System.out.println("register");
+        btnRegister.addActionListener(listener);
+    }
+
+public void addLoginListener(ActionListener listener) {
+    System.out.println("login");
+         btnSignIN.addActionListener(listener);
+}
 }

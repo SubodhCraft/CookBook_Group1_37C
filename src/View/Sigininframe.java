@@ -1,11 +1,8 @@
 package View;
 
-import javax.swing.JOptionPane;
+import java.awt.event.ActionListener;
  
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+
 
 public class Sigininframe extends javax.swing.JFrame {
 
@@ -212,25 +209,7 @@ public class Sigininframe extends javax.swing.JFrame {
     }//GEN-LAST:event_lblForgotPasswordActionPerformed
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
-      String email = txtEmail.getText();
-    String password = new String(txtPassword.getPassword());
-
-    if (email.isEmpty() || password.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Please enter both email and password.");
-    } else {
-     
-        if (email.equals("admin@example.com") && password.equals("123456")) {
-            JOptionPane.showMessageDialog(this, "Login successful!");
-     
-        } else {
-            
-            
-            
-            
-            
-            JOptionPane.showMessageDialog(this, "Invalid email or password.");
-        }
-    }
+      
 
     }//GEN-LAST:event_btnSignInActionPerformed
 
@@ -266,29 +245,32 @@ public class Sigininframe extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
-private boolean checkLogin(String email, String password) {
-    try {
-        File file = new File("C:\\Users\\ACER\\Documents\\NetBeansProjects\\CookBook_Group1_37C\\users.txt"); // File must be in your project folder (not src)
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        String line;
-
-        while ((line = br.readLine()) != null) {
-            String[] parts = line.split(",");
-            if (parts.length == 2) {
-                String fileEmail = parts[0].trim();
-                String filePassword = parts[1].trim();
-                if (email.equals(fileEmail) && password.equals(filePassword)) {
-                    br.close();
-                    return true; // Found match
-                }
-            }
-        }
-
-        br.close();
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(Sigininframe.this, "Error reading users.txt: " + e.getMessage());
+public void addLoginUserListener(ActionListener listener) {
+        btnSignIn.addActionListener(listener);
     }
 
-    return false; // No match
- }
+//public void addLoginListener(ActionListener listener) {
+//         lblSignUp.addActionListener(listener);
+//         
+//}
+ 
+public void addRegisterListener (ActionListener listener){
+    lblSignUp.addActionListener(listener);
+}
+public void addForgetPassListener (ActionListener listener){
+    lblForgotPassword.addActionListener(listener);
+}
+    /**
+     * @return the emailField
+     */
+    public javax.swing.JTextField getEmailField() {
+        return txtEmail;
+    }
+
+    /**
+     * @return the passwordField
+     */
+    public javax.swing.JTextField getPasswordField() {
+        return txtPassword;
+    }
 }
