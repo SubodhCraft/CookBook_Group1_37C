@@ -6,12 +6,19 @@ package View;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import javax.swing.JPasswordField;
 
 /**
  *
  * @author LEGION
  */
 public class ResetPass extends javax.swing.JFrame {
+    private String email;
+    
+    public ResetPass(String email){
+        this.email=email;
+        initComponents();
+    }
 
     /**
      * Creates new form ResetPass
@@ -19,6 +26,9 @@ public class ResetPass extends javax.swing.JFrame {
     public ResetPass() {
         initComponents();
     }
+    public String getEmail(){
+    return email;
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -233,5 +243,17 @@ if (String.valueOf(password2.getPassword()).trim().equals("")) {
     // End of variables declaration//GEN-END:variables
 public void addContinueListener (ActionListener listener){
     btnContinue.addActionListener(listener);
+}
+//public JPasswordField getNewPasswordField(){
+//    return newPasswordField;
+//}
+//public JPasswordField getConfirmPasswordField(){
+//    return confirmPasswordField;
+//}
+public String getNewPasswordField(){
+    return new String (password1.getPassword());
+}
+public String getConfirmPasswordField(){
+    return new String(password2.getPassword());
 }
 }

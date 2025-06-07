@@ -45,7 +45,7 @@ public class LoginController {
         public void actionPerformed(ActionEvent e){
             try{
                 String email = userView.getEmailField().getText();
-                String password = userView.getPasswordField().getText();
+                String password = new String(userView.getPasswordField().getPassword());
                 LoginRequest user = new LoginRequest(email,password);
                 
                 boolean check = loginDao.validateUser(user);
@@ -56,7 +56,10 @@ public class LoginController {
                     JOptionPane.showMessageDialog(userView,"Invalid Credentials");
                 }
                 
-                
+//                Sigininframe login = new Sigininframe();
+//                login.setVisible(true);
+//                LoginController controller = new LoginController(login);
+//                controller.open();
                 
                 
 //                UserData signInUser  = userDao.signIn(user);

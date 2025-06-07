@@ -1,17 +1,16 @@
 package View;
 
 import java.awt.event.ActionListener;
+import javax.swing.JPasswordField;
  
-
-
 public class Sigininframe extends javax.swing.JFrame {
-
-
+private JPasswordField passwordField = new JPasswordField();
+public JPasswordField getPasswordField(){
+    return txtPassword;
+}
     public Sigininframe() {
         initComponents();
     }
-
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -204,12 +203,10 @@ public class Sigininframe extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblForgotPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblForgotPasswordActionPerformed
-
         
     }//GEN-LAST:event_lblForgotPasswordActionPerformed
 
     private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
-      
 
     }//GEN-LAST:event_btnSignInActionPerformed
 
@@ -218,14 +215,12 @@ public class Sigininframe extends javax.swing.JFrame {
     }//GEN-LAST:event_lblSignUpActionPerformed
 
     public static void main(String args[]) {
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Sigininframe().setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel SignInFrame;
     private javax.swing.JButton btnSignIn;
@@ -270,7 +265,10 @@ public void addForgetPassListener (ActionListener listener){
     /**
      * @return the passwordField
      */
-    public javax.swing.JTextField getPasswordField() {
-        return txtPassword;
-    }
+//    public javax.swing.JTextField getPasswordField() {
+//        return txtPassword;
+//    }
+//    public JPasswordField getPasswordField(){
+//        return passwordField;
+//    }
 }

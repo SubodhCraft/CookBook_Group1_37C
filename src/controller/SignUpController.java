@@ -50,7 +50,7 @@ public class SignUpController {
                 boolean check = userDao.CheckUser(user);
                 if(check){
                     JOptionPane.showMessageDialog(userView,"User Already Exists");
-                }else if (!email.contains("@")){
+                }else if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")){
                     JOptionPane.showMessageDialog(userView,"Enter a Valid Email");
                 } else if (!set_password.equals(confirm_password)){
                     JOptionPane.showMessageDialog(userView,"Password doesn't match");

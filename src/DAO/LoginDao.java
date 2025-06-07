@@ -19,10 +19,10 @@ public class LoginDao {
     MySqlConnection mysql = new MySqlConnection();
     public boolean validateUser(LoginRequest userLogin ){
      Connection conn = mysql.openConnection();
-     String sql = "SELECT * FROM users where email = ? and set_password = ?";
+     String sql = "SELECT * FROM users where Email = ? and set_password = ?";
      try (PreparedStatement pstmt = conn.prepareStatement(sql)){
-        System.out.println("Login email"+ userLogin.getEmail());
-        System.out.println("Login Password"+ userLogin.getPassword());
+//        System.out.println("Login email"+ userLogin.getEmail());
+//        System.out.println("Login Password"+ userLogin.getPassword());
       
         pstmt.setString(1,userLogin.getEmail());
         pstmt.setString(2,userLogin.getPassword());
