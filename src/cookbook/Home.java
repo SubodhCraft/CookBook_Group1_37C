@@ -4,6 +4,12 @@
  */
 package cookbook;
 
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 /**
  *
  * @author Jay pradhan
@@ -16,7 +22,13 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        recipeDisplayPanel.setLayout(new BoxLayout(recipeDisplayPanel, BoxLayout.X_AXIS));
+    jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+    jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+
+
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,13 +41,12 @@ public class Home extends javax.swing.JFrame {
 
         home_panel = new javax.swing.JPanel();
         Popularthisweek_label = new javax.swing.JLabel();
-        Popular_option1 = new javax.swing.JPanel();
-        moopingimg = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
         rating_1 = new javax.swing.JPanel();
         katsuimg_label = new javax.swing.JLabel();
         Japanese_kastsu = new javax.swing.JTextField();
         Bestratings_label = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        recipeDisplayPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -43,33 +54,6 @@ public class Home extends javax.swing.JFrame {
         Popularthisweek_label.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         Popularthisweek_label.setForeground(new java.awt.Color(127, 1, 31));
         Popularthisweek_label.setText("Popular This Week");
-
-        Popular_option1.setBackground(new java.awt.Color(255, 255, 255));
-        Popular_option1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Popular_option1.setMaximumSize(new java.awt.Dimension(295, 147));
-        Popular_option1.setMinimumSize(new java.awt.Dimension(295, 147));
-        Popular_option1.setPreferredSize(new java.awt.Dimension(295, 147));
-        Popular_option1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Popular_option1MouseClicked(evt);
-            }
-        });
-        Popular_option1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        moopingimg.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\food.png")); // NOI18N
-        moopingimg.setText("jLabel11");
-        Popular_option1.add(moopingimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, -1));
-
-        jTextField6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(127, 1, 31));
-        jTextField6.setText("Moo Ping");
-        jTextField6.setBorder(null);
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
-        Popular_option1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
 
         rating_1.setBackground(new java.awt.Color(255, 255, 255));
         rating_1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -121,6 +105,12 @@ public class Home extends javax.swing.JFrame {
         Bestratings_label.setForeground(new java.awt.Color(127, 1, 31));
         Bestratings_label.setText("Best Ratings");
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(null);
+
+        recipeDisplayPanel.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(recipeDisplayPanel);
+
         javax.swing.GroupLayout home_panelLayout = new javax.swing.GroupLayout(home_panel);
         home_panel.setLayout(home_panelLayout);
         home_panelLayout.setHorizontalGroup(
@@ -129,19 +119,21 @@ public class Home extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(home_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Popularthisweek_label, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Popular_option1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Bestratings_label, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rating_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(291, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, home_panelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1))
         );
         home_panelLayout.setVerticalGroup(
             home_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(home_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Popularthisweek_label, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(Popular_option1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addComponent(Popularthisweek_label, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Bestratings_label, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(rating_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,15 +144,6 @@ public class Home extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
-
-    private void Popular_option1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Popular_option1MouseClicked
-        // TODO add your handling code here:
-        System.out.println("Panel clicked!");
-    }//GEN-LAST:event_Popular_option1MouseClicked
 
     private void Japanese_kastsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Japanese_kastsuActionPerformed
         // TODO add your handling code here:
@@ -199,16 +182,19 @@ public class Home extends javax.swing.JFrame {
             new Home().setVisible(true);
         });
     }
+    public JPanel getRecipeDisplayPanel() {
+    return recipeDisplayPanel;
+}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Bestratings_label;
     private javax.swing.JTextField Japanese_kastsu;
-    private javax.swing.JPanel Popular_option1;
     private javax.swing.JLabel Popularthisweek_label;
     public javax.swing.JPanel home_panel;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel katsuimg_label;
-    private javax.swing.JLabel moopingimg;
     private javax.swing.JPanel rating_1;
+    private javax.swing.JPanel recipeDisplayPanel;
     // End of variables declaration//GEN-END:variables
 }

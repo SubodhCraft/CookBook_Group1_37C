@@ -4,6 +4,11 @@
  */
 package cookbook;
 
+import controller.AdminDashboardController;
+import controller.BookmarkController;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Jay pradhan
@@ -53,6 +58,9 @@ public class Dashboard extends javax.swing.JFrame {
         Home_panel = new javax.swing.JPanel();
         Home = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        Myprofile_panel1 = new javax.swing.JPanel();
+        admin = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
         Search_panel = new javax.swing.JPanel();
         Search_border = new javax.swing.JPanel();
         Searchicon_label = new javax.swing.JLabel();
@@ -203,7 +211,7 @@ public class Dashboard extends javax.swing.JFrame {
             Myprofile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Myprofile_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(myProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(myProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -228,17 +236,14 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Logout_panelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(logOut)
-                .addContainerGap())
+                .addGap(124, 124, 124))
         );
         Logout_panelLayout.setVerticalGroup(
             Logout_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Logout_panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(logOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+            .addComponent(logOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         Bookmark_panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -355,6 +360,46 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        Myprofile_panel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        admin.setText("Admin");
+        admin.setBorder(null);
+        admin.setBorderPainted(false);
+        admin.setContentAreaFilled(false);
+        admin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        admin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                adminMouseClicked(evt);
+            }
+        });
+        admin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\profile.png")); // NOI18N
+
+        javax.swing.GroupLayout Myprofile_panel1Layout = new javax.swing.GroupLayout(Myprofile_panel1);
+        Myprofile_panel1.setLayout(Myprofile_panel1Layout);
+        Myprofile_panel1Layout.setHorizontalGroup(
+            Myprofile_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Myprofile_panel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(admin)
+                .addContainerGap())
+        );
+        Myprofile_panel1Layout.setVerticalGroup(
+            Myprofile_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Myprofile_panel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(admin, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout Menu_panelLayout = new javax.swing.GroupLayout(Menu_panel);
         Menu_panel.setLayout(Menu_panelLayout);
         Menu_panelLayout.setHorizontalGroup(
@@ -375,7 +420,8 @@ public class Dashboard extends javax.swing.JFrame {
                         .addGroup(Menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Settings_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Myprofile_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Logout_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(Myprofile_panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(Logout_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         Menu_panelLayout.setVerticalGroup(
@@ -397,9 +443,11 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(Settings_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Myprofile_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(18, 18, 18)
                 .addComponent(Logout_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(368, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Myprofile_panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(334, Short.MAX_VALUE))
         );
 
         getContentPane().add(Menu_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -482,15 +530,19 @@ public class Dashboard extends javax.swing.JFrame {
         // Load panels from other files
         Bookmark bookmark = new Bookmark();
         Home home = new Home();
+        admin_dashboard adminDash = new admin_dashboard();
+        AdminDashboardController controller = new AdminDashboardController(adminDash, home, bookmark);
+        BookmarkController bookmarkController = new BookmarkController(adminDash, home, bookmark);
 
         // Add panels to CardLayout
         Main_panel.add(home.home_panel, "home");
         Main_panel.add(bookmark.Bookmarkpanel, "bookmark");
+        Main_panel.add(adminDash, "admin");
 
         // Show home panel by default
         java.awt.CardLayout cl = (java.awt.CardLayout)(Main_panel.getLayout());
         cl.show(Main_panel, "home");
-        getContentPane().add(Main_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 660, 590));
+        getContentPane().add(Main_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 650, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -557,6 +609,16 @@ public class Dashboard extends javax.swing.JFrame {
     cl.show(Main_panel, "home");
     }//GEN-LAST:event_HomeMouseClicked
 
+    private void adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminActionPerformed
+
+    private void adminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminMouseClicked
+        // TODO add your handling code here:
+         CardLayout cl = (CardLayout)(Main_panel.getLayout());
+    cl.show(Main_panel, "admin");
+    }//GEN-LAST:event_adminMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -602,6 +664,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel Main_panel;
     private javax.swing.JPanel Menu_panel;
     private javax.swing.JPanel Myprofile_panel;
+    private javax.swing.JPanel Myprofile_panel1;
     private javax.swing.JTextField Search;
     private javax.swing.JPanel Search_border;
     private javax.swing.JPanel Search_panel;
@@ -609,8 +672,10 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel Selfnote_panel;
     private javax.swing.JButton Settings;
     private javax.swing.JPanel Settings_panel;
+    private javax.swing.JButton admin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

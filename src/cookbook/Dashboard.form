@@ -82,9 +82,10 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="Settings_panel" alignment="0" max="32767" attributes="0"/>
                               <Component id="Myprofile_panel" alignment="0" max="32767" attributes="0"/>
-                              <Component id="Logout_panel" alignment="0" max="32767" attributes="0"/>
+                              <Component id="Myprofile_panel1" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                      <Component id="Logout_panel" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -109,9 +110,11 @@
                   <Component id="Settings_panel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="Myprofile_panel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="Logout_panel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="368" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="Myprofile_panel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="334" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -297,7 +300,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="myProfile" pref="30" max="32767" attributes="0"/>
+                      <Component id="myProfile" pref="42" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
@@ -338,20 +341,16 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="jLabel9" min="-2" pref="18" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="logOut" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="logOut" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jLabel9" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jLabel9" pref="28" max="32767" attributes="0"/>
+                  <Component id="logOut" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -543,6 +542,63 @@
             </Component>
           </SubComponents>
         </Container>
+        <Container class="javax.swing.JPanel" name="Myprofile_panel1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="jLabel11" min="-2" pref="18" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="admin" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="admin" pref="30" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="admin">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Admin"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+                <Property name="borderPainted" type="boolean" value="false"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="adminMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="adminActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel11">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="D:\oop\icons\profile.png"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="Search_panel">
@@ -671,11 +727,11 @@
     </Container>
     <Container class="javax.swing.JPanel" name="Main_panel">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_LayoutCodePre" type="java.lang.String" value="// Load panels from other files&#xa;Bookmark bookmark = new Bookmark();&#xa;Home home = new Home();&#xa;&#xa;// Add panels to CardLayout&#xa;Main_panel.add(home.home_panel, &quot;home&quot;);&#xa;Main_panel.add(bookmark.Bookmarkpanel, &quot;bookmark&quot;);&#xa;&#xa;// Show home panel by default&#xa;java.awt.CardLayout cl = (java.awt.CardLayout)(Main_panel.getLayout());&#xa;cl.show(Main_panel, &quot;home&quot;);"/>
+        <AuxValue name="JavaCodeGenerator_LayoutCodePre" type="java.lang.String" value="// Load panels from other files&#xa;Bookmark bookmark = new Bookmark();&#xa;Home home = new Home();&#xa;admin_dashboard adminDash = new admin_dashboard(); &#xa;AdminDashboardController controller = new AdminDashboardController(adminDash, home, bookmark);&#xa;BookmarkController bookmarkController = new BookmarkController(adminDash, home, bookmark);&#xa;&#xa;    &#xa;&#xa;// Add panels to CardLayout&#xa;Main_panel.add(home.home_panel, &quot;home&quot;);&#xa;Main_panel.add(bookmark.Bookmarkpanel, &quot;bookmark&quot;);&#xa;Main_panel.add(adminDash, &quot;admin&quot;);&#xa;&#xa;// Show home panel by default&#xa;java.awt.CardLayout cl = (java.awt.CardLayout)(Main_panel.getLayout());&#xa;cl.show(Main_panel, &quot;home&quot;);"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="240" y="110" width="660" height="590"/>
+          <AbsoluteConstraints x="240" y="110" width="650" height="590"/>
         </Constraint>
       </Constraints>
 
