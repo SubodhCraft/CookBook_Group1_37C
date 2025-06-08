@@ -19,7 +19,7 @@ public class NewPassword extends javax.swing.JFrame {
         
         initComponents();
     }
-    private void initCompoenets(){
+    private void initComponets(){
         
     }
     /**

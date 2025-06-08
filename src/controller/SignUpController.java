@@ -46,7 +46,7 @@ public class SignUpController {
                 
                 UserData user = new UserData(username,email,set_password,confirm_password);
                  
-                
+                 
                 boolean check = userDao.CheckUser(user);
                 if(check){
                     JOptionPane.showMessageDialog(userView,"User Already Exists");

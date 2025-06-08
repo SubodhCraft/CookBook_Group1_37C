@@ -14,6 +14,7 @@ import Model.UserData;
 import View.EmailCheck;
 import View.Security_Questions;
 import View.SignupPart;
+import cookbook.Dashboard;
 //import controller.LoginController.AddLoginListener.RegisterListener;
 //import controller.Langinpage.RegisterListener;
 
@@ -51,6 +52,9 @@ public class LoginController {
                 boolean check = loginDao.validateUser(user);
                 if (check){
                     JOptionPane.showMessageDialog(userView,"Login successful");
+                    
+                    Dashboard dashboard= new Dashboard();
+                    dashboard.setVisible(true);
                     
                 }else{
                     JOptionPane.showMessageDialog(userView,"Invalid Credentials");

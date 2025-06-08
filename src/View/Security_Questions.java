@@ -36,6 +36,7 @@ public class Security_Questions extends javax.swing.JFrame {
      */
     public Security_Questions() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -61,6 +62,7 @@ public class Security_Questions extends javax.swing.JFrame {
         txtEmail = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Security_Question");
 
         jPanel1.setBackground(new java.awt.Color(255, 228, 201));
 

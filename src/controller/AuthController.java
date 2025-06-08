@@ -203,12 +203,12 @@ public class AuthController {
              boolean success = updatePassword(email,newPassword);
              if(success){
                  JOptionPane.showMessageDialog(userView2,"Password updated successfully!");
-                 new Sigininframe().setVisible(true);
-                 userView2.dispose();
-//                 Sigininframe login = new Sigininframe();
-//                 login.setVisible(true);
-//                 LoginController controller = new LoginController(login);
-//                 controller.open();
+//                 new Sigininframe().setVisible(true);
+//                 userView2.dispose();
+                 Sigininframe login = new Sigininframe();
+                 login.setVisible(true);
+                 LoginController controller = new LoginController(login);
+                 controller.open();
              }else{
                  JOptionPane.showMessageDialog(userView2,"Failed to update password.");
              }
