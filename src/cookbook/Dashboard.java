@@ -4,9 +4,16 @@
  */
 package cookbook;
 
+import DAO.BookmarkDAO;
+import DAO.RecipeDAO;
+import Database.Database;
+import Database.MySqlConnection;
+import Model.Recipe;
 import controller.AdminDashboardController;
 import controller.BookmarkController;
 import java.awt.CardLayout;
+import java.util.List;
+import java.util.Set;
 import javax.swing.JPanel;
 
 /**
@@ -549,10 +556,14 @@ public class Dashboard extends javax.swing.JFrame {
 
         Main_panel.setLayout(new java.awt.CardLayout());
         // Load panels from other files
+        Database db = new MySqlConnection();
+        RecipeDAO recipeDAO = new RecipeDAO(db);
         Bookmark bookmark = new Bookmark();
         Home home = new Home();
+        BookmarkDAO bookmarkDAO = new BookmarkDAO(db);
         admin_dashboard adminDash = new admin_dashboard();
-        AdminDashboardController controller = new AdminDashboardController(adminDash, home, bookmark);
+        AdminDashboardController controller = new AdminDashboardController(adminDash, home, bookmark, recipeDAO, bookmarkDAO);
+        controller.loadRecipesToHome();
         BookmarkController bookmarkController = new BookmarkController(adminDash, home, bookmark);
 
         // Add panels to CardLayout
