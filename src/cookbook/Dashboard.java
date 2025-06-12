@@ -4,9 +4,16 @@
  */
 package cookbook;
 
+import DAO.BookmarkDAO;
+import DAO.RecipeDAO;
+import Database.Database;
+import Database.MySqlConnection;
+import Model.Recipe;
 import controller.AdminDashboardController;
 import controller.BookmarkController;
 import java.awt.CardLayout;
+import java.util.List;
+import java.util.Set;
 import javax.swing.JPanel;
 
 /**
@@ -548,19 +555,38 @@ public class Dashboard extends javax.swing.JFrame {
         getContentPane().add(Search_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 0, -1, -1));
 
         Main_panel.setLayout(new java.awt.CardLayout());
-        // Load panels from other files
+        // 1. Create DB and DAOs
+        Database db = new MySqlConnection();
+        RecipeDAO recipeDAO = new RecipeDAO(db);
+        BookmarkDAO bookmarkDAO = new BookmarkDAO(db);
+
+        // 2. Create views
         Bookmark bookmark = new Bookmark();
         Home home = new Home();
         admin_dashboard adminDash = new admin_dashboard();
-        AdminDashboardController controller = new AdminDashboardController(adminDash, home, bookmark);
+
+        // 3. Create updatePanel with null controller for now
+        update updatePanel = new update(recipeDAO, null);
+
+        // 4. Now create controller and pass updatePanel
+        AdminDashboardController controller = new AdminDashboardController(
+            adminDash, home, bookmark, recipeDAO, bookmarkDAO, Main_panel, updatePanel
+        );
+
+        // 5. Set controller inside updatePanel
+        updatePanel.setController(controller);  // <-- Add this method in `update.java`
+
+        // 6. Load recipes
+        controller.loadRecipesToHome();
         BookmarkController bookmarkController = new BookmarkController(adminDash, home, bookmark);
 
-        // Add panels to CardLayout
+        // 7. Add panels
+        Main_panel.add(updatePanel, "update");
         Main_panel.add(home.home_panel, "home");
         Main_panel.add(bookmark.Bookmarkpanel, "bookmark");
         Main_panel.add(adminDash, "admin");
 
-        // Show home panel by default
+        // 8. Show home panel
         java.awt.CardLayout cl = (java.awt.CardLayout)(Main_panel.getLayout());
         cl.show(Main_panel, "home");
         getContentPane().add(Main_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 650, 590));
