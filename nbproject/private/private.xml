@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< Updated upstream
         <group>
             <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/cookbook/admin_dashboard.java</file>
             <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/cookbook/RecipeCard.java</file>
@@ -24,5 +25,8 @@
             <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/Database/MySqlConnection.java</file>
             <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/Model/SecAnswers.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> Stashed changes
     </open-files>
 </project-private>
