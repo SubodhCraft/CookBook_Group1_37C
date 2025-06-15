@@ -378,8 +378,6 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel11.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\profile.png")); // NOI18N
-
         javax.swing.GroupLayout Myprofile_panel1Layout = new javax.swing.GroupLayout(Myprofile_panel1);
         Myprofile_panel1.setLayout(Myprofile_panel1Layout);
         Myprofile_panel1Layout.setHorizontalGroup(

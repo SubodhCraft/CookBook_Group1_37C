@@ -169,7 +169,7 @@ class LoginListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
             Sigininframe signin = new Sigininframe();
-            signin.setVisible(true);
+            signin.setVisible(true);  
             LoginController controller = new LoginController(signin);
             controller.open();
         }
