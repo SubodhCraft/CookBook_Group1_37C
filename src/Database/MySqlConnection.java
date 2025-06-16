@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -33,40 +33,10 @@ public class MySqlConnection implements Database{
             }
             return connection;
         }catch(Exception e){
-=======
-package Database;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.DriverManager;
-import java.sql.*;
-
-public class MySqlConnection implements Database {
-
-    @Override
-    public Connection openConnection() {
-        try {
-            String username = "root";
-            String password = "Bh@lu0303";
-            String database = "cookbook";
-            Connection connection;
-            connection = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/" + database, username, password
-            );
-            if (connection == null) {
-                System.out.println("Database connection fail");
-            } else {
-                System.out.println("Database connection success");
-            }
-            return connection;
-        } catch (Exception e) {
->>>>>>> 5cf62f34a51d23b1b40b2ba414eb489d6db9617f
-            System.out.println(e);
             return null;
         }
     }
-<<<<<<< HEAD
-    
+
 
     @Override
     public void closeConnection(Connection conn) {
@@ -78,25 +48,11 @@ public class MySqlConnection implements Database {
             
         }catch(Exception e){
             System.out.println(e);
-            
-=======
-
-    @Override
-    public void closeConnection(Connection conn) {
-        try {
-            if (conn != null && !conn.isClosed()) {
-                conn.close();
-                System.out.println("Connection close");
-            }
-        } catch (Exception e) {
-            System.out.println(e);
->>>>>>> 5cf62f34a51d23b1b40b2ba414eb489d6db9617f
         }
     }
 
     @Override
     public ResultSet runQuery(Connection conn, String query) {
-<<<<<<< HEAD
        try{
            Statement stmp = conn.createStatement();
            ResultSet result = stmp.executeQuery(query);
@@ -124,27 +80,3 @@ public int executeUpdate(Connection conn, String query) {
 
     
 }
-=======
-        try {
-            Statement stmp = conn.createStatement();
-            ResultSet result = stmp.executeQuery(query);
-            return result;
-        } catch (Exception e) {
-            System.out.println(e);
-            return null;
-        }
-    }
-
-    @Override
-    public int executeUpdate(Connection conn, String query) {
-        try {
-            Statement stmp = conn.createStatement();
-            int result = stmp.executeUpdate(query);
-            return result;
-        } catch (Exception e) {
-            System.out.println(e);
-            return -1;
-        }
-    }
-}
->>>>>>> 5cf62f34a51d23b1b40b2ba414eb489d6db9617f
