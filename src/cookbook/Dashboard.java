@@ -109,8 +109,6 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\categories.png")); // NOI18N
-
         javax.swing.GroupLayout Category_panelLayout = new javax.swing.GroupLayout(Category_panel);
         Category_panel.setLayout(Category_panelLayout);
         Category_panelLayout.setHorizontalGroup(
@@ -145,8 +143,6 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\self note.png")); // NOI18N
-
         javax.swing.GroupLayout Selfnote_panelLayout = new javax.swing.GroupLayout(Selfnote_panel);
         Selfnote_panel.setLayout(Selfnote_panelLayout);
         Selfnote_panelLayout.setHorizontalGroup(
@@ -167,8 +163,6 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        Logo_label.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\logo.png")); // NOI18N
-
         Settings_panel.setBackground(new java.awt.Color(255, 255, 255));
 
         Settings.setText("Settings");
@@ -181,8 +175,6 @@ public class Dashboard extends javax.swing.JFrame {
                 SettingsActionPerformed(evt);
             }
         });
-
-        jLabel7.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\setting.png")); // NOI18N
 
         javax.swing.GroupLayout Settings_panelLayout = new javax.swing.GroupLayout(Settings_panel);
         Settings_panel.setLayout(Settings_panelLayout);
@@ -217,8 +209,6 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\profile.png")); // NOI18N
-
         javax.swing.GroupLayout Myprofile_panelLayout = new javax.swing.GroupLayout(Myprofile_panel);
         Myprofile_panel.setLayout(Myprofile_panelLayout);
         Myprofile_panelLayout.setHorizontalGroup(
@@ -251,8 +241,6 @@ public class Dashboard extends javax.swing.JFrame {
                 logOutActionPerformed(evt);
             }
         });
-
-        jLabel9.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\log-out-outline 1.png")); // NOI18N
 
         javax.swing.GroupLayout Logout_panelLayout = new javax.swing.GroupLayout(Logout_panel);
         Logout_panel.setLayout(Logout_panelLayout);
@@ -289,8 +277,6 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\bookmark-outline 1.png")); // NOI18N
-
         javax.swing.GroupLayout Bookmark_panelLayout = new javax.swing.GroupLayout(Bookmark_panel);
         Bookmark_panel.setLayout(Bookmark_panelLayout);
         Bookmark_panelLayout.setHorizontalGroup(
@@ -324,8 +310,6 @@ public class Dashboard extends javax.swing.JFrame {
                 ChallengesActionPerformed(evt);
             }
         });
-
-        jLabel10.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\challenges.png")); // NOI18N
 
         javax.swing.GroupLayout Challenges_panelLayout = new javax.swing.GroupLayout(Challenges_panel);
         Challenges_panel.setLayout(Challenges_panelLayout);
@@ -368,8 +352,6 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\home.png")); // NOI18N
-
         javax.swing.GroupLayout Home_panelLayout = new javax.swing.GroupLayout(Home_panel);
         Home_panel.setLayout(Home_panelLayout);
         Home_panelLayout.setHorizontalGroup(
@@ -408,8 +390,6 @@ public class Dashboard extends javax.swing.JFrame {
                 adminActionPerformed(evt);
             }
         });
-
-        jLabel11.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\profile.png")); // NOI18N
 
         javax.swing.GroupLayout Myprofile_panel1Layout = new javax.swing.GroupLayout(Myprofile_panel1);
         Myprofile_panel1.setLayout(Myprofile_panel1Layout);
@@ -491,8 +471,6 @@ public class Dashboard extends javax.swing.JFrame {
         Search_border.setMaximumSize(new java.awt.Dimension(526, 48));
         Search_border.setMinimumSize(new java.awt.Dimension(526, 48));
 
-        Searchicon_label.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\search.png")); // NOI18N
-
         Search.setText("Search");
         Search.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -503,7 +481,6 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        Filtericon_label.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\filter_icon.png")); // NOI18N
         Filtericon_label.setText("jLabel6");
 
         Filters.setBackground(new java.awt.Color(242, 242, 242));
@@ -521,7 +498,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(Searchicon_label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Search, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
+                .addComponent(Search)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Filtericon_label, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -548,7 +525,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(Search_panelLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(Search_border, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(948, Short.MAX_VALUE))
+                .addContainerGap(1321, Short.MAX_VALUE))
         );
         Search_panelLayout.setVerticalGroup(
             Search_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
