@@ -91,10 +91,11 @@
                                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                       <Component id="chooseImageButton" min="-2" pref="160" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="category" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="278" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="284" max="-2" attributes="0"/>
                               <Component id="addRecipeButton" min="-2" pref="111" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -121,8 +122,10 @@
                       </Group>
                       <Component id="jScrollPane1" min="-2" pref="140" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="category" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="addRecipeButton" min="-2" pref="36" max="-2" attributes="0"/>
-                      <EmptySpace pref="303" max="32767" attributes="0"/>
+                      <EmptySpace pref="245" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -189,6 +192,14 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Add"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="category">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Category"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="categoryActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

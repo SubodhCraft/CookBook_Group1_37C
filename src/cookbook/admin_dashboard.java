@@ -1,8 +1,11 @@
+package cookbook;
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package cookbook;
+
 
 import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
@@ -42,6 +45,10 @@ public JTextField getRecipeDurationText() {
 public JTextArea getRecipeProcessText() {
     return recipeProcessText;
 }
+public JTextField getCategoryField() {
+    return category;
+}
+
 
 
 
@@ -63,6 +70,7 @@ public JTextArea getRecipeProcessText() {
         jScrollPane1 = new javax.swing.JScrollPane();
         recipeProcessText = new javax.swing.JTextArea();
         addRecipeButton = new javax.swing.JButton();
+        category = new javax.swing.JTextField();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -115,6 +123,13 @@ public JTextArea getRecipeProcessText() {
         addRecipeButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         addRecipeButton.setText("Add");
 
+        category.setText("Category");
+        category.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoryActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -130,9 +145,10 @@ public JTextArea getRecipeProcessText() {
                                     .addComponent(recipeNameText)
                                     .addComponent(recipeDurationText))
                                 .addGap(29, 29, 29)
-                                .addComponent(chooseImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(chooseImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(278, 278, 278)
+                        .addGap(284, 284, 284)
                         .addComponent(addRecipeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(348, Short.MAX_VALUE))
         );
@@ -152,8 +168,10 @@ public JTextArea getRecipeProcessText() {
                         .addGap(46, 46, 46)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(addRecipeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout home_panelLayout = new javax.swing.GroupLayout(home_panel);
@@ -215,13 +233,18 @@ public JTextArea getRecipeProcessText() {
     private void recipeDurationTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recipeDurationTextFocusLost
         // TODO add your handling code here:
         if(recipeDurationText.getText().isEmpty()){
-        recipeDurationText.setText("Recipie duration");
+        recipeDurationText.setText("Recipie duration");}
     }//GEN-LAST:event_recipeDurationTextFocusLost
 
-    }
+    private void categoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_categoryActionPerformed
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Popularthisweek_label;
     private javax.swing.JButton addRecipeButton;
+    private javax.swing.JTextField category;
     private javax.swing.JButton chooseImageButton;
     public javax.swing.JPanel home_panel;
     private javax.swing.JPanel jPanel1;

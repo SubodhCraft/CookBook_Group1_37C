@@ -91,11 +91,14 @@ private final javax.swing.JPanel mainPanel;
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                String name = dashboardView.getRecipeNameText().getText();
-                int duration = Integer.parseInt(dashboardView.getRecipeDurationText().getText());
-                String process = dashboardView.getRecipeProcessText().getText();
+              String name = dashboardView.getRecipeNameText().getText();
+int duration = Integer.parseInt(dashboardView.getRecipeDurationText().getText());
+String process = dashboardView.getRecipeProcessText().getText();
+String category = dashboardView.getCategoryField().getText();
+String imagePath = dashboardView.selectedImagePath;
 
-                Recipe recipe = new Recipe(name, duration, process, dashboardView.selectedImagePath);
+Recipe recipe = new Recipe(name, duration, process, imagePath, category); // Without ID
+
 
                 boolean inserted = recipeDAO.insertRecipe(recipe);
                 if (!inserted) {

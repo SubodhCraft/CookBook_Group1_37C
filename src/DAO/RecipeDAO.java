@@ -19,88 +19,94 @@ public class RecipeDAO {
         this.db = db;
     }
 
-    // Insert recipe and set generated ID back to the Recipe object
-    public boolean insertRecipe(Recipe recipe) {
-        String query = "INSERT INTO recipes (name, duration, process, image_path) VALUES (?, ?, ?, ?)";
-        try (Connection conn = db.openConnection();
-             PreparedStatement pstmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+   // Insert recipe and set generated ID back to the Recipe object
+// New insert method with category (optional, so your current insertRecipe() stays unchanged)
+public boolean insertRecipe(Recipe recipe) {
+    String query = "INSERT INTO recipes (name, duration, process, image_path, category) VALUES (?, ?, ?, ?, ?)";
+    try (Connection conn = db.openConnection();
+         PreparedStatement pstmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
-            pstmt.setString(1, recipe.getName());
-            pstmt.setInt(2, recipe.getDuration());
-            pstmt.setString(3, recipe.getProcess());
-            pstmt.setString(4, recipe.getImagePath());
+        pstmt.setString(1, recipe.getName());
+        pstmt.setInt(2, recipe.getDuration());
+        pstmt.setString(3, recipe.getProcess());
+        pstmt.setString(4, recipe.getImagePath());
+        pstmt.setString(5, recipe.getCategory());
 
-            int affectedRows = pstmt.executeUpdate();
-            if (affectedRows == 0) {
-                return false; // no rows inserted
-            }
-
-            try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    recipe.setId(generatedKeys.getInt(1)); // set the generated id in the Recipe object
-                } else {
-                    return false; // failed to get ID
-                }
-            }
-            return true;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+        int affectedRows = pstmt.executeUpdate();
+        if (affectedRows == 0) {
             return false;
         }
-    }
 
-    // Get all recipes, using constructor with ID for proper handling
-    public List<Recipe> getAllRecipes() {
-        List<Recipe> recipes = new ArrayList<>();
-        String query = "SELECT * FROM recipes";
-        try (Connection conn = db.openConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
-
-            while (rs.next()) {
-                Recipe r = new Recipe(
-                    rs.getInt("id"),  // <-- use ID here
-                    rs.getString("name"),
-                    rs.getInt("duration"),
-                    rs.getString("process"),
-                    rs.getString("image_path")
-                );
-                recipes.add(r);
+        try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
+            if (generatedKeys.next()) {
+                recipe.setId(generatedKeys.getInt(1));
+            } else {
+                return false;
             }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-        return recipes;
-    }
-
-    public boolean deleteRecipe(int recipeId) {
-    String sql = "DELETE FROM recipes WHERE id = ?";
-
-    try (Connection conn = db.openConnection();
-         PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-        stmt.setInt(1, recipeId);
-        int affectedRows = stmt.executeUpdate();
-        return affectedRows > 0;
+        return true;
 
     } catch (SQLException e) {
         e.printStackTrace();
         return false;
     }
 }
+
+// New method to get all recipes including category (optional, can keep your old getAllRecipes())
+public List<Recipe> getAllRecipes() {
+    List<Recipe> recipes = new ArrayList<>();
+    String query = "SELECT * FROM recipes";
+    try (Connection conn = db.openConnection();
+         Statement stmt = conn.createStatement();
+         ResultSet rs = stmt.executeQuery(query)) {
+
+        while (rs.next()) {
+            Recipe r = new Recipe(
+                rs.getInt("id"),
+                rs.getString("name"),
+                rs.getInt("duration"),
+                rs.getString("process"),
+                rs.getString("image_path"),
+                rs.getString("category")
+            );
+            r.setCategory(rs.getString("category")); // set category separately
+            recipes.add(r);
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return recipes;
+}
+
+// New update method with category (leave your old updateRecipe unchanged)
 public boolean updateRecipe(Recipe recipe) {
-    String sql = "UPDATE recipes SET name = ?, duration = ?, process = ? WHERE id = ?";
+    String sql = "UPDATE recipes SET name = ?, duration = ?, process = ?, image_path = ?, category = ? WHERE id = ?";
+    try (Connection conn =  db.openConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+         
+        stmt.setString(1, recipe.getName());
+        stmt.setInt(2, recipe.getDuration());
+        stmt.setString(3, recipe.getProcess());
+        stmt.setString(4, recipe.getImagePath()); // can be null
+        stmt.setString(5, recipe.getCategory());  // <--- Important!
+        stmt.setInt(6, recipe.getId());
+        
+        int rowsUpdated = stmt.executeUpdate();
+        return rowsUpdated > 0;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
+
+public boolean deleteRecipe(int id) {
+    String sql = "DELETE FROM recipes WHERE id = ?";
 
     try (Connection conn = db.openConnection();
          PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-        stmt.setString(1, recipe.getName());
-        stmt.setInt(2, recipe.getDuration());
-        stmt.setString(3, recipe.getProcess());
-        stmt.setInt(4, recipe.getId());
-
+        stmt.setInt(1, id);
         return stmt.executeUpdate() > 0;
 
     } catch (SQLException e) {
@@ -108,6 +114,8 @@ public boolean updateRecipe(Recipe recipe) {
         return false;
     }
 }
+
+
 
 
 }

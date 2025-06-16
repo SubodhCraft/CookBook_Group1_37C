@@ -7,6 +7,11 @@ package cookbook;
 import DAO.RecipeDAO;
 import Model.Recipe;
 import controller.AdminDashboardController;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,6 +25,8 @@ public class update extends javax.swing.JPanel {
       private RecipeDAO recipeDAO;
     private AdminDashboardController controller;
     private int recipeId;  // <-- Move this here
+    private String selectedImagePath = null;
+
 
     // ✅ Constructor
     public update(RecipeDAO recipeDAO, AdminDashboardController controller) {
@@ -38,6 +45,7 @@ public void loadRecipeData(Recipe recipe) {
     titleField.setText(recipe.getName());
     durationField.setText(String.valueOf(recipe.getDuration()));
     areaField.setText(recipe.getProcess());
+    category.setText(recipe.getCategory()); 
 }
 public void setController(AdminDashboardController controller) {
     this.controller = controller;
@@ -65,6 +73,12 @@ public void setController(AdminDashboardController controller) {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         saveBtn = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        category = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        chooseImgBtn = new javax.swing.JButton();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         titleField.setText("jTextField1");
         titleField.addActionListener(new java.awt.event.ActionListener() {
@@ -72,18 +86,30 @@ public void setController(AdminDashboardController controller) {
                 titleFieldActionPerformed(evt);
             }
         });
+        add(titleField, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 27, -1, -1));
 
         durationField.setText("jTextField2");
+        durationField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                durationFieldActionPerformed(evt);
+            }
+        });
+        add(durationField, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 67, -1, -1));
 
         areaField.setColumns(20);
         areaField.setRows(5);
         jScrollPane1.setViewportView(areaField);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 116, -1, -1));
+
         jLabel1.setText("Title:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 30, -1, -1));
 
         jLabel2.setText("Duration:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 70, -1, -1));
 
         jLabel3.setText("Description:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 116, -1, -1));
 
         saveBtn.setText("Save");
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -91,48 +117,29 @@ public void setController(AdminDashboardController controller) {
                 saveBtnActionPerformed(evt);
             }
         });
+        add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(durationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(saveBtn)))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(titleField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(durationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(saveBtn)
-                .addContainerGap(63, Short.MAX_VALUE))
-        );
+        jLabel4.setText("choose image:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
+
+        category.setText("jTextField2");
+        category.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoryActionPerformed(evt);
+            }
+        });
+        add(category, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, -1));
+
+        jLabel5.setText("Category:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
+
+        chooseImgBtn.setText("jButton1");
+        chooseImgBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chooseImgBtnActionPerformed(evt);
+            }
+        });
+        add(chooseImgBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void titleFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titleFieldActionPerformed
@@ -158,7 +165,13 @@ public void setController(AdminDashboardController controller) {
         return;
     }
 
-    Recipe updatedRecipe = new Recipe(recipeId, updatedTitle, updatedDuration, updatedProcess, null); // Assuming image doesn't change
+    String updatedCategory = category.getText(); // ← fetch it
+     if (selectedImagePath == null) {
+            selectedImagePath = controller.getRecipeById(recipeId).getImagePath();
+        }
+Recipe updatedRecipe = new Recipe(recipeId, updatedTitle, updatedDuration, updatedProcess, selectedImagePath, updatedCategory);
+
+ // Assuming image doesn't change
 
     boolean success = recipeDAO.updateRecipe(updatedRecipe);
     if (success) {
@@ -173,13 +186,43 @@ public void setController(AdminDashboardController controller) {
         
     }//GEN-LAST:event_saveBtnActionPerformed
 
+    private void categoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_categoryActionPerformed
+
+    private void durationFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_durationFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_durationFieldActionPerformed
+
+    private void chooseImgBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseImgBtnActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+    int result = fileChooser.showOpenDialog(this);
+    if (result == JFileChooser.APPROVE_OPTION) {
+        File selectedFile = fileChooser.getSelectedFile();
+        File destination = new File("images", selectedFile.getName());
+        try {
+            Files.copy(selectedFile.toPath(), destination.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+            selectedImagePath = destination.getPath(); // Save the path for saving in DB later
+            JOptionPane.showMessageDialog(this, "Image selected successfully!");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Failed to copy image.");
+        }
+    }
+  
+    }//GEN-LAST:event_chooseImgBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaField;
+    private javax.swing.JTextField category;
+    private javax.swing.JButton chooseImgBtn;
     private javax.swing.JTextField durationField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton saveBtn;
     private javax.swing.JTextField titleField;
