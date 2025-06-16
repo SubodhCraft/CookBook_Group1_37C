@@ -15,6 +15,9 @@ import java.awt.CardLayout;
 import java.util.List;
 import java.util.Set;
 import javax.swing.JPanel;
+import cookbook.admin_dashboard;
+import cookbook.update;
+
 
 /**
  *
@@ -75,6 +78,9 @@ public class Dashboard extends javax.swing.JFrame {
         Filtericon_label = new javax.swing.JLabel();
         Filters = new javax.swing.JButton();
         Main_panel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Main_window");
@@ -555,40 +561,84 @@ public class Dashboard extends javax.swing.JFrame {
         getContentPane().add(Search_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 0, -1, -1));
 
         Main_panel.setLayout(new java.awt.CardLayout());
-        // 1. Create DB and DAOs
+        // Initialize the database and DAO objects
         Database db = new MySqlConnection();
         RecipeDAO recipeDAO = new RecipeDAO(db);
         BookmarkDAO bookmarkDAO = new BookmarkDAO(db);
 
-        // 2. Create views
-        Bookmark bookmark = new Bookmark();
+        // Initialize the UI panels
         Home home = new Home();
+        Bookmark bookmark = new Bookmark();
         admin_dashboard adminDash = new admin_dashboard();
 
-        // 3. Create updatePanel with null controller for now
-        update updatePanel = new update(recipeDAO, null);
+        // Initialize the update panel
+        update updatePanel = new update(recipeDAO, null); // pass null for controller initially
 
-        // 4. Now create controller and pass updatePanel
+        // Create the AdminDashboardController with all required parameters
         AdminDashboardController controller = new AdminDashboardController(
-            adminDash, home, bookmark, recipeDAO, bookmarkDAO, Main_panel, updatePanel
+            adminDash,       // admin dashboard panel
+            home,            // home panel
+            bookmark,        // bookmark panel
+            recipeDAO,       // RecipeDAO instance
+            bookmarkDAO,     // BookmarkDAO instance
+            updatePanel,     // update panel instance
+            Main_panel       // main panel with CardLayout
         );
 
-        // 5. Set controller inside updatePanel
-        updatePanel.setController(controller);  // <-- Add this method in `update.java`
+        // Now inject the controller into the update panel
+        updatePanel.setController(controller);
 
-        // 6. Load recipes
+        // Load initial data into the app
         controller.loadRecipesToHome();
+        controller.loadBookmarkedRecipes();
+
+        // Initialize the bookmark controller if needed
         BookmarkController bookmarkController = new BookmarkController(adminDash, home, bookmark);
 
-        // 7. Add panels
-        Main_panel.add(updatePanel, "update");
+        // Add all panels to the CardLayout
         Main_panel.add(home.home_panel, "home");
         Main_panel.add(bookmark.Bookmarkpanel, "bookmark");
         Main_panel.add(adminDash, "admin");
+        Main_panel.add(updatePanel, "update"); // Add update panel as well
 
-        // 8. Show home panel
-        java.awt.CardLayout cl = (java.awt.CardLayout)(Main_panel.getLayout());
+        // Show the home panel by default
+        CardLayout cl = (CardLayout) Main_panel.getLayout();
         cl.show(Main_panel, "home");
+
+        jLabel2.setText("ok");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(287, 287, 287)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(326, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addComponent(jLabel2)
+                .addContainerGap(425, Short.MAX_VALUE))
+        );
+
+        Main_panel.add(jPanel1, "card2");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 590, Short.MAX_VALUE)
+        );
+
+        Main_panel.add(jPanel2, "card3");
+
         getContentPane().add(Main_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 650, 590));
 
         pack();
@@ -604,6 +654,10 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void selfNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selfNoteActionPerformed
         // TODO add your handling code here:
+        Main_panel.removeAll();
+        Main_panel.add(jPanel1);
+        Main_panel.repaint();
+        Main_panel.revalidate();
     }//GEN-LAST:event_selfNoteActionPerformed
 
     private void SettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingsActionPerformed
@@ -723,12 +777,15 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JButton logOut;
     private javax.swing.JButton myProfile;
     private javax.swing.JButton selfNote;

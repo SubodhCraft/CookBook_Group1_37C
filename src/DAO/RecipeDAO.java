@@ -74,6 +74,7 @@ public class RecipeDAO {
         }
         return recipes;
     }
+
     public boolean deleteRecipe(int recipeId) {
     String sql = "DELETE FROM recipes WHERE id = ?";
 
@@ -107,5 +108,6 @@ public boolean updateRecipe(Recipe recipe) {
         return false;
     }
 }
+
 
 }

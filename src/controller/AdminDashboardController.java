@@ -45,6 +45,21 @@ private final javax.swing.JPanel mainPanel;
 }
 
 
+    public AdminDashboardController(admin_dashboard dashboardView, Home homeView, Bookmark bookmarkView, RecipeDAO recipeDAO, BookmarkDAO bookmarkDAO, cookbook.update updatePanel, javax.swing.JPanel mainPanel) {
+        this.dashboardView = dashboardView;
+        this.homeView = homeView;
+        this.bookmarkView = bookmarkView;
+        this.recipeDAO = recipeDAO;
+        this.bookmarkDAO = bookmarkDAO;
+
+        dashboardView.addChooseImageListener(new ChooseImageListener());
+        dashboardView.addRecipeListener(new AddRecipeListener());
+        this.updatePanel = updatePanel;
+        this.mainPanel = mainPanel;
+    }
+
+
+
 
     // ✅ Modified to copy selected image into /images folder and store relative path
     class ChooseImageListener implements ActionListener {
@@ -98,13 +113,18 @@ private final javax.swing.JPanel mainPanel;
         }
     }
 
+
   public void loadRecipesToHome() {
+
+    
+
     homeView.getRecipeDisplayPanel().removeAll();
 
     List<Recipe> recipes = recipeDAO.getAllRecipes();
 
     for (Recipe recipe : recipes) {
         JPanel recipeCard = createRecipeCard(recipe);
+
 
         // Create Edit button
         JButton editButton = new JButton("Edit");
@@ -129,6 +149,10 @@ editPanel.setRecipeId(recipe.getId());
 
         // Create Bookmark button
         JButton bookmarkButton = new JButton();
+
+        
+
+
         int recipeId = recipe.getId();
         boolean isBookmarked = bookmarkDAO.getBookmarkedRecipeIds().contains(recipeId);
         bookmarkButton.setText(isBookmarked ? "Bookmarked" : "Bookmark");
@@ -149,6 +173,7 @@ editPanel.setRecipeId(recipe.getId());
             }
         });
 
+
         // Create panel to hold buttons side by side
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.X_AXIS));
@@ -165,13 +190,15 @@ editPanel.setRecipeId(recipe.getId());
         recipeCard.add(buttonsPanel);
 
         // Add the card to the home panel
+
+       
+
         homeView.getRecipeDisplayPanel().add(recipeCard);
     }
 
     homeView.getRecipeDisplayPanel().revalidate();
     homeView.getRecipeDisplayPanel().repaint();
 }
-
 
 
 
@@ -252,6 +279,7 @@ editPanel.setRecipeId(recipe.getId());
 
         return card;
     }
+
    public Recipe getRecipeById(int recipeId) {
     for (Recipe r : recipeDAO.getAllRecipes()) {
         if (r.getId() == recipeId) {
@@ -270,6 +298,7 @@ editPanel.setRecipeId(recipe.getId());
         JOptionPane.showMessageDialog(null, "Recipe data not found.");
     }
 }
+
 
 
 }
