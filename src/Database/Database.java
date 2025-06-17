@@ -9,3 +9,4 @@ public interface Database {
     ResultSet runQuery(Connection conn, String query);
     int executeUpdate(Connection conn, String query);
 }
+

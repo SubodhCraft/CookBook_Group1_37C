@@ -3,12 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/SignupPart.java</file>
             <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Sign.java</file>
             <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/Model/UserSignup.java</file>
             <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/DAO/UserDAO.java</file>
             <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/Model/Model.java</file>
             <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/SignUpController.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/Database/Database.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/Database/MySqlConnection.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/Langinpage.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/New.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/cookbook_groupa/CookBook_GroupA.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/cookbook_groupa/Afno_Kaam.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/lala.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Strawberrycreampuffs.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Classicvanillapannacotta.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Categorization.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Reward.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/DAO/RewardDAO.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/demo.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/challenges.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Challenges_1.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/api/js/api.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/DAO/UsersDAO.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/Model/Users.java</file>
         </group>
     </open-files>
 </project-private>
