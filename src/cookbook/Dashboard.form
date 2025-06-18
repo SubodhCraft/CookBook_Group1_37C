@@ -722,7 +722,8 @@
     </Container>
     <Container class="javax.swing.JPanel" name="Main_panel">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_LayoutCodePre" type="java.lang.String" value="// Initialize the database and DAO objects&#xa;Database db = new MySqlConnection();&#xa;RecipeDAO recipeDAO = new RecipeDAO(db);&#xa;BookmarkDAO bookmarkDAO = new BookmarkDAO(db);&#xa;&#xa;// Initialize the UI panels&#xa;Home home = new Home();&#xa;Bookmark bookmark = new Bookmark();&#xa;admin_dashboard adminDash = new admin_dashboard();&#xa;&#xa;// Initialize the update panel&#xa;update updatePanel = new update(recipeDAO, null); // pass null for controller initially&#xa;&#xa;// Create the AdminDashboardController with all required parameters&#xa;AdminDashboardController controller = new AdminDashboardController(&#xa;    adminDash,       // admin dashboard panel&#xa;    home,            // home panel&#xa;    bookmark,        // bookmark panel&#xa;    recipeDAO,       // RecipeDAO instance&#xa;    bookmarkDAO,     // BookmarkDAO instance&#xa;    updatePanel,     // update panel instance&#xa;    Main_panel       // main panel with CardLayout&#xa;);&#xa;&#xa;// Now inject the controller into the update panel&#xa;updatePanel.setController(controller);&#xa;&#xa;// Load initial data into the app&#xa;controller.loadRecipesToHome();&#xa;controller.loadBookmarkedRecipes();&#xa;&#xa;// Initialize the bookmark controller if needed&#xa;BookmarkController bookmarkController = new BookmarkController(adminDash, home, bookmark);&#xa;&#xa;// Add all panels to the CardLayout&#xa;Main_panel.add(home.home_panel, &quot;home&quot;);&#xa;Main_panel.add(bookmark.Bookmarkpanel, &quot;bookmark&quot;);&#xa;Main_panel.add(adminDash, &quot;admin&quot;);&#xa;Main_panel.add(updatePanel, &quot;update&quot;); // Add update panel as well&#xa;&#xa;// Show the home panel by default&#xa;CardLayout cl = (CardLayout) Main_panel.getLayout();&#xa;cl.show(Main_panel, &quot;home&quot;);"/>
+        <AuxValue name="JavaCodeGenerator_LayoutCodePre" type="java.lang.String" value="// Initialize the database and DAO objects&#xa;Database db = new MySqlConnection();&#xa;RecipeDAO recipeDAO = new RecipeDAO(db);&#xa;BookmarkDAO bookmarkDAO = new BookmarkDAO(db);&#xa;&#xa;// Initialize the UI panels&#xa;Home home = new Home();&#xa;Bookmark bookmark = new Bookmark();&#xa;admin_dashboard adminDash = new admin_dashboard();&#xa;RecipeDetailPanel recipeDetailPanel = new RecipeDetailPanel();&#xa;&#xa;// Initialize the update panel&#xa;update updatePanel = new update(recipeDAO, null); &#xa;// Create the AdminDashboardController with all required parameters&#xa;AdminDashboardController controller = new AdminDashboardController(&#xa;    adminDash,       // admin dashboard panel&#xa;    home,            // home panel&#xa;    bookmark,        // bookmark panel&#xa;    recipeDAO,       // RecipeDAO instance&#xa;    bookmarkDAO,     // BookmarkDAO instance&#xa;    updatePanel,     // update panel instance&#xa;    Main_panel       // main panel with CardLayout&#xa;);&#xa;&#xa;&#xa;updatePanel.setController(controller);&#xa;&#xa;// Load initial data into the app&#xa;controller.loadRecipesToHome();&#xa;controller.loadBookmarkedRecipes();&#xa;&#xa;// Initialize the bookmark controller if needed&#xa;BookmarkController bookmarkController = new BookmarkController(adminDash, home, bookmark);&#xa;&#xa;// Add all panels to the CardLayout&#xa;Main_panel.add(home.home_panel, &quot;home&quot;);&#xa;Main_panel.add(bookmark.Bookmarkpanel, &quot;bookmark&quot;);&#xa;Main_panel.add(adminDash, &quot;admin&quot;);&#xa;Main_panel.add(recipeDetailPanel, &quot;detail&quot;);&#xa;Main_panel.add(updatePanel, &quot;update&quot;); // Add update panel as well&#xa;&#xa;// Show the home panel by default&#xa;CardLayout cl = (CardLayout) Main_panel.getLayout();&#xa;cl.show(Main_panel, &quot;home&quot;);"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -731,63 +732,6 @@
       </Constraints>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
-      <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanel1">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card2"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="287" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" pref="37" max="-2" attributes="0"/>
-                      <EmptySpace pref="326" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="425" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="ok"/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="jPanel2">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="card3"/>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="650" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="590" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-        </Container>
-      </SubComponents>
     </Container>
   </SubComponents>
 </Form>

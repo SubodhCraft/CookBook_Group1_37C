@@ -5,6 +5,7 @@ import DAO.RecipeDAO;
 import Model.Recipe;
 import cookbook.Bookmark;
 import cookbook.Home;
+import cookbook.RecipeDetailPanel;
 import cookbook.admin_dashboard;
 import cookbook.edit;
 import cookbook.update;
@@ -127,6 +128,21 @@ Recipe recipe = new Recipe(name, duration, process, imagePath, category); // Wit
 
     for (Recipe recipe : recipes) {
         JPanel recipeCard = createRecipeCard(recipe);
+          recipeCard.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+              
+                RecipeDetailPanel detailPanel = new RecipeDetailPanel();
+                detailPanel.setRecipe(recipe);  
+
+                
+                mainPanel.add(detailPanel, "detail");
+
+               
+                CardLayout cl = (CardLayout) mainPanel.getLayout();
+                cl.show(mainPanel, "detail");
+            }
+    });
 
 
         // Create Edit button
@@ -301,7 +317,7 @@ editPanel.setRecipeId(recipe.getId());
         JOptionPane.showMessageDialog(null, "Recipe data not found.");
     }
 }
-
+      
 
 
 }

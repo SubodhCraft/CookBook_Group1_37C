@@ -7,6 +7,27 @@ public class Recipe {
     private String process;
     private String imagePath;
     private String category;  // ADD THIS
+    private double reward;
+
+public double getReward() {
+    return reward;
+}
+
+public void setReward(double reward) {
+    this.reward = reward;
+}
+private boolean completed;  // true if marked complete
+
+// Add getter and setter
+public boolean isCompleted() {
+    return reward == 2.5;
+}
+
+
+public void setCompleted(boolean completed) {
+    this.completed = completed;
+}
+
 
    public Recipe(String name, int duration, String process, String imagePath, String category, int id) {
        this.id=id;

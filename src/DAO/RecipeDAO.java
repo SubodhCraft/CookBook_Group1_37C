@@ -70,6 +70,8 @@ public List<Recipe> getAllRecipes() {
                 rs.getString("category")
             );
             r.setCategory(rs.getString("category")); // set category separately
+            r.setReward(rs.getDouble("reward")); 
+            r.setCompleted(r.getReward() >= 2.5);
             recipes.add(r);
         }
 
@@ -114,6 +116,33 @@ public boolean deleteRecipe(int id) {
         return false;
     }
 }
+
+public void updateRecipeReward(int recipeId, double newReward) {
+    String sql = "UPDATE recipes SET reward = ? WHERE id = ?";
+    try (Connection conn = db.openConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setDouble(1, newReward);
+        stmt.setInt(2, recipeId);
+        stmt.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+public double getRecipeReward(int recipeId) {
+    String sql = "SELECT reward FROM recipes WHERE id = ?";
+    try (Connection conn = db.openConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setInt(1, recipeId);
+        ResultSet rs = stmt.executeQuery();
+        if (rs.next()) {
+            return rs.getDouble("reward");
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return 0.0;
+}
+
 
 
 
