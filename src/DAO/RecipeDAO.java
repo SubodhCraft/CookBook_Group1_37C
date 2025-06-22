@@ -143,6 +143,35 @@ public double getRecipeReward(int recipeId) {
     return 0.0;
 }
 
+public List<Recipe> searchRecipesByTitle(String keyword){
+    List<Recipe> foundRecipes = new ArrayList<>();
+    String query = "SELECT * FROM recipes WHERE name LIKE ?";
+    try(Connection conn = db.openConnection();
+            PreparedStatement pstmt = conn.prepareStatement(query)){
+        
+        pstmt.setString(1, "%"+ keyword + "%");
+        ResultSet rs = pstmt.executeQuery();
+        
+        while(rs.next()){
+            Recipe r = new Recipe(
+            rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getInt("duration"),
+                    rs.getString("process"),
+                    rs.getString("image_path"),
+                    rs.getString("category")
+            );
+//            r.setCategory(rs.getString("category"));
+//            r.setReward(rs.getDouble("reward"));
+//            r.setCompleted(r.getReward() >=7);
+            foundRecipes.add(r);
+        }
+    }catch(SQLException e){
+        e.printStackTrace();
+    }
+    return foundRecipes;
+}
+
 
 
 

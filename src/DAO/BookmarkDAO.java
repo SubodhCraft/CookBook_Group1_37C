@@ -1,7 +1,11 @@
 package DAO;
 
 import Database.Database;
+import Model.BookmarkModel;
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,34 +17,105 @@ public class BookmarkDAO {
     }
 
     // Modified to return boolean
-    public boolean bookmarkRecipe(int recipeId) {
+    public boolean addBookmark (int userId,int recipeId) {
+        if(isBookmarked(userId, recipeId)){
+            return false;
+        }
+        
+        String sql = "INSERT INTO bookamrks(user_id,recipe_id) VALUES (?,?)";
+        try(Connection conn = db.openConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setInt(1, userId);
+            pstmt.setInt(2, recipeId);
+            return pstmt.executeUpdate()>0;
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
     // Check if it's already bookmarked first
-    if (getBookmarkedRecipeIds().contains(recipeId)) {
-        return false; // Already bookmarked, do nothing
-    }
+//    if (getBookmarkedRecipeIds().contains(recipeId)) {
+//        return false; // Already bookmarked, do nothing
+//    }
+//
+//    String query = "INSERT INTO bookmarks (recipe_id) VALUES (?)";
+//    try (Connection conn = db.openConnection();
+//         PreparedStatement stmt = conn.prepareStatement(query)) {
+//
+//        stmt.setInt(1, recipeId);
+//        int rowsAffected = stmt.executeUpdate();
+//        return rowsAffected > 0;
 
-    String query = "INSERT INTO bookmarks (recipe_id) VALUES (?)";
-    try (Connection conn = db.openConnection();
-         PreparedStatement stmt = conn.prepareStatement(query)) {
-
-        stmt.setInt(1, recipeId);
-        int rowsAffected = stmt.executeUpdate();
-        return rowsAffected > 0;
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-        return false;
-    }
+//    }
+//       catch (SQLException e) {
+//        e.printStackTrace();
+//        return false;
+//    }
 }
+    
+    public boolean isBookmarked(int userId, int recipeId){
+        String sql = "SELECT 1 FROM bookmarks WHERE user_id = ? AND recipe_id = ?"; 
+        try(Connection conn = db.openConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setInt(1, userId);
+            pstmt.setInt(2, recipeId);
+            try(ResultSet rs = pstmt.executeQuery()){
+               return rs.next(); 
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean removeBookmark(int userId, int recipeId){
+        String sql = "DELETE FROM bookmakrs WHERE user_id = ? and recipe_id = ?";
+        try(Connection conn = db.openConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setInt(1, userId);
+            pstmt.setInt(2, recipeId);
+            return pstmt.executeUpdate()>0;
+        } catch(SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean toggleBookmark(int userId, int recipeId){
+        if(isBookmarked(userId, recipeId)){
+            return removeBookmark(userId, recipeId);
+        }else{
+            return addBookmark(userId, recipeId);
+        }
+    }
+    
+    public List<BookmarkModel> getBookmarksByUser(int userId){
+        List<BookmarkModel> bookmarks = new ArrayList<>();
+        String sql = "SELECT * FROM bookmarks WHERE user_id = ?";
+        
+        try(Connection conn = db.openConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setInt(1, userId);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                int id = rs.getInt("id");
+                int recipeId = rs.getInt("recipe_id");
+                bookmarks.add(new BookmarkModel(id,userId, recipeId));
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return bookmarks;
+    }
 
 
-    public Set<Integer> getBookmarkedRecipeIds() {
+    public Set<Integer> getBookmarkedRecipeIdsByUser(int userId) {
         Set<Integer> ids = new HashSet<>();
-        String query = "SELECT recipe_id FROM bookmarks";
+        String query = "SELECT recipe_id FROM bookmarks WHERE user_id=?";
 
         try (Connection conn = db.openConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
+             PreparedStatement pstmt = conn.prepareStatement(query)){
+                pstmt.setInt(1,userId);
+             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 ids.add(rs.getInt("recipe_id"));
@@ -50,26 +125,26 @@ public class BookmarkDAO {
         }
         return ids;
     }
-    public boolean removeBookmark(int recipeId) {
-    String query = "DELETE FROM bookmarks WHERE recipe_id = ?";
-    try (Connection conn = db.openConnection();
-         PreparedStatement stmt = conn.prepareStatement(query)) {
-        stmt.setInt(1, recipeId);
-        int rowsAffected = stmt.executeUpdate();
-        return rowsAffected > 0;
-    } catch (SQLException e) {
-        e.printStackTrace();
-        return false;
-    }
-}
-public boolean toggleBookmark(int recipeId) {
-    if (getBookmarkedRecipeIds().contains(recipeId)) {
-        return removeBookmark(recipeId);
-    } else {
-        return bookmarkRecipe(recipeId);
-    }
-}
-
+//    public boolean removeBookmark(int recipeId) {
+//    String query = "DELETE FROM bookmarks WHERE recipe_id = ?";
+//    try (Connection conn = db.openConnection();
+//         PreparedStatement stmt = conn.prepareStatement(query)) {
+//        stmt.setInt(1, recipeId);
+//        int rowsAffected = stmt.executeUpdate();
+//        return rowsAffected > 0;
+//    } catch (SQLException e) {
+//        e.printStackTrace();
+//        return false;
+//    }
+//}
+//public boolean toggleBookmark(int recipeId) {
+//    if (getBookmarkedRecipeIds().contains(recipeId)) {
+//        return removeBookmark(recipeId);
+//    } else {
+//        return bookmarkRecipe(recipeId);
+//    }
+//}
+//
 
 
 }

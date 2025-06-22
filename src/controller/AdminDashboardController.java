@@ -32,18 +32,18 @@ public class AdminDashboardController {
 private final javax.swing.JPanel mainPanel; 
     
 
-   public AdminDashboardController(admin_dashboard dashboardView, Home homeView, Bookmark bookmarkView, RecipeDAO recipeDAO, BookmarkDAO bookmarkDAO, JPanel mainPanel, update updatePanel) {
-    this.dashboardView = dashboardView;
-    this.homeView = homeView;
-    this.bookmarkView = bookmarkView;
-    this.recipeDAO = recipeDAO;
-    this.bookmarkDAO = bookmarkDAO;
-    this.mainPanel = mainPanel;     // now correctly references parameter 'mainPanel'
-    this.updatePanel = updatePanel; // now correctly references parameter 'updatePanel'
-
-    dashboardView.addChooseImageListener(new ChooseImageListener());
-    dashboardView.addRecipeListener(new AddRecipeListener());
-}
+//   public AdminDashboardController(admin_dashboard dashboardView, Home homeView, Bookmark bookmarkView, RecipeDAO recipeDAO, BookmarkDAO bookmarkDAO, JPanel mainPanel, update updatePanel) {
+//    this.dashboardView = dashboardView;
+//    this.homeView = homeView;
+//    this.bookmarkView = bookmarkView;
+//    this.recipeDAO = recipeDAO;
+//    this.bookmarkDAO = bookmarkDAO;
+//    this.mainPanel = mainPanel;     // now correctly references parameter 'mainPanel'
+//    this.updatePanel = updatePanel; // now correctly references parameter 'updatePanel'
+//
+//    dashboardView.addChooseImageListener(new ChooseImageListener());
+//    dashboardView.addRecipeListener(new AddRecipeListener());
+//}
 
 
     public AdminDashboardController(admin_dashboard dashboardView, Home homeView, Bookmark bookmarkView, RecipeDAO recipeDAO, BookmarkDAO bookmarkDAO, cookbook.update updatePanel, javax.swing.JPanel mainPanel) {
@@ -317,7 +317,17 @@ editPanel.setRecipeId(recipe.getId());
         JOptionPane.showMessageDialog(null, "Recipe data not found.");
     }
 }
-      
+    public void searchRecipes(String keyword){
+        List<Recipe> results = recipeDAO.searchRecipesByTitle(keyword);
+//        homeView.displayRecipes(results);
+if(results.isEmpty()){
+    JOptionPane.showMessageDialog(null,"No matching recipes found.");
+}else{
+    homeView.displayRecipes(results);
+    CardLayout cl = (CardLayout) mainPanel.getLayout();
+    cl.show(mainPanel,"home");
+}
+    }  
 
 
 }

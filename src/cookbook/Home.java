@@ -4,11 +4,21 @@
  */
 package cookbook;
 
+import Model.Recipe;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Image;
+import java.io.File;
+import java.util.List;
+
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -16,12 +26,17 @@ import javax.swing.JScrollPane;
  */
 public class Home extends javax.swing.JFrame {
     
-
+//    private JPanel home_panel;
     /**
      * Creates new form Home
      */
     public Home() {
         initComponents();
+        
+//        home_panel = new JPanel();
+//        home_panel.setLayout(new BoxLayout(home_panel,BoxLayout.Y_AXIS));
+//        add(home_panel);
+        
         recipeDisplayPanel.setLayout(new BoxLayout(recipeDisplayPanel, BoxLayout.X_AXIS));
     jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
     jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
@@ -49,7 +64,7 @@ public class Home extends javax.swing.JFrame {
         recipeDisplayPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        // getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Popularthisweek_label.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         Popularthisweek_label.setForeground(new java.awt.Color(127, 1, 31));
@@ -140,7 +155,7 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(home_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 670, 590));
+        // getContentPane().add(home_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 670, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -197,4 +212,77 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel rating_1;
     private javax.swing.JPanel recipeDisplayPanel;
     // End of variables declaration//GEN-END:variables
+public void displayRecipes(List<Recipe> recipes){
+    recipeDisplayPanel.removeAll();
+    
+    for (Recipe recipe : recipes){
+        JPanel recipeCard = createRecipeCard(recipe);
+        recipeDisplayPanel.add(recipeCard);
+//        JPanel recipeCard = new JPanel();
+//        recipeCard.setLayout(new BoxLayout(recipeCard, BoxLayout.Y_AXIS));
+//        recipeCard.setBorder(BorderFactory.createTitledBorder(recipe.getName()));
+        
+//        if(recipe.getImagePath()!= null && !recipe.getImagePath().isEmpty()){
+//           File imageFile = new File(recipe.getImagePath());
+//            if (imageFile.exists()) {
+//                ImageIcon icon = new ImageIcon(recipe.getImagePath());
+//                Image scaledImage = icon.getImage().getScaledInstance(150, 100, Image.SCALE_SMOOTH);
+//                JLabel imageLabel = new JLabel(new ImageIcon(scaledImage));
+//                recipeCard.add(imageLabel);
+//            }
+//        }
+//
+//        JLabel durationLabel = new JLabel("Duration: " + recipe.getDuration() + " mins");
+//        JTextArea processArea = new JTextArea(recipe.getProcess());
+//        processArea.setLineWrap(true);
+//        processArea.setWrapStyleWord(true);
+//        processArea.setEditable(false);
+//        processArea.setOpaque(false);
+//
+//        recipeCard.add(durationLabel);
+//        recipeCard.add(processArea);
+//
+//        recipeDisplayPanel.add(recipeCard);
+    }
+
+    recipeDisplayPanel.revalidate();
+    recipeDisplayPanel.repaint();
+} 
+//         }
+//                 createRecipeCard(recipe);
+//         recipeDisplayPanel.add(recipeCard);
+        
+//     }
+//     recipeDisplayPanel.revalidate();
+//     recipeDisplayPanel.repaint();
+// }
+
+private JPanel createRecipeCard(Recipe recipe) {
+    JPanel card = new JPanel();
+    card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
+    card.setPreferredSize(new Dimension(180, 220));
+    card.setBorder(BorderFactory.createTitledBorder(recipe.getName()));
+    card.setBackground(Color.WHITE);
+
+    if (recipe.getImagePath() != null && !recipe.getImagePath().isEmpty()) {
+        File imgFile = new File(recipe.getImagePath());
+        if (imgFile.exists()) {
+            ImageIcon icon = new ImageIcon(recipe.getImagePath());
+            Image scaledImg = icon.getImage().getScaledInstance(150, 100, Image.SCALE_SMOOTH);
+            JLabel imageLabel = new JLabel(new ImageIcon(scaledImg));
+            card.add(imageLabel);
+        }
+    }
+
+    JLabel durationLabel = new JLabel("Duration: " + recipe.getDuration() + " mins");
+    JLabel categoryLabel = new JLabel("Category: " + recipe.getCategory());
+
+    card.add(durationLabel);
+    card.add(categoryLabel);
+
+    return card;
 }
+
+}
+
+

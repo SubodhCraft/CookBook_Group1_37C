@@ -17,6 +17,7 @@ import java.util.Set;
 import javax.swing.JPanel;
 import cookbook.admin_dashboard;
 import cookbook.update;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -24,14 +25,67 @@ import cookbook.update;
  * @author Jay pradhan
  */
 public class Dashboard extends javax.swing.JFrame {
-
+    private AdminDashboardController dashboardController;
     /**
      * Creates new form Dashboard
      */
     public Dashboard() {
         initComponents();
-     
         
+        Filters.addActionListener(evt -> handleSearch());
+        
+        Database db = new MySqlConnection();
+        RecipeDAO recipeDAO = new RecipeDAO(db);
+        BookmarkDAO bookmarkDAO = new BookmarkDAO(db);
+        
+        Home home = new Home();
+        Bookmark bookmark = new Bookmark();
+        admin_dashboard adminDash = new admin_dashboard();
+        RecipeDetailPanel recipeDetailPanel = new RecipeDetailPanel();
+        update updatePanel = new update(recipeDAO,null);
+        
+        dashboardController = new AdminDashboardController(
+        adminDash,
+                home,
+                bookmark,
+                recipeDAO,
+                bookmarkDAO,
+                updatePanel,
+                Main_panel
+        );        
+        
+        updatePanel.setController(dashboardController);
+        
+        dashboardController.loadRecipesToHome();
+        dashboardController.loadBookmarkedRecipes();
+        
+        new BookmarkController(adminDash,home,bookmark);
+        
+        Main_panel.add(home.home_panel,"home");
+        Main_panel.add(bookmark.Bookmarkpanel,"bookmark");
+        Main_panel.add(adminDash,"admin");
+        Main_panel.add(recipeDetailPanel,"detail");
+        Main_panel.add(updatePanel,"update");
+        
+        CardLayout cl = (CardLayout) Main_panel.getLayout();
+        cl.show(Main_panel, "home");
+        
+         
+
+     Filters.addActionListener(new java.awt.event.ActionListener(){
+        public void actionPerformed(java.awt.event.ActionEvent evt){
+          handleSearch();
+        }
+    });
+        
+    }
+    private void handleSearch(){
+        String keyword = Search.getText().trim();
+        if(keyword.isEmpty() || keyword.equals("Search")){
+            JOptionPane.showMessageDialog(this, "Please enter a keyword to search.");
+            return;
+        }
+        dashboardController.searchRecipes(keyword);
     }
       public JPanel getMainPanel() {
     return Main_panel;
@@ -75,6 +129,7 @@ public class Dashboard extends javax.swing.JFrame {
         Myprofile_panel1 = new javax.swing.JPanel();
         admin = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         Search_panel = new javax.swing.JPanel();
         Search_border = new javax.swing.JPanel();
         Searchicon_label = new javax.swing.JLabel();
@@ -412,13 +467,17 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Images/Screenshot 2025-06-22 192617.png"))); // NOI18N
+
         javax.swing.GroupLayout Menu_panelLayout = new javax.swing.GroupLayout(Menu_panel);
         Menu_panel.setLayout(Menu_panelLayout);
         Menu_panelLayout.setHorizontalGroup(
             Menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Home_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(Menu_panelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Logo_label)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(Menu_panelLayout.createSequentialGroup()
@@ -440,8 +499,10 @@ public class Dashboard extends javax.swing.JFrame {
             Menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Menu_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Logo_label, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 111, 111)
+                .addGroup(Menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Logo_label, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(32, 32, 32)
                 .addComponent(Home_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Category_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -459,7 +520,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(Logout_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Myprofile_panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addContainerGap(413, Short.MAX_VALUE))
         );
 
         getContentPane().add(Menu_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -482,14 +543,17 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        Filtericon_label.setText("jLabel6");
-
         Filters.setBackground(new java.awt.Color(242, 242, 242));
         Filters.setText("Filters");
         Filters.setBorder(null);
         Filters.setBorderPainted(false);
         Filters.setContentAreaFilled(false);
         Filters.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Filters.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FiltersActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Search_borderLayout = new javax.swing.GroupLayout(Search_border);
         Search_border.setLayout(Search_borderLayout);
@@ -499,12 +563,16 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(Searchicon_label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Search)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Filtericon_label, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Filters)
-                .addContainerGap())
+                .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(Search_borderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Search_borderLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Filtericon_label, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(224, 224, 224))
+                    .addGroup(Search_borderLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(Filters)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         Search_borderLayout.setVerticalGroup(
             Search_borderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -525,8 +593,8 @@ public class Dashboard extends javax.swing.JFrame {
             Search_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Search_panelLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(Search_border, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1321, Short.MAX_VALUE))
+                .addComponent(Search_border, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1136, Short.MAX_VALUE))
         );
         Search_panelLayout.setVerticalGroup(
             Search_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -661,6 +729,10 @@ public class Dashboard extends javax.swing.JFrame {
     cl.show(Main_panel, "admin");
     }//GEN-LAST:event_adminMouseClicked
 
+    private void FiltersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltersActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FiltersActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -718,6 +790,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -728,4 +801,19 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton myProfile;
     private javax.swing.JButton selfNote;
     // End of variables declaration//GEN-END:variables
+
+//    private AdminDashboardController dashboardController;
+    
+//    private void handleSearch(){
+//        String keyword = Search.getText().trim();
+//        if(keyword.isEmpty() || keyword.equals("Search")){
+//            JOptionPane.showMessageDialog(this, "Please enter a keyword to search.");
+//            return;
+//        }
+//        dashboardController.searchRecipes(keyword);
+//    }
+//    dashboardController.searchRecipes(keyword);
+    
+    
+
 }
