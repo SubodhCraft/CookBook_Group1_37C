@@ -10,8 +10,6 @@
             <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/SignUpController.java</file>
             <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/Database/Database.java</file>
             <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/Database/MySqlConnection.java</file>
-            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/Langinpage.java</file>
-            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/New.java</file>
             <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/cookbook_groupa/CookBook_GroupA.java</file>
             <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/cookbook_groupa/Afno_Kaam.java</file>
             <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/lala.java</file>
@@ -25,7 +23,7 @@
             <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Challenges_1.java</file>
             <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/api/js/api.java</file>
             <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/DAO/UsersDAO.java</file>
-            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/Model/Users.java</file>
+            <file>file:/C:/Users/Acer/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/RewardController.java</file>
         </group>
     </open-files>
 </project-private>

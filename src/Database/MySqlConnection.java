@@ -12,7 +12,7 @@ public class MySqlConnection implements Database {
         try {
             String username = "root";
             String password = "saru123";
-            String database = "CookBook";
+            String database = "cookbook";
             Connection connection;
             connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/" + database, username, password
@@ -64,5 +64,21 @@ public class MySqlConnection implements Database {
             return -1;
         }
     }
+    public class TestConnection {
+    public static void main(String[] args) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/cookbook?useSSL=false&serverTimezone=UTC",
+                "root", "saru123"
+            );
+            System.out.println("Connected!");
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
 }
 
