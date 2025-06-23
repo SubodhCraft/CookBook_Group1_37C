@@ -8,9 +8,11 @@ import DAO.BookmarkDAO;
 import DAO.RecipeDAO;
 import Database.Database;
 import Database.MySqlConnection;
+import Model.LoggedInUser;
 import Model.Recipe;
 import controller.AdminDashboardController;
 import controller.BookmarkController;
+import controller.BookmarkUIController;
 import java.awt.CardLayout;
 import java.util.List;
 import java.util.Set;
@@ -52,14 +54,26 @@ public class Dashboard extends javax.swing.JFrame {
                 bookmarkDAO,
                 updatePanel,
                 Main_panel
-        );        
+        );    
+        
+        int currentUserId = LoggedInUser.getId();
+        BookmarkUIController bookmarkUIController = new BookmarkUIController(bookmark,currentUserId);
+//        BookmarkController bookmarkController = new BookmarkController(db,bookmark);
         
         updatePanel.setController(dashboardController);
         
         dashboardController.loadRecipesToHome();
         dashboardController.loadBookmarkedRecipes();
         
-        new BookmarkController(adminDash,home,bookmark);
+        
+//        BookmarkController bookmarkController = new BookmarkController(db, bookmark);
+        
+//        Database db = new MySqlConnection();
+//        Bookmark bookmarkPanel = new Bookmark();
+//        
+//        new BookmarkController(db,bookmarkPanel);
+        
+//        new BookmarkController(adminDash,home,bookmark);
         
         Main_panel.add(home.home_panel,"home");
         Main_panel.add(bookmark.Bookmarkpanel,"bookmark");
@@ -70,7 +84,7 @@ public class Dashboard extends javax.swing.JFrame {
         CardLayout cl = (CardLayout) Main_panel.getLayout();
         cl.show(Main_panel, "home");
         
-         
+         getContentPane().add(Main_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 650, 590));
 
      Filters.addActionListener(new java.awt.event.ActionListener(){
         public void actionPerformed(java.awt.event.ActionEvent evt){
@@ -460,11 +474,8 @@ public class Dashboard extends javax.swing.JFrame {
         );
         Myprofile_panel1Layout.setVerticalGroup(
             Myprofile_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Myprofile_panel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(admin, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+            .addComponent(admin, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Images/Screenshot 2025-06-22 192617.png"))); // NOI18N

@@ -7,9 +7,12 @@ package cookbook;
  */
 
 
+import Model.LoggedInUser;
 import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import controller.BookmarkUIController;
 
 
 
@@ -258,4 +261,15 @@ public JTextField getCategoryField() {
     public Object getRecipeImageText() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    private void bookmarkButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    Bookmark bookmarkPanel = new Bookmark();
+    int currentUserId = LoggedInUser.getId(); // Replace this with your actual session logic
+    BookmarkUIController bookmarkUIController = new BookmarkUIController(bookmarkPanel, currentUserId);
+
+    home_panel.removeAll(); // Replace with the panel where content is loaded
+    home_panel.add(bookmarkPanel);
+    home_panel.revalidate();
+    home_panel.repaint();
+}
 }

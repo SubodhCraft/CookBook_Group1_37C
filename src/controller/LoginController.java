@@ -5,6 +5,7 @@
 package controller;
 
 import DAO.LoginDao;
+import Model.LoggedInUser;
 import View.Sigininframe;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,12 +50,23 @@ public class LoginController {
                 String password = new String(userView.getPasswordField().getPassword());
                 LoginRequest user = new LoginRequest(email,password);
                 
-                boolean check = loginDao.validateUser(user);
-                if (check){
-                    JOptionPane.showMessageDialog(userView,"Login successful");
-                    
-                    Dashboard dashboard= new Dashboard();
+                UserData userData = loginDao.validateAndFetchUser(user);
+//                UserData userData = loginDao.getUserByEmailAndPassword(email, password);
+                if(userData != null){
+                    LoggedInUser.setId(userData.getId());
+                    JOptionPane.showMessageDialog(userView,"Login Successful!");
+                    Dashboard dashboard = new Dashboard();
                     dashboard.setVisible(true);
+                    userView.dispose();
+                
+                    
+//                    My previous logic before distinguishing different userId
+//                boolean check = loginDao.validateUser(user);
+//                if (check){
+//                    JOptionPane.showMessageDialog(userView,"Login successful");
+//                    
+//                    Dashboard dashboard= new Dashboard();
+//                    dashboard.setVisible(true);
                     
                 }else{
                     JOptionPane.showMessageDialog(userView,"Invalid Credentials");
@@ -79,7 +91,7 @@ public class LoginController {
 //                    
 //                }
             }catch(Exception ex){
-                System.out.println("Error adding user: " + ex.getMessage());
+                System.out.println("Error during login: " + ex.getMessage());
             }
 //            new Sigininframe().setVisible(true);
         }

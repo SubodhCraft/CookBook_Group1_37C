@@ -9,38 +9,80 @@ import cookbook.Home;
 import cookbook.admin_dashboard;
 import DAO.RecipeDAO;
 import DAO.BookmarkDAO;
+import Model.BookmarkModel;
 import Database.Database;
 import Database.MySqlConnection;
+import Model.LoggedInUser;
 import Model.Recipe;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 public class BookmarkController {
+    private final BookmarkDAO bookmarkDAO;
+    private final RecipeDAO recipeDAO;
     private admin_dashboard dashboardView;
     private Home homeView;
     private Bookmark bookmarkView;
-
-    private RecipeDAO recipeDAO;
-    private BookmarkDAO bookmarkDAO;
-
-    public BookmarkController(admin_dashboard dashboardView, Home homeView, Bookmark bookmarkView) {
+//
+//    private RecipeDAO recipeDAO;
+//    private BookmarkDAO bookmarkDAO;
+    
+//    public BookmarkController(Database db, Bookmark bookmarkView){
+//        
+//        this.bookmarkView = bookmarkView;
+//        this.bookmarkDAO = new BookmarkDAO(db);
+//        this.recipeDAO = new RecipeDAO(db);
+//    }
+    public BookmarkController(admin_dashboard dashboardView, Home homeView, Bookmark bookmarkView){
         this.dashboardView = dashboardView;
         this.homeView = homeView;
         this.bookmarkView = bookmarkView;
-
+        
         Database db = new MySqlConnection();
         this.recipeDAO = new RecipeDAO(db);
         this.bookmarkDAO = new BookmarkDAO(db);
-
+        
         loadBookmarkedRecipes();
     }
 
-    private void loadBookmarkedRecipes() {
+    public boolean toggleBookmark(int userId, int recipeId){
+        return bookmarkDAO.toggleBookmark(userId, recipeId);
+    }
+    
+    public List<Recipe> getBookmarkedRecipe(int userId){
+        List<Recipe> recipes = new ArrayList<>();
+        for(BookmarkModel bm : bookmarkDAO.getBookmarksByUser(userId)){
+           Recipe recipe = recipeDAO.getRecipeById(bm.getRecipeId());
+           if(recipe != null){
+               recipes.add(recipe);
+           }
+        }
+        return recipes;
+    }
+    
+    public boolean isBookmarked(int userId, int recipeId){
+        return bookmarkDAO.isBookmarked(userId, recipeId);
+    }
+//    public BookmarkController(admin_dashboard dashboardView, Home homeView, Bookmark bookmarkView) {
+//        this.dashboardView = dashboardView;
+//        this.homeView = homeView;
+//        this.bookmarkView = bookmarkView;
+//
+//        Database db = new MySqlConnection();
+//        this.recipeDAO = new RecipeDAO(db);
+//        this.bookmarkDAO = new BookmarkDAO(db);
+//
+//        loadBookmarkedRecipes();
+//    }
+
+    public void loadBookmarkedRecipes() {
+        int userId = LoggedInUser.getId();
         List<Recipe> allRecipes = recipeDAO.getAllRecipes();
-        Set<Integer> bookmarkedIds = bookmarkDAO.getBookmarkedRecipeIds();
+        Set<Integer> bookmarkedIds = bookmarkDAO.getBookmarkedRecipeIds(userId);
 
         // Clear current bookmarks (optional, in case you want to refresh)
         bookmarkView.getRecipePanel().removeAll();

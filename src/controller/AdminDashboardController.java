@@ -2,6 +2,7 @@ package controller;
 
 import DAO.BookmarkDAO;
 import DAO.RecipeDAO;
+import Model.LoggedInUser;
 import Model.Recipe;
 import cookbook.Bookmark;
 import cookbook.Home;
@@ -173,16 +174,18 @@ editPanel.setRecipeId(recipe.getId());
 
 
         int recipeId = recipe.getId();
-        boolean isBookmarked = bookmarkDAO.getBookmarkedRecipeIds().contains(recipeId);
+
+int userId =LoggedInUser.getId();
+        boolean isBookmarked = bookmarkDAO.getBookmarkedRecipeIds(userId).contains(recipeId);
         bookmarkButton.setText(isBookmarked ? "Bookmarked" : "Bookmark");
         bookmarkButton.setPreferredSize(new Dimension(100, 25));
 
         bookmarkButton.addActionListener(e -> {
-            boolean toggled = bookmarkDAO.toggleBookmark(recipeId);
+            boolean toggled = bookmarkDAO.toggleBookmark(userId,recipeId);
 
             if (toggled) {
                 // Update the button text based on new state
-                boolean nowBookmarked = bookmarkDAO.getBookmarkedRecipeIds().contains(recipeId);
+                boolean nowBookmarked = bookmarkDAO.getBookmarkedRecipeIds(userId).contains(recipeId);
                 bookmarkButton.setText(nowBookmarked ? "Bookmarked" : "Bookmark");
 
                 // Reload the bookmark panel to reflect the change
@@ -255,7 +258,8 @@ editPanel.setRecipeId(recipe.getId());
     public void loadBookmarkedRecipes() {
         bookmarkView.getRecipePanel().removeAll();
 
-        Set<Integer> bookmarkedIds = new HashSet<>(bookmarkDAO.getBookmarkedRecipeIds());
+        int userId = LoggedInUser.getId();
+        Set<Integer> bookmarkedIds = new HashSet<>(bookmarkDAO.getBookmarkedRecipeIds(userId));
         List<Recipe> allRecipes = recipeDAO.getAllRecipes();
 
         for (Recipe recipe : allRecipes) {

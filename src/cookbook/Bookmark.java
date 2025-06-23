@@ -4,8 +4,16 @@
  */
 package cookbook;
 
+import Model.Recipe;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.List;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -13,6 +21,7 @@ import javax.swing.JPanel;
  */
 public class Bookmark extends javax.swing.JPanel {
 
+    
     /**
      * Creates new form java
      */
@@ -130,7 +139,31 @@ public class Bookmark extends javax.swing.JPanel {
 public JPanel getRecipePanel() {
     return bookmarkRecipePanel;
 }
+public void displayBookmarks(List<Recipe> bookmarks){
+    bookmarkRecipePanel.removeAll();
+    
+    for (Recipe recipe : bookmarks){
+        JPanel recipeCard = createBookmarkCard(recipe);
+        bookmarkRecipePanel.add(recipeCard);
+    }
+    bookmarkRecipePanel.revalidate();
+    bookmarkRecipePanel.repaint();
+}
 
+private JPanel createBookmarkCard(Recipe recipe){
+    JPanel card = new JPanel();
+    card.setLayout(new BorderLayout());
+    card.setPreferredSize(new Dimension(200,150));
+    card.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+    
+    JLabel nameLabel = new JLabel(recipe.getName(), SwingConstants.CENTER);
+    JLabel timeLabel = new JLabel("Time: "+recipe.getDuration()+ " mins", SwingConstants.CENTER);
+    
+    card.add(nameLabel,BorderLayout.NORTH);
+    card.add(timeLabel,BorderLayout.CENTER);
+    
+    return card;
+}
 
 }
 

@@ -22,7 +22,7 @@ public class BookmarkDAO {
             return false;
         }
         
-        String sql = "INSERT INTO bookamrks(user_id,recipe_id) VALUES (?,?)";
+        String sql = "INSERT INTO bookmarks(user_id,recipe_id) VALUES (?,?)";
         try(Connection conn = db.openConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql)){
             pstmt.setInt(1, userId);
@@ -68,7 +68,7 @@ public class BookmarkDAO {
     }
     
     public boolean removeBookmark(int userId, int recipeId){
-        String sql = "DELETE FROM bookmakrs WHERE user_id = ? and recipe_id = ?";
+        String sql = "DELETE FROM bookmarks WHERE user_id = ? and recipe_id = ?";
         try(Connection conn = db.openConnection();
                 PreparedStatement pstmt = conn.prepareStatement(sql)){
             pstmt.setInt(1, userId);
@@ -108,7 +108,7 @@ public class BookmarkDAO {
     }
 
 
-    public Set<Integer> getBookmarkedRecipeIdsByUser(int userId) {
+    public Set<Integer> getBookmarkedRecipeIds(int userId) {
         Set<Integer> ids = new HashSet<>();
         String query = "SELECT recipe_id FROM bookmarks WHERE user_id=?";
 

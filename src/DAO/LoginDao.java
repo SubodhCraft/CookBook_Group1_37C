@@ -5,11 +5,12 @@
 package DAO;
 
 import Database.MySqlConnection;
+import Model.LoggedInUser;
 import Model.LoginRequest;
+import Model.UserData;
+
 import java.util.logging.Logger;
 import java.util.logging.Level;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.*;
 /**
  *
@@ -35,4 +36,53 @@ public class LoginDao {
      }
      return false;
     }
+
+    
+    
+    
+    
+     public UserData getUserByEmailAndPassword(String email, String password) {
+        Connection conn = mysql.openConnection();
+        String sql = "SELECT * FROM users WHERE Email = ? AND set_password = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, email);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                int id = rs.getInt("id");
+//                LoggedInUser.setId(retrivedUserId);
+                String username = rs.getString("username");
+                return new UserData(id, username, email);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            mysql.closeConnection(conn);
+        }
+        return null;
+    }
+     
+     public UserData validateAndFetchUser(LoginRequest user){
+       Connection conn =mysql.openConnection();
+       String sql = "SELECT * FROM users WHERE email=? AND set_password=?";
+    UserData userData = null;
+    try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+       
+        stmt.setString(1, user.getEmail());
+        stmt.setString(2, user.getPassword());
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+            userData = new UserData();
+            userData.setId(rs.getInt("Id")); 
+            userData.setEmail(rs.getString("Email"));
+          
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return userData;
 }
+
+}
+

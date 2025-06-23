@@ -172,6 +172,27 @@ public List<Recipe> searchRecipesByTitle(String keyword){
     return foundRecipes;
 }
 
+public Recipe getRecipeById(int id){
+    String sql ="SELECT * FROM recipes WHERE id= ?";
+    try (Connection conn =  db.openConnection();
+            PreparedStatement stmt =  conn.prepareStatement(sql)){
+        stmt.setInt(1,id);
+        
+        ResultSet rs = stmt.executeQuery();
+        if(rs.next()){
+            String name = rs.getString("name");
+            String process = rs.getString("process");
+            int duration = rs.getInt("duration");
+            String imagePath = rs.getString("image_path");
+            String category = rs.getString("category");
+            
+            return new Recipe(id,name,duration,process, imagePath,category);
+        }
+    }catch (SQLException e){
+        e.printStackTrace();
+    }
+    return null;
+}
 
 
 
