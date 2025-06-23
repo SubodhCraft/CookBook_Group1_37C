@@ -30,8 +30,10 @@ public class Langinpage {
         public void actionPerformed(ActionEvent e) {
             SignupPart signup = new SignupPart();
             signup.setVisible(true);
+            
             SignUpController controller = new SignUpController(signup);
             controller.open();
+            
         }
         
     }

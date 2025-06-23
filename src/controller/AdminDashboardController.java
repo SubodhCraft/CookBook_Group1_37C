@@ -321,17 +321,28 @@ int userId =LoggedInUser.getId();
         JOptionPane.showMessageDialog(null, "Recipe data not found.");
     }
 }
+//    public void searchRecipes(String keyword){
+//        List<Recipe> results = recipeDAO.searchRecipesByTitle(keyword);
+////        homeView.displayRecipes(results);
+//if(results.isEmpty()){
+//    JOptionPane.showMessageDialog(null,"No matching recipes found.");
+//}else{
+//    homeView.displayRecipes(results);
+//    CardLayout cl = (CardLayout) mainPanel.getLayout();
+//    cl.show(mainPanel,"home");
+//}
+//    }
+    
     public void searchRecipes(String keyword){
-        List<Recipe> results = recipeDAO.searchRecipesByTitle(keyword);
-//        homeView.displayRecipes(results);
-if(results.isEmpty()){
-    JOptionPane.showMessageDialog(null,"No matching recipes found.");
-}else{
+        List<Recipe> results = recipeDAO.searchRecipesByTitleOrCategory(keyword);
+//        if(results.isEmpty()){
+//    JOptionPane.showMessageDialog(null,"No matching recipes found.");
+//}else{
     homeView.displayRecipes(results);
-    CardLayout cl = (CardLayout) mainPanel.getLayout();
-    cl.show(mainPanel,"home");
+//    CardLayout cl = (CardLayout) mainPanel.getLayout();
+//    cl.show(mainPanel,"home");
+//    }
+
+
 }
-    }  
-
-
 }

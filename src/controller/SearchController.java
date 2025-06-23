@@ -32,6 +32,9 @@ public class SearchController {
             homePanel.displayRecipes(results);  // This assumes Home has a method to show recipes.
         }
     }
+    public List<Recipe> searchByCategory(String categoryKeyword){
+        return recipeDAO.searchRecipesByCategory(categoryKeyword);
+    }
 }
 
 

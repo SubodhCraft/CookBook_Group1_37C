@@ -76,8 +76,6 @@ public class Katsu_bowl extends javax.swing.JFrame {
             }
         });
         jPanel5.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 140, -1));
-
-        jLabel13.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\mark.png")); // NOI18N
         jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,8 +89,6 @@ public class Katsu_bowl extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("Japanese Katsu Bowl");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 19, -1, 42));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\japanese.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 320, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -124,11 +120,7 @@ public class Katsu_bowl extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setText("Ready In: 45mins");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, -1, 30));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\clock.png")); // NOI18N
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
-
-        jLabel9.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\ingredient.png")); // NOI18N
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 30, 30));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -147,8 +139,6 @@ public class Katsu_bowl extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\Share.png")); // NOI18N
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 130, 40));
@@ -169,8 +159,6 @@ public class Katsu_bowl extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 100, -1));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\later.png")); // NOI18N
         jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 140, 130, 40));
@@ -200,8 +188,6 @@ public class Katsu_bowl extends javax.swing.JFrame {
             }
         });
         jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        jLabel12.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\Bookmark.png")); // NOI18N
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 130, 40));
@@ -222,8 +208,6 @@ public class Katsu_bowl extends javax.swing.JFrame {
             }
         });
         jPanel6.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 140, -1));
-
-        jLabel14.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\mark.png")); // NOI18N
         jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 90, 170, 40));

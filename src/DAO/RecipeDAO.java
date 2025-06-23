@@ -194,7 +194,62 @@ public Recipe getRecipeById(int id){
     return null;
 }
 
+public List<Recipe> searchRecipesByCategory(String categoryKeyword){
+    List<Recipe> foundRecipes = new ArrayList<>();
+    String query="SELECT * FROM recipes WHERE category LIKE ?";
+    try(Connection conn = db.openConnection();
+            PreparedStatement pstmt = conn.prepareStatement(query)){
+        pstmt.setString(1,"%" +categoryKeyword + "%");
+        ResultSet rs = pstmt.executeQuery();
+       while (rs.next()){
+           Recipe r = new Recipe(
+           rs.getInt("id"),
+           rs.getString("name"),
+           rs.getInt("duration"),
+           rs.getString("process"),
+           rs.getString("image_path"),
+           rs.getString("category")
+           );
+             foundRecipes.add(r);      
+       }  
+    }catch(SQLException e){
+        e.printStackTrace();
+    }
+    return foundRecipes;
+}
 
+public List<Recipe> searchRecipesByTitleOrCategory(String keyword) {
+    List<Recipe> results = new ArrayList<>();
+    String query = "SELECT * FROM recipes WHERE name LIKE ? OR category LIKE ?";
 
+    try (Connection conn = db.openConnection();
+         PreparedStatement stmt = conn.prepareStatement(query)) {
+
+        String searchPattern = "%" + keyword + "%";
+        stmt.setString(1, searchPattern);
+        stmt.setString(2, searchPattern);
+
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            Recipe r = new Recipe(
+            rs.getInt("id"),
+                    rs.getString("name"),
+                    rs.getInt("duration"),
+                    rs.getString("process"),
+                    rs.getString("image_path"),
+                    rs.getString("category")
+            );
+            
+            r.setReward(rs.getDouble("reward"));
+            r.setCompleted(r.getReward() >=7);
+            results.add(r);
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return results;
+}
 
 }
