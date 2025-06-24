@@ -4,12 +4,21 @@
  */
 package cookbook_groupa;
 //import Controller.SignUpController;
+import DAO.NoteDao;
 import Database.*;
 import View.LandingPage;
+import View.Self_Note;
 import View.SignupPart;
+<<<<<<< HEAD
 import controller.AdminDashboardController;
 import controller.Langinpage;
 import cookbook.Dashboard;
+=======
+import View.k;
+import controller.Langinpage;
+import controller.NoteController;
+import java.sql.*;
+>>>>>>> SelfNote
 
 public class CookBook_GroupA {
 
@@ -23,9 +32,23 @@ public class CookBook_GroupA {
        LandingPage landingForm = new LandingPage();
        Langinpage landingController = new Langinpage(landingForm);
        landingController.open();
+<<<<<<< HEAD
        
 
            
        }   
 }  
+=======
+ 
+//try{Connection conn = MySqlConnection.getConnection();
+//NoteDao dao= new NoteDao();
+//Self_Note view = new Self_Note();
+//NoteController controller = new NoteController(dao,view);
+//controller.open();
+//view.setVisible(true); 
+
+} 
+}
+
+>>>>>>> SelfNote
 
