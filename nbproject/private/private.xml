@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/cookbook/Dashboard.java</file>
 <<<<<<< HEAD
             <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/LandingPage.java</file>
@@ -58,6 +59,37 @@
             <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/Database/Database.java</file>
             <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/k.java</file>
 >>>>>>> SelfNote
+=======
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/Settings.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/Model/DatabaseHelper.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/Model/User.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/MyProfile1.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/MyProfile2.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/Model/Users.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/Model/Recipe.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/DAO/RecipeDAO.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/controller/RecipeController.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/Model/Userr.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/controller/UserController.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/Model/Settings.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/UserSettings.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/Model/UserSettingsModel.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/Database/MySqlConnection.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/controller/UserSettingsController.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/DAO/UserSettingsDAO.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/Database/Database.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/Images/3rd.png</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/Group%202249.png</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/LandingPage.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/ChangePassword.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/Model/ChangeUser.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/Database/ConnectionProvider.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/DAO/ChangeDAO.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/controller/ChangeController.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/Images/logo%202.png</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/UserMyProfile.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/UserMyProfile2nd.java</file>
+>>>>>>> settings-and-profile
         </group>
     </open-files>
 </project-private>

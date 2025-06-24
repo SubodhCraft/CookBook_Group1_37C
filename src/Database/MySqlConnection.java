@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -80,3 +81,5 @@ public int executeUpdate(Connection conn, String query) {
 
     
 }
+=======
+>>>>>>> settings-and-profile
