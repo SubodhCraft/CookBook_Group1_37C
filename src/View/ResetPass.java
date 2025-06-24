@@ -18,6 +18,8 @@ public class ResetPass extends javax.swing.JFrame {
     public ResetPass(String email){
         this.email=email;
         initComponents();
+        setLocationRelativeTo(null);
+        setSize(752,507);
     }
 
     /**
@@ -26,6 +28,7 @@ public class ResetPass extends javax.swing.JFrame {
     public ResetPass() {
         initComponents();
         setLocationRelativeTo(null);
+        setSize(752,507);
     }
     public String getEmail(){
     return email;

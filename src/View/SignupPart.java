@@ -20,6 +20,7 @@ public class SignupPart extends javax.swing.JFrame {
     
     public SignupPart() {
         initComponents();
+        setSize(752, 507);
         setLocationRelativeTo(null);
     }
     
@@ -246,7 +247,7 @@ public class SignupPart extends javax.swing.JFrame {
                 .addContainerGap(152, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 0, 330, 590));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 0, 390, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

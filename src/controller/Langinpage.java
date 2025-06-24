@@ -33,7 +33,7 @@ public class Langinpage {
             
             SignUpController controller = new SignUpController(signup);
             controller.open();
-            
+            userview.dispose();
         }
         
     }
@@ -45,6 +45,7 @@ public class Langinpage {
             signin.setVisible(true);
             LoginController controller = new LoginController(signin);
             controller.open();
+            userview.dispose();
         }
         
     }

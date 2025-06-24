@@ -10,6 +10,7 @@ public JPasswordField getPasswordField(){
 }
     public Sigininframe() {
         initComponents();
+        setSize(752, 507);
         setLocationRelativeTo(null);
     }
     @SuppressWarnings("unchecked")

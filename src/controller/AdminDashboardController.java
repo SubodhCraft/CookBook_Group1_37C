@@ -2,9 +2,12 @@ package controller;
 
 import DAO.BookmarkDAO;
 import DAO.RecipeDAO;
+import Database.MySqlConnection;
 import Model.LoggedInUser;
 import Model.Recipe;
+import View.Sigininframe;
 import cookbook.Bookmark;
+import cookbook.Dashboard;
 import cookbook.Home;
 import cookbook.RecipeDetailPanel;
 import cookbook.admin_dashboard;
@@ -24,11 +27,13 @@ import java.util.List;
 import java.util.Set;
 
 public class AdminDashboardController {
+//    MySqlConnection mysql = new MySqlConnection();
+//    private final  Dashboard view;
     private final admin_dashboard dashboardView;
     private final Home homeView;
-    private final Bookmark bookmarkView;
+    private final  Bookmark bookmarkView;
     private final RecipeDAO recipeDAO;
-    private final BookmarkDAO bookmarkDAO;
+    private final  BookmarkDAO bookmarkDAO;
     private final update updatePanel; 
 private final javax.swing.JPanel mainPanel; 
     
@@ -45,9 +50,13 @@ private final javax.swing.JPanel mainPanel;
 //    dashboardView.addChooseImageListener(new ChooseImageListener());
 //    dashboardView.addRecipeListener(new AddRecipeListener());
 //}
-
+//     public AdminDashboardController(){}
 
     public AdminDashboardController(admin_dashboard dashboardView, Home homeView, Bookmark bookmarkView, RecipeDAO recipeDAO, BookmarkDAO bookmarkDAO, cookbook.update updatePanel, javax.swing.JPanel mainPanel) {
+//       public AdminDashboardController(Dashboard view){
+//        this.view=view;
+//        view.addLogoutListener(new addLogoutListener(view));
+//        dashboardController.setupLogoutListener(dashboardView);
         this.dashboardView = dashboardView;
         this.homeView = homeView;
         this.bookmarkView = bookmarkView;
@@ -59,6 +68,8 @@ private final javax.swing.JPanel mainPanel;
         this.updatePanel = updatePanel;
         this.mainPanel = mainPanel;
     }
+    
+
 
 
 
@@ -345,4 +356,50 @@ int userId =LoggedInUser.getId();
 
 
 }
+// public void setupLogoutListener(Dashboard view){
+//     view.addLogoutListener(new addLogoutListener(view));
+//}
+// class addLogoutListener implements ActionListener{
+//     private JFrame currentFrame;
+//     
+//     public addLogoutListener(JFrame frame){
+//         this.currentFrame=frame;
+//     }
+
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//           System.out.println("Logout button clicked"); 
+//           int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?",
+//                   "Logout Confirmation",
+//                   JOptionPane.YES_NO_OPTION);
+//           if(confirm==JOptionPane.YES_OPTION){
+//               currentFrame.dispose();
+//               new Sigininframe().setVisible(true);
+//           }
+           private void logOutActionPerformed(java.awt.event.ActionEvent evt) {                                       
+    // Show confirmation dialog
+    int choice = JOptionPane.showConfirmDialog(
+            null,
+            "Do you want to logout?",
+            "Logout Confirmation",
+            JOptionPane.YES_NO_OPTION);
+
+    if (choice == JOptionPane.YES_OPTION) {
+        // Proceed with logout
+        Sigininframe sigin = new Sigininframe();
+        LoginController controller = new LoginController(sigin);
+        controller.open();
+
+        // Close current window (if this is a JFrame)
+        this.dispose(); // optional: closes the current window
+    } else {
+        // Logout cancelled
+        System.out.println("Logout cancelled by user.");
+    }
 }
+
+        
+        private void dispose(){
+            
+        }
+    }

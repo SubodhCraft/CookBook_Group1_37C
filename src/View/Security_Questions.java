@@ -24,6 +24,8 @@ public class Security_Questions extends javax.swing.JFrame {
         this.mode = mode;
         this.email = email;  
         initComponents();
+        setLocationRelativeTo(null);
+        setSize(752,507);
     }
     public String getMode(){
     return mode;

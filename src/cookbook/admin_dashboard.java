@@ -272,4 +272,5 @@ public JTextField getCategoryField() {
     home_panel.revalidate();
     home_panel.repaint();
 }
+  
 }

@@ -172,6 +172,7 @@ class LoginListener implements ActionListener{
             signin.setVisible(true);  
             LoginController controller = new LoginController(signin);
             controller.open();
+            userView.dispose();
         }
         
     }    

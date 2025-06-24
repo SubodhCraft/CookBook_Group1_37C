@@ -106,6 +106,7 @@ public class LoginController {
             signup.setVisible(true);
             SignUpController controller = new SignUpController(signup);
             controller.open();
+            userView.dispose();
         }
     }
     class ForgetPassListener implements ActionListener{
@@ -122,6 +123,8 @@ public class LoginController {
            secure.setVisible(true);
            AuthController controller = new AuthController(secure);
            controller.open();
+           userView.dispose();
+           
         }
         
     }

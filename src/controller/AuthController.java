@@ -137,6 +137,7 @@ public class AuthController {
                 Sigininframe signin = new Sigininframe();
                 signin.setVisible(true);
                 new LoginController(signin).open();
+                
 //                LoginController controller = new LoginController(signin);
 //                controller.open();
                 
@@ -209,6 +210,7 @@ public class AuthController {
                  login.setVisible(true);
                  LoginController controller = new LoginController(login);
                  controller.open();
+                 userView2.dispose();
              }else{
                  JOptionPane.showMessageDialog(userView2,"Failed to update password.");
              }

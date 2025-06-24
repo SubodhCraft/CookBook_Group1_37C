@@ -10,30 +10,35 @@ import Database.Database;
 import Database.MySqlConnection;
 import Model.LoggedInUser;
 import Model.Recipe;
+import View.Sigininframe;
 import controller.AdminDashboardController;
 import controller.BookmarkController;
 import controller.BookmarkUIController;
+import controller.LoginController;
 import java.awt.CardLayout;
 import java.util.List;
 import java.util.Set;
 import javax.swing.JPanel;
 import cookbook.admin_dashboard;
 import cookbook.update;
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 
-/**
- *
- * @author Jay pradhan
- */
 public class Dashboard extends javax.swing.JFrame {
     private AdminDashboardController dashboardController;
+//   private AdminDashboardController dashboardController;
+    
     /**
      * Creates new form Dashboard
      */
     public Dashboard() {
         initComponents();
-        
+        setLocationRelativeTo(null);
+//       AdminDashboardController controller = new AdminDashboardController(this);
+       setVisible(true);
+        logOut=new javax.swing.JButton();
+        logOut.setText("Logout");
         Filters.addActionListener(evt -> handleSearch());
         
         Database db = new MySqlConnection();
@@ -54,8 +59,9 @@ public class Dashboard extends javax.swing.JFrame {
                 bookmarkDAO,
                 updatePanel,
                 Main_panel
+//                dashboardController.setupLogoutListener(this)
         );    
-        
+//        dashboardController.setupLogoutListener(this);
         int currentUserId = LoggedInUser.getId();
         BookmarkUIController bookmarkUIController = new BookmarkUIController(bookmark,currentUserId);
 //        BookmarkController bookmarkController = new BookmarkController(db,bookmark);
@@ -690,6 +696,33 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionPerformed
         // TODO add your handling code here:
+//        Sigininframe sigin = new Sigininframe();
+//        LoginController controller = new LoginController(sigin);
+//        
+//        controller.open();
+    // Show confirmation dialog
+    int choice = JOptionPane.showConfirmDialog(
+            null,
+            "Do you want to logout?",
+            "Logout Confirmation",
+            JOptionPane.YES_NO_OPTION);
+
+    if (choice == JOptionPane.YES_OPTION) {
+        // Proceed with logout
+        Sigininframe sigin = new Sigininframe();
+        LoginController controller = new LoginController(sigin);
+        controller.open();
+
+
+        // Close current window (if this is a JFrame)
+        this.dispose(); // optional: closes the current window
+    } else {
+        // Logout cancelled
+        System.out.println("Logout cancelled by user.");
+    }
+
+
+        
     }//GEN-LAST:event_logOutActionPerformed
 
     private void ChallengesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChallengesActionPerformed
@@ -813,18 +846,11 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton selfNote;
     // End of variables declaration//GEN-END:variables
 
-//    private AdminDashboardController dashboardController;
+
     
-//    private void handleSearch(){
-//        String keyword = Search.getText().trim();
-//        if(keyword.isEmpty() || keyword.equals("Search")){
-//            JOptionPane.showMessageDialog(this, "Please enter a keyword to search.");
-//            return;
-//        }
-//        dashboardController.searchRecipes(keyword);
-//    }
-//    dashboardController.searchRecipes(keyword);
-    
-    
+public void addLogoutListener(ActionListener listener){
+    System.out.println("Attaching logout listener..");
+    logOut.addActionListener(listener);
+}    
 
 }
