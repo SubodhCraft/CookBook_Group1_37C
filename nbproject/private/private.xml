@@ -22,11 +22,15 @@
             <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/UserSelfNote.java</file>
             <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/Logout.java</file>
             <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/Images/Screenshot%202025-05-29%20132149.png</file>
-            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/Images/Screenshot%202025-05-27%20185305.png</file>
-            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/Images/Screenshot%202025-05-27%20184511.png</file>
-            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/Images/Screenshot%202025-05-27%20173153.png</file>
             <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/Images/Screenshot%202025-06-15%20154316.png</file>
-            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/View/Self.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/controller/NoteController.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/DAO/NoteDao.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/Model/SelfNote.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/Model/Notes.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/Model/Recipe.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/DAO/NotesDAO.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/Model/NoteModel.java</file>
+            <file>file:/Users/angelapradhan/Desktop/Developer/CookBook_Group1_37C/src/controller/NotesController.java</file>
         </group>
     </open-files>
 </project-private>
