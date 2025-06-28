@@ -4,11 +4,14 @@
  */
 package View;
 
+import controller.NotesController;
+//import controller.SelfNoteController;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Image;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -20,12 +23,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-/**
- *
- * @author angelapradhan
- */
-public class UserSelfNote extends javax.swing.JFrame {
 
+public class UserSelfNote extends javax.swing.JFrame {
+   private JPanel notesContainer;
     /**
      * Creates new form UserSelfNote
      */
@@ -35,10 +35,14 @@ public class UserSelfNote extends javax.swing.JFrame {
         notesPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
         notesPanel.setPreferredSize(new Dimension(840, 1000));
         emptyLabel.setVisible(true);
-
+        
+        
         
     }
-    
+//    public UserSelfNote(int userId){
+//        this.controller = new NotesController(userId);
+//        initComponents();
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -82,9 +86,9 @@ public class UserSelfNote extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(213, 213, 213)
+                .addGap(219, 219, 219)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(notesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
+                    .addComponent(notesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -99,7 +103,7 @@ public class UserSelfNote extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(addNoteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(notesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+                .addComponent(notesScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -249,4 +253,8 @@ private void addStickyNote(String title, String description) {
     private javax.swing.JPanel notesPanel;
     private javax.swing.JScrollPane notesScrollPane;
     // End of variables declaration//GEN-END:variables
+public void AddaddNoteListener(ActionListener listener){
+    addNoteButton.addActionListener(listener);
+}
+
 }

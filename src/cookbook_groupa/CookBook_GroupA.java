@@ -9,9 +9,11 @@ import Database.*;
 import View.LandingPage;
 import View.Self_Note;
 import View.SignupPart;
+import View.UserSelfNote;
 import View.k;
 import controller.Langinpage;
 import controller.NoteController;
+import controller.NotesController;
 import java.sql.*;
 
 public class CookBook_GroupA {
@@ -22,10 +24,18 @@ public class CookBook_GroupA {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+//        UserSelfNote noteFrame = new UserSelfNote(userId);
+//        noteFrame.setVisible(true);
+
+UserSelfNote note = new UserSelfNote();
+note.setVisible(true);
+//NotesController control = new NotesController(note);
+//control.open();
         // TODO code application logic here
-       LandingPage landingForm = new LandingPage();
-       Langinpage landingController = new Langinpage(landingForm);
-       landingController.open();
+//       LandingPage landingForm = new LandingPage();
+//       Langinpage landingController = new Langinpage(landingForm);
+//       landingController.open();
  
 //try{Connection conn = MySqlConnection.getConnection();
 //NoteDao dao= new NoteDao();
