@@ -39,7 +39,7 @@ public class UserSelfNote extends javax.swing.JFrame {
         
     }
     public UserSelfNote(int userId){
-        this.controller = new NotesController(userId);
+      //  this.controller = new NotesController(userId);
         initComponents();
     }
 
