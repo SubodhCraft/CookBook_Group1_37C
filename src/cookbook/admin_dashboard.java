@@ -11,7 +11,7 @@ import Model.LoggedInUser;
 import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
+import javax.swing.*;
 import controller.BookmarkUIController;
 
 
@@ -21,7 +21,7 @@ import controller.BookmarkUIController;
  * @author Jay pradhan
  */
 public class admin_dashboard extends javax.swing.JPanel {
-
+ private javax.swing.JButton Settings;
     /**
      * Creates new form admin_dashboard
      */
@@ -128,6 +128,14 @@ public JTextField getCategoryField() {
         addRecipeButton.setText("Add");
 
         category.setText("Category");
+        category.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                categoryFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                categoryFocusLost(evt);
+            }
+        });
         category.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 categoryActionPerformed(evt);
@@ -244,6 +252,20 @@ public JTextField getCategoryField() {
         // TODO add your handling code here:
     }//GEN-LAST:event_categoryActionPerformed
 
+    private void categoryFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_categoryFocusGained
+        // TODO add your handling code here:
+        if(category.getText().equals("Category")){
+        category.setText("");
+        }
+    }//GEN-LAST:event_categoryFocusGained
+
+    private void categoryFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_categoryFocusLost
+        // TODO add your handling code here:
+        if(category.getText().isEmpty()){
+        category.setText("Category");
+        }
+    }//GEN-LAST:event_categoryFocusLost
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Popularthisweek_label;
@@ -272,5 +294,7 @@ public JTextField getCategoryField() {
     home_panel.revalidate();
     home_panel.repaint();
 }
-  
+//  public JButton getSettingsButton(){
+//      return Settings;
+//  }
 }

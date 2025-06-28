@@ -18,16 +18,31 @@ public class BookmarkDAO {
 
     // Modified to return boolean
     public boolean addBookmark (int userId,int recipeId) {
-        if(isBookmarked(userId, recipeId)){
-            return false;
-        }
+        try(Connection conn = db.openConnection()){
+            String checkQuery = "SELECT * FROM bookmarks WHERE user_id=? AND recipe_id =?";
+            PreparedStatement stmt = conn.prepareStatement(checkQuery);
+            stmt.setInt(1, userId);
+            stmt.setInt(2, recipeId);
+            ResultSet rs = stmt.executeQuery();
+            
+            if(rs.next()){
+                return false;
+            }
+        
+//        if(isBookmarked(userId, recipeId)){
+//            return false;
+//        }
         
         String sql = "INSERT INTO bookmarks(user_id,recipe_id) VALUES (?,?)";
-        try(Connection conn = db.openConnection();
-                PreparedStatement pstmt = conn.prepareStatement(sql)){
+//        try(Connection conn = db.openConnection();
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+//                PreparedStatement pstmt = conn.prepareStatement(sql)){
             pstmt.setInt(1, userId);
             pstmt.setInt(2, recipeId);
-            return pstmt.executeUpdate()>0;
+            pstmt.executeUpdate();
+            return true;
+//            return pstmt.executeUpdate()>0;
         }catch(SQLException e){
             e.printStackTrace();
             return false;

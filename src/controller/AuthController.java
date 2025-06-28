@@ -5,12 +5,18 @@
 package controller;
 
 import DAO.AuthDao;
+import DAO.UserDao;
+import Model.LoggedInUser;
 import Model.SecAnswers;
 import View.EmailCheck;
+import View.LandingPage;
 import View.NewPassword;
 import View.ResetPass;
 import View.Security_Questions;
 import View.Sigininframe;
+import View.UserSettings;
+//import controller.AuthController.PassChangeListener.DeleteAccountListener;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
@@ -23,9 +29,11 @@ import javax.swing.JOptionPane;
 public class AuthController {
 //    private final Security_Questions view;
     private final AuthDao authdao= new AuthDao();
+    private final UserDao userdao = new UserDao();
 //    private EmailCheck userView;
     private Security_Questions userView1;
     private ResetPass userView2;
+    private UserSettings userView3;
     
 //    public AuthController(EmailCheck userView){
 //        this.userView = userView;
@@ -47,6 +55,12 @@ public class AuthController {
         userView2.addContinueListener(new ContinueListener());
     }
     
+    public AuthController(UserSettings userView3){
+        this.userView3 = userView3;
+        userView3.addUpdateListener(new PassChangeListener());
+        userView3.addDeleteListener(new DeleteAccountListener());
+    }
+    
     public void open() {
     if (userView1 != null) {
         userView1.setVisible(true);
@@ -66,6 +80,9 @@ public class AuthController {
     }
     public boolean updatePassword(String email, String newPassword){
         return authdao.updatePassword(email,newPassword);
+    }
+    public boolean changePassword(String email, String changePass){
+        return authdao.settingsPassUpdate(email, changePass);
     }
 //    public boolean handleSecurityCheck(String email, String[] answers, JFrame currentFrame) {
 //    boolean valid = checkSecurityAnswers(email, answers);
@@ -230,7 +247,87 @@ public class AuthController {
 //            System.out.println("got it");
 //        }
     
-}
+    
+    
+    class PassChangeListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String newPassword = userView3.getNewPasswordField().trim();
+            String confirmPassword = userView3.getConfirmPasswordField().trim();
+            
+            if (newPassword.isEmpty() || confirmPassword.isEmpty()){
+                JOptionPane.showMessageDialog(userView3,"Please fill in both fields!");
+                 return;
+            }
+             if (!newPassword.equals(confirmPassword)){
+                 JOptionPane.showMessageDialog(userView3,"Passwords didn't match!");
+                 return;
+                 
+                         
+             }
+             if(newPassword.length()<7){
+                 JOptionPane.showMessageDialog(userView3,"Password must be atleast 7 characters.");
+             }
+             String email= LoggedInUser.getEmail();
+             String username = LoggedInUser.getUsername();
+             userView3.setUsername(username);
+             
+             if (email == null || email.isEmpty()){
+                 JOptionPane.showMessageDialog(userView3,"User not logged in properly!");
+                 return;
+             }
+             boolean success = changePassword(email,newPassword);
+             if(success){
+                 JOptionPane.showMessageDialog(userView3,"Password updated successfully!");
+//                 new Sigininframe().setVisible(true);
+//                 userView2.dispose();
+//                 Sigininframe login = new Sigininframe();
+//                 login.setVisible(true);
+//                 LoginController controller = new LoginController(login);
+//                 controller.open();
+//                 userView3.dispose();
+             }else{
+                 JOptionPane.showMessageDialog(userView3,"Failed to update password.");
+             }
+            
+        }
+        
+
+            }
+    class DeleteAccountListener implements ActionListener{
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+        int choice = JOptionPane.showConfirmDialog(userView3, "Are you sure you want to delete your account?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
+        
+        if (choice == JOptionPane.YES_OPTION) {
+            String email = LoggedInUser.getEmail();
+            if (email != null) {
+                boolean success = userdao.deleteAccount(email);
+                if (success) {
+                    JOptionPane.showMessageDialog(userView3, "Account deleted successfully.");
+                    LoggedInUser.clear();
+
+                    // Navigate to Landing Page
+                    LandingPage landing = new LandingPage();  // Replace with your actual landing class
+                    landing.setVisible(true);
+                    userView3.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(userView3, "Failed to delete account.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(userView3, "User not logged in properly.");
+            }
+        }
+        // Else: user clicked No — do nothing
+    
+           }
+            
+        
+    }
+    }
 
 
  

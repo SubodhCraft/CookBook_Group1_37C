@@ -26,6 +26,7 @@ import cookbook.Dashboard;
 public class LoginController {
     private final LoginDao loginDao = new LoginDao();
     private final Sigininframe userView;
+//    UserData user = authdao.login(email, password);
     
     public LoginController(Sigininframe userView){
         this.userView = userView;
@@ -53,7 +54,10 @@ public class LoginController {
                 UserData userData = loginDao.validateAndFetchUser(user);
 //                UserData userData = loginDao.getUserByEmailAndPassword(email, password);
                 if(userData != null){
-                    LoggedInUser.setId(userData.getId());
+                    LoggedInUser.setUser(userData);
+                    System.out.print("Logged in user:"+ LoggedInUser.getUsername());
+//                    LoggedInUser.setId(userData.getId());
+
                     JOptionPane.showMessageDialog(userView,"Login Successful!");
                     Dashboard dashboard = new Dashboard();
                     dashboard.setVisible(true);
@@ -71,6 +75,7 @@ public class LoginController {
                 }else{
                     JOptionPane.showMessageDialog(userView,"Invalid Credentials");
                 }
+                
                 
 //                Sigininframe login = new Sigininframe();
 //                login.setVisible(true);
@@ -128,5 +133,6 @@ public class LoginController {
         }
         
     }
+    
 }
 

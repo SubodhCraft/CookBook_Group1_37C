@@ -169,10 +169,9 @@ public class ResetPass extends javax.swing.JFrame {
 
     private void password1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_password1FocusGained
         // TODO add your handling code here:                                  
-if (String.valueOf(password1.getPassword()).equals("Set Password")) {
-        password1.setText("");
-        password1.setForeground(Color.BLACK);
-        password1.setEchoChar('*'); 
+if (password1.getText().equals("password123")){
+            password1.setText("");
+        
     }//GEN-LAST:event_password1FocusGained
     }
     private void password1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_password1FocusLost

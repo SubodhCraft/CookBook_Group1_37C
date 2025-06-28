@@ -28,14 +28,25 @@ import java.util.Set;
 
 public class AdminDashboardController {
 //    MySqlConnection mysql = new MySqlConnection();
-//    private final  Dashboard view;
-    private final admin_dashboard dashboardView;
-    private final Home homeView;
-    private final  Bookmark bookmarkView;
-    private final RecipeDAO recipeDAO;
-    private final  BookmarkDAO bookmarkDAO;
-    private final update updatePanel; 
-private final javax.swing.JPanel mainPanel; 
+    private  Dashboard view;
+    private  admin_dashboard dashboardView;
+    private  Home homeView;
+    private   Bookmark bookmarkView;
+    private  RecipeDAO recipeDAO;
+    private   BookmarkDAO bookmarkDAO;
+    private  update updatePanel; 
+private  javax.swing.JPanel mainPanel; 
+    private admin_dashboard adminDash;
+    private Home home;
+    private Bookmark bookmark;
+    
+    
+    MySqlConnection mysql = new MySqlConnection();
+//    private final Dashboard dashView;
+    
+//    public AdminDashboardController(Dashboard view){
+//        this.dashView = view;
+//    }
     
 
 //   public AdminDashboardController(admin_dashboard dashboardView, Home homeView, Bookmark bookmarkView, RecipeDAO recipeDAO, BookmarkDAO bookmarkDAO, JPanel mainPanel, update updatePanel) {
@@ -62,11 +73,19 @@ private final javax.swing.JPanel mainPanel;
         this.bookmarkView = bookmarkView;
         this.recipeDAO = recipeDAO;
         this.bookmarkDAO = bookmarkDAO;
-
+        
+        
         dashboardView.addChooseImageListener(new ChooseImageListener());
         dashboardView.addRecipeListener(new AddRecipeListener());
+//        view.getSettingsButton().addActionListener(new SettingsListener());
+//        dashboardView.getSettingsButton().addActionListener(new SettingsListener());
         this.updatePanel = updatePanel;
         this.mainPanel = mainPanel;
+    }
+    public AdminDashboardController(admin_dashboard adminDash,Home home, Bookmark bookmark){
+        this.adminDash = adminDash;
+        this.home = home;
+        this.bookmark = bookmark;
     }
     
 
@@ -344,18 +363,26 @@ int userId =LoggedInUser.getId();
 //}
 //    }
     
-    public void searchRecipes(String keyword){
+    public boolean searchRecipes(String keyword){
         List<Recipe> results = recipeDAO.searchRecipesByTitleOrCategory(keyword);
-//        if(results.isEmpty()){
+        if(results.isEmpty()){
+            return false;
+        }
 //    JOptionPane.showMessageDialog(null,"No matching recipes found.");
 //}else{
     homeView.displayRecipes(results);
-//    CardLayout cl = (CardLayout) mainPanel.getLayout();
-//    cl.show(mainPanel,"home");
+    CardLayout cl = (CardLayout) mainPanel.getLayout();
+    cl.show(mainPanel,"home");
+    return true;
 //    }
 
 
 }
+ public boolean searchRecipesWithFeedback(String keyword) {
+    boolean found = searchRecipes(keyword);
+    return found;
+}
+   
 // public void setupLogoutListener(Dashboard view){
 //     view.addLogoutListener(new addLogoutListener(view));
 //}
@@ -402,4 +429,17 @@ int userId =LoggedInUser.getId();
         private void dispose(){
             
         }
+        
+        
+    class SettingsListener implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("Settings button clicked"); // ✅ Add this for debugging
+
+        View.UserSettings settingsView = new View.UserSettings();
+        settingsView.setVisible(true); // ✅ This MUST be here
+        // dashboard.dispose(); // Optional, only if you want to close the Dashboard
+    }
+}
+
     }

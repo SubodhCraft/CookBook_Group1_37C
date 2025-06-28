@@ -85,6 +85,23 @@ public class AuthDao {
             return false;
         }
     }
+    
+    public boolean settingsPassUpdate(String email, String changePass) {
+        if (email == null || changePass == null)return false;
+        Connection conn = mysql.openConnection();
+        String query = "UPDATE users SET set_password = ?, confirm_password = ? WHERE Email = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, changePass);
+            stmt.setString(2, changePass);
+            stmt.setString(3, email);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            Logger.getLogger(AuthDao.class.getName()).log(Level.SEVERE, null, e);
+        } finally {
+            mysql.closeConnection(conn);
+        }
+        return false;
+    } 
 }
 
 

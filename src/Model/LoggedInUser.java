@@ -36,4 +36,5 @@ public class LoggedInUser {
         username = null;
         email = null;
     }
+
 }

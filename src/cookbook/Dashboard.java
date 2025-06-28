@@ -4,23 +4,22 @@
  */
 package cookbook;
 
-<<<<<<< HEAD
 import DAO.BookmarkDAO;
 import DAO.RecipeDAO;
+import DAO.SettingsDAO;
 import Database.Database;
 import Database.MySqlConnection;
 import Model.LoggedInUser;
 import Model.Recipe;
 import View.Sigininframe;
-=======
 import View.Self_Note;
->>>>>>> SelfNote
+import View.UserMyProfile;
+import View.UserSettings;
 import controller.AdminDashboardController;
 import controller.BookmarkController;
 import controller.BookmarkUIController;
 import controller.LoginController;
 import java.awt.CardLayout;
-<<<<<<< HEAD
 import java.util.List;
 import java.util.Set;
 import javax.swing.JPanel;
@@ -29,17 +28,21 @@ import cookbook.update;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
-=======
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import View.k;   
->>>>>>> SelfNote
+import controller.SettingsController;
+import java.awt.event.ActionEvent;
+import javax.swing.JButton;
 
 public class Dashboard extends javax.swing.JFrame {
     private AdminDashboardController dashboardController;
+    private final SettingsDAO settingsDao = new SettingsDAO();
+//    private final UserSettings settingsView;
+//    private final Dashboard dashView;
 //   private AdminDashboardController dashboardController;
     
     /**
@@ -50,7 +53,7 @@ public class Dashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 //       AdminDashboardController controller = new AdminDashboardController(this);
        setVisible(true);
-        logOut=new javax.swing.JButton();
+//        logOut=new javax.swing.JButton();
         logOut.setText("Logout");
         Filters.addActionListener(evt -> handleSearch());
         
@@ -112,24 +115,71 @@ public class Dashboard extends javax.swing.JFrame {
     });
         
     }
-<<<<<<< HEAD
+   
+//    private final SettingsDAO settingsDao = new SettingsDAO();
+//    private final UserSettings settingsView;
+    
+//    public Dashboard(UserSettings view){
+//        this. dashView = view;
+//        this.dashView.addSettingsListener(new SettingsListener());
+//    }
+//    
+//    void open(){
+//        
+//    }
+//    void close(){
+//        
+//    }
+//    
+//    public void setupSettingsListener(UserSettings view){
+//        view.addSettingsListener(new SettingsListener());
+//    }
+
+//    private void addSettingsListener(SettingsListener settingsListener) {
+//    }
+//    
+//    class SettingsListener implements ActionListener{
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            System.out.println("Settings Button clicked!");
+//            UserSettings dashView = new UserSettings();
+//            new SettingsController(dashView);
+//            dashView.setVisible(true);
+//            
+//            if(dashView != null) dashView.dispose();
+//        }
+//        
+//    }
+//    private void handleSearch(){
+//        String keyword = Search.getText().trim();
+//        if(keyword.isEmpty() || keyword.equals("Search")){
+//            JOptionPane.showMessageDialog(this, "Please enter a keyword to search.");
+//            return;
+//        }
+//        dashboardController.searchRecipes(keyword);
+//    }
+    
     private void handleSearch(){
-        String keyword = Search.getText().trim();
-        if(keyword.isEmpty() || keyword.equals("Search")){
-            JOptionPane.showMessageDialog(this, "Please enter a keyword to search.");
-            return;
-        }
-        dashboardController.searchRecipes(keyword);
+    String keyword = Search.getText().trim();
+    if(keyword.isEmpty() || keyword.equals("Search")){
+        JOptionPane.showMessageDialog(this, "Please enter a keyword to search.");
+        return;
     }
+
+    boolean found = dashboardController.searchRecipesWithFeedback(keyword);
+    if (!found) {
+        JOptionPane.showMessageDialog(this, "No results found for \"" + keyword + "\".");
+    }
+}
+
       public JPanel getMainPanel() {
     return Main_panel;
 }
-=======
     private JPanel notesContainer;
     private JScrollPane scrollPane;
     private List<JPanel> noteCards = new ArrayList<>();
     
->>>>>>> SelfNote
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -507,11 +557,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(admin, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
 
-<<<<<<< HEAD
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Images/Screenshot 2025-06-22 192617.png"))); // NOI18N
-=======
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Images/Screenshot 2025-06-15 154316.png"))); // NOI18N
->>>>>>> SelfNote
 
         javax.swing.GroupLayout Menu_panelLayout = new javax.swing.GroupLayout(Menu_panel);
         Menu_panel.setLayout(Menu_panelLayout);
@@ -546,11 +592,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(Menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Logo_label, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-<<<<<<< HEAD
                 .addGap(32, 32, 32)
-=======
-                .addGap(54, 54, 54)
->>>>>>> SelfNote
                 .addComponent(Home_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Category_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -568,11 +610,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(Logout_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Myprofile_panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-<<<<<<< HEAD
                 .addContainerGap(413, Short.MAX_VALUE))
-=======
-                .addContainerGap(391, Short.MAX_VALUE))
->>>>>>> SelfNote
         );
 
         getContentPane().add(Menu_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -616,9 +654,6 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Searchicon_label)
-<<<<<<< HEAD
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(Search_borderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Search_borderLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -626,15 +661,8 @@ public class Dashboard extends javax.swing.JFrame {
                         .addGap(224, 224, 224))
                     .addGroup(Search_borderLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(Filters)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-=======
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Filtericon_label, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Filters)
-                .addGap(169, 169, 169))
->>>>>>> SelfNote
+                        .addComponent(Filters)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Search_borderLayout.setVerticalGroup(
             Search_borderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -654,15 +682,9 @@ public class Dashboard extends javax.swing.JFrame {
         Search_panelLayout.setHorizontalGroup(
             Search_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Search_panelLayout.createSequentialGroup()
-<<<<<<< HEAD
                 .addGap(36, 36, 36)
                 .addComponent(Search_border, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(1136, Short.MAX_VALUE))
-=======
-                .addContainerGap()
-                .addComponent(Search_border, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1140, Short.MAX_VALUE))
->>>>>>> SelfNote
         );
         Search_panelLayout.setVerticalGroup(
             Search_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -675,53 +697,22 @@ public class Dashboard extends javax.swing.JFrame {
         getContentPane().add(Search_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 0, -1, -1));
 
         Main_panel.setLayout(new java.awt.CardLayout());
-        // Initialize the database and DAO objects
-        Database db = new MySqlConnection();
-        RecipeDAO recipeDAO = new RecipeDAO(db);
-        BookmarkDAO bookmarkDAO = new BookmarkDAO(db);
-
-        // Initialize the UI panels
-        Home home = new Home();
+        // Load panels from other files
         Bookmark bookmark = new Bookmark();
+        Home home = new Home();
         admin_dashboard adminDash = new admin_dashboard();
-        RecipeDetailPanel recipeDetailPanel = new RecipeDetailPanel();
-
-        // Initialize the update panel
-        update updatePanel = new update(recipeDAO, null);
-        // Create the AdminDashboardController with all required parameters
-        AdminDashboardController controller = new AdminDashboardController(
-            adminDash,       // admin dashboard panel
-            home,            // home panel
-            bookmark,        // bookmark panel
-            recipeDAO,       // RecipeDAO instance
-            bookmarkDAO,     // BookmarkDAO instance
-            updatePanel,     // update panel instance
-            Main_panel       // main panel with CardLayout
-        );
-
-        updatePanel.setController(controller);
-
-        // Load initial data into the app
-        controller.loadRecipesToHome();
-        controller.loadBookmarkedRecipes();
-
-        // Initialize the bookmark controller if needed
+        AdminDashboardController controller = new AdminDashboardController(adminDash, home, bookmark);
         BookmarkController bookmarkController = new BookmarkController(adminDash, home, bookmark);
         k selfNotePanel = new k();  // Assuming `k` extends JPanel
 
-        // Add all panels to the CardLayout
+        // Add panels to CardLayout
         Main_panel.add(home.home_panel, "home");
         Main_panel.add(bookmark.Bookmarkpanel, "bookmark");
         Main_panel.add(adminDash, "admin");
-<<<<<<< HEAD
-        Main_panel.add(recipeDetailPanel, "detail");
-        Main_panel.add(updatePanel, "update"); // Add update panel as well
-=======
         Main_panel.add(selfNotePanel, "selfnote");
->>>>>>> SelfNote
 
-        // Show the home panel by default
-        CardLayout cl = (CardLayout) Main_panel.getLayout();
+        // Show home panel by default
+        java.awt.CardLayout cl = (java.awt.CardLayout)(Main_panel.getLayout());
         cl.show(Main_panel, "home");
         getContentPane().add(Main_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 650, 590));
 
@@ -739,20 +730,24 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void selfNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selfNoteActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
-=======
         CardLayout cl = (CardLayout)(Main_panel.getLayout());
         cl.show(Main_panel, "selfnote");  // Show your custom panel
->>>>>>> SelfNote
         
     }//GEN-LAST:event_selfNoteActionPerformed
 
     private void SettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingsActionPerformed
         // TODO add your handling code here:
+        UserSettings set = new UserSettings();
+        set.setUsername(LoggedInUser.getUsername());
+        set.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_SettingsActionPerformed
 
     private void myProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myProfileActionPerformed
         // TODO add your handling code here:
+        UserMyProfile profile = new UserMyProfile();
+        profile.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_myProfileActionPerformed
 
     private void logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionPerformed
@@ -834,11 +829,9 @@ public class Dashboard extends javax.swing.JFrame {
     cl.show(Main_panel, "admin");
     }//GEN-LAST:event_adminMouseClicked
 
-<<<<<<< HEAD
     private void FiltersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltersActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FiltersActionPerformed
-=======
     private void selfNoteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selfNoteMouseClicked
         // TODO add your handling code here:
       
@@ -848,7 +841,6 @@ public class Dashboard extends javax.swing.JFrame {
 public void addAddNoteListener (ActionListener listener){
     
 }
->>>>>>> SelfNote
 
     /**
      * @param args the command line arguments
@@ -921,9 +913,16 @@ public void addAddNoteListener (ActionListener listener){
 
 
     
-public void addLogoutListener(ActionListener listener){
-    System.out.println("Attaching logout listener..");
-    logOut.addActionListener(listener);
-}    
+    public void addLogoutListener(ActionListener listener){
+        System.out.println("Attaching logout listener..");
+        logOut.addActionListener(listener);
+    } 
+//    public void addSettingListener(ActionListener listener){
+//        System.out.println("Settings button clicked!");
+//        Settings.addActionListener(listener);
+//    }
+//    public JButton getSettingsButton(){
+//          return Settings;
+//    }
 
 }

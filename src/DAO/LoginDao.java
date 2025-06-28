@@ -76,10 +76,13 @@ public class LoginDao {
             userData = new UserData();
             userData.setId(rs.getInt("Id")); 
             userData.setEmail(rs.getString("Email"));
+            userData.setUsername(rs.getString("username"));
           
         }
     } catch (SQLException e) {
         e.printStackTrace();
+    }finally {
+        mysql.closeConnection(conn);
     }
     return userData;
 }

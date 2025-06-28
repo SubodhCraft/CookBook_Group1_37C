@@ -126,5 +126,18 @@ public class UserDao {
         }
         return false;
     }
+    
+    public boolean deleteAccount(String email){
+        Connection conn = mysql.openConnection();
+        if (email == null)return false;
+        String query = "DELETE FROM users WHERE email = ?";
+        try(PreparedStatement pstmt = conn.prepareStatement(query)){
+            pstmt.setString(1, email);
+            return pstmt.executeUpdate()>0;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
     }
 
