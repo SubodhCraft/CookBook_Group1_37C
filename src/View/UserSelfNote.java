@@ -5,7 +5,6 @@
 package View;
 
 import controller.NotesController;
-//import controller.SelfNoteController;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -39,10 +38,10 @@ public class UserSelfNote extends javax.swing.JFrame {
         
         
     }
-//    public UserSelfNote(int userId){
-//        this.controller = new NotesController(userId);
-//        initComponents();
-//    }
+    public UserSelfNote(int userId){
+        this.controller = new NotesController(userId);
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,7 +73,7 @@ public class UserSelfNote extends javax.swing.JFrame {
 
         notesScrollPane.setViewportView(notesPanel);
 
-        addNoteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Layer 2.png"))); // NOI18N
+        addNoteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/plus-circle 1.jpg"))); // NOI18N
         addNoteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addNoteButtonActionPerformed(evt);
