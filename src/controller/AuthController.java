@@ -311,8 +311,12 @@ public class AuthController {
                     LoggedInUser.clear();
 
                     // Navigate to Landing Page
-                    LandingPage landing = new LandingPage();  // Replace with your actual landing class
+                    LandingPage landing = new LandingPage();
+                    Langinpage landingController = new Langinpage(landing);// Replace with your actual landing class
+//                    new Langinpage(landing);
                     landing.setVisible(true);
+//                    Langinpage control = new Langinpage();
+//                    control.open();
                     userView3.dispose();
                 } else {
                     JOptionPane.showMessageDialog(userView3, "Failed to delete account.");

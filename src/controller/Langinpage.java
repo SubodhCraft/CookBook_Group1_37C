@@ -8,13 +8,17 @@ import View.SignupPart;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class Langinpage {
-    private final LandingPage userview;
+    private  LandingPage userview;
     
     public Langinpage(LandingPage userView){
         this.userview = userView;
         userview.addRegisterListener(new RegisterListener());
         userview.addLoginListener(new LoginListener());
     }
+
+//    public Langinpage() {
+////        this.userview = userview;
+//    }
     
     public void open(){
         this.userview.setVisible(true);
@@ -49,4 +53,5 @@ public class Langinpage {
         }
         
     }
+    
 }
