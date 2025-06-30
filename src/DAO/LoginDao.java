@@ -49,7 +49,7 @@ public class LoginDao {
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                int id = rs.getInt("id");
+                int id = rs.getInt("Id");
 //                LoggedInUser.setId(retrivedUserId);
                 String username = rs.getString("username");
                 return new UserData(id, username, email);
@@ -64,7 +64,7 @@ public class LoginDao {
      
      public UserData validateAndFetchUser(LoginRequest user){
        Connection conn =mysql.openConnection();
-       String sql = "SELECT * FROM users WHERE email=? AND set_password=?";
+       String sql = "SELECT * FROM users WHERE Email=? AND set_password=?";
     UserData userData = null;
     try (PreparedStatement stmt = conn.prepareStatement(sql)) {
        

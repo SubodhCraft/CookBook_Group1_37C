@@ -30,13 +30,14 @@ public class NoteDao {
 //        this.conn = conn;
 //    }
 
-    public List<Notes> getAllNotes()  {
+    public List<Notes> getNotesByUserId(int userId)  {
         List<Notes> notes = new ArrayList<>();
         Connection conn = mysql.openConnection();
-        String sql = "SELECT * FROM Notes ORDER BY updated_at DESC";
-        try(PreparedStatement pstmt = conn.prepareStatement(sql);
+        String sql = "SELECT * FROM self_notes WHERE user_id = ? ";
+        try(PreparedStatement pstmt = conn.prepareStatement(sql)){
+                pstmt.setInt(1, userId);
         
-        ResultSet rs = pstmt.executeQuery()){
+        ResultSet rs = pstmt.executeQuery();
 
         while (rs.next()) {
             Notes note = new Notes(
@@ -57,45 +58,51 @@ public class NoteDao {
         return notes;
 }
 
-    public void addNote(Notes note) {
+    public boolean addNote(Notes note) {
         Connection conn = mysql.openConnection();
-        String sql = "INSERT INTO Notes (title, content) VALUES (?, ?)";
+        String sql = "INSERT INTO self_notes (user_id,title, content) VALUES (?, ?, ?)";
         try(PreparedStatement pstmt = conn.prepareStatement(sql)){
-        pstmt.setString(1, note.getTitle());
-        pstmt.setString(2, note.getContent());
-        pstmt.executeUpdate();
+            pstmt.setInt(1, note.getUserId());
+        pstmt.setString(2, note.getTitle());
+        pstmt.setString(3, note.getContent());
+        return pstmt.executeUpdate()>0;
     }catch (SQLException ex){
         Logger.getLogger(NoteDao.class.getName()).log(Level.SEVERE,null,ex);
     }finally {
             mysql.closeConnection(conn);
         }
+        return false;
     }
 
-    public void updateNote(Notes note){
+    public boolean updateNote(Notes note){
          Connection conn = mysql.openConnection();
-        String sql = "UPDATE Notes SET title=?, content=? WHERE id=?";
+        String sql = "UPDATE self_notes SET title=?, content=? WHERE id=? ";
         try(PreparedStatement pstmt = conn.prepareStatement(sql)){
         pstmt.setString(1, note.getTitle());
         pstmt.setString(2, note.getContent());
         pstmt.setInt(3, note.getId());
-        pstmt.executeUpdate();
+//        pstmt.setInt(4, note.getUserId());
+         return pstmt.executeUpdate()>0;
     }catch(SQLException ex){
        Logger.getLogger(NoteDao.class.getName()).log(Level.SEVERE,null,ex); 
     }finally {
             mysql.closeConnection(conn);
         }
+        return false;
     }
 
-    public void deleteNote(int id) {
+    public boolean deleteNote(int noteId) {
         Connection conn = mysql.openConnection();
-        String sql = "DELETE FROM Notes WHERE id=?";
+        String sql = "DELETE FROM self_notes WHERE id=? ";
         try(PreparedStatement pstmt = conn.prepareStatement(sql)){
-        pstmt.setInt(1, id);
-        pstmt.executeUpdate();
+        pstmt.setInt(1, noteId);
+//        pstmt.setInt(2, userId);
+        return pstmt.executeUpdate()>0;
     }catch(SQLException ex){
         Logger.getLogger(NoteDao.class.getName()).log(Level.SEVERE,null,ex); 
     }finally {
             mysql.closeConnection(conn);
         }
+        return false;
     }
 }

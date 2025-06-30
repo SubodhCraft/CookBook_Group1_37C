@@ -7,7 +7,7 @@ package cookbook_groupa;
 import DAO.NoteDao;
 import Database.*;
 import View.LandingPage;
-import View.Self_Note;
+import View.SelfNote;
 import View.SignupPart;
 
 import controller.AdminDashboardController;
@@ -32,12 +32,18 @@ public class CookBook_GroupA {
        LandingPage landingForm = new LandingPage();
        Langinpage landingController = new Langinpage(landingForm);
        landingController.open();
-
-       
-
-           
-       }   
+//
+//       
+//
+//           
+//       } 
+//NoteDao dao= new NoteDao();
+//Self_Note view = new Self_Note();
+//NoteController controller = new NoteController(dao ,view);
+//controller.open();
+//view.setVisible(true); 
 }  
+}
 
  
 //try{Connection conn = MySqlConnection.getConnection();

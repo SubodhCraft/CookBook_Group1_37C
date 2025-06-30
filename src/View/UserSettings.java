@@ -4,8 +4,10 @@
  */
 package View;
 
+import DAO.NoteDao;
 import controller.AuthController;
 import controller.LoginController;
+import controller.NoteController;
 import controller.SettingsController;
 import cookbook.Dashboard;
 import static cookbook.Dashboard.Main_panel;
@@ -1097,8 +1099,14 @@ public class UserSettings extends javax.swing.JFrame {
 
     private void selfNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selfNoteActionPerformed
         // TODO add your handling code here:
-        CardLayout cl = (CardLayout)(Main_panel.getLayout());
-        cl.show(Main_panel, "selfnote");  // Show your custom panel
+        
+//        NoteDao dao= new NoteDao();
+SelfNote view = new SelfNote();
+NoteController controller = new NoteController(view);
+controller.open();
+view.setVisible(true); 
+//        CardLayout cl = (CardLayout)(Main_panel.getLayout());
+//        cl.show(Main_panel, "selfnote");  // Show your custom panel
 
     }//GEN-LAST:event_selfNoteActionPerformed
 

@@ -29,23 +29,30 @@ public class LoggedInUser {
     public static String getUsername(){
         return username;
     }
+    public static void setUsername(String name){
+        username = name;
+    }
     public static String getEmail(){
         return email;
+    }
+    public static void setEmail(String mail){
+        email = mail;
     }
     
     public static String getProfilePictureUrl() {
         return profilePictureUrl;
     }
+    
 
 //    public static void setProfilePictureUrl(String profilePictureUrl) {
 //        LoggedInUser.profilePictureUrl = profilePictureUrl;
 //    }
     
-     public static void setUser(UserData user){
-        id = user.getId();
-        username = user.getUsername();
-        email = user.getEmail();
-    }
+//     public static void setUser(UserData user){
+//        id = user.getId();
+//        username = user.getUsername();
+//        email = user.getEmail();
+//    }
      
     public static void clear(){
         id = 0;
@@ -55,12 +62,14 @@ public class LoggedInUser {
         user = null;
     }
     
-//    public static void setUserPart(UserData use){
-//        user = use;
-//        id = use.getId();
-//        username = use.getUsername();
-//        email = use.getEmail();
-//        profilePictureUrl = use.getProfilePictureUrl();
-//    }
+    public static void setUser(UserData use){
+        if(use != null){
+        user = use;
+        id = use.getId();
+        username = use.getUsername();
+        email = use.getEmail();
+        profilePictureUrl = use.getProfilePictureUrl();
+    }
+    }
 
 }

@@ -52,9 +52,12 @@ public class LoginController {
                 LoginRequest user = new LoginRequest(email,password);
                 
                 UserData userData = loginDao.validateAndFetchUser(user);
+                System.out.println("Fetched user ID: "+userData.getId());
 //                UserData userData = loginDao.getUserByEmailAndPassword(email, password);
                 if(userData != null){
                     LoggedInUser.setUser(userData);
+                    System.out.println("Fetched user ID: "+userData.getId());
+                    System.out.println("LoggedInUser ID: "+ LoggedInUser.getId());
                     System.out.print("Logged in user:"+ LoggedInUser.getUsername());
 //                    LoggedInUser.setId(userData.getId());
 

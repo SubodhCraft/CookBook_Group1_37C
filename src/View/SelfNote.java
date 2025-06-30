@@ -2,186 +2,50 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package cookbook;
+package View;
 
-import DAO.BookmarkDAO;
-import DAO.RecipeDAO;
-import DAO.SettingsDAO;
-import DAO.UserDao;
-import Database.Database;
-import Database.MySqlConnection;
 import Model.LoggedInUser;
-import Model.Recipe;
-import View.Sigininframe;
-import View.SelfNote;
-import View.UserMyProfile;
-import View.UserSettings;
-import controller.AdminDashboardController;
-import controller.BookmarkController;
-import controller.BookmarkUIController;
+import Model.Notes;
 import controller.LoginController;
+import controller.NoteController;
+import cookbook.Dashboard;
+import static cookbook.Dashboard.Main_panel;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.util.List;
-import java.util.Set;
-import javax.swing.JPanel;
-import cookbook.admin_dashboard;
-import cookbook.update;
-import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
 
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import View.k;   
-import controller.SettingsController;
-import controller.UserProfileController;
-import java.awt.event.ActionEvent;
-import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 
-public class Dashboard extends javax.swing.JFrame {
-    private AdminDashboardController dashboardController;
-    private final SettingsDAO settingsDao = new SettingsDAO();
-//    private final UserSettings settingsView;
-//    private final Dashboard dashView;
-//   private AdminDashboardController dashboardController;
-    
+/**
+ *
+ * @author LEGION
+ */
+public class SelfNote extends javax.swing.JFrame {
+ private NoteController noteController;
     /**
-     * Creates new form Dashboard
+     * Creates new form SelfNote
      */
-    public Dashboard() {
+    public SelfNote() { 
         initComponents();
-        setLocationRelativeTo(null);
-//       AdminDashboardController controller = new AdminDashboardController(this);
-       setVisible(true);
-//        logOut=new javax.swing.JButton();
-        logOut.setText("Logout");
-        Filters.addActionListener(evt -> handleSearch());
+        setupAddNoteButton();
         
-        Database db = new MySqlConnection();
-        RecipeDAO recipeDAO = new RecipeDAO(db);
-        BookmarkDAO bookmarkDAO = new BookmarkDAO(db);
-        
-        Home home = new Home();
-        Bookmark bookmark = new Bookmark();
-        admin_dashboard adminDash = new admin_dashboard();
-        RecipeDetailPanel recipeDetailPanel = new RecipeDetailPanel();
-        update updatePanel = new update(recipeDAO,null);
-        
-        dashboardController = new AdminDashboardController(
-        adminDash,
-                home,
-                bookmark,
-                recipeDAO,
-                bookmarkDAO,
-                updatePanel,
-                Main_panel
-//                dashboardController.setupLogoutListener(this)
-        );    
-//        dashboardController.setupLogoutListener(this);
-        int currentUserId = LoggedInUser.getId();
-        BookmarkUIController bookmarkUIController = new BookmarkUIController(bookmark,currentUserId);
-//        BookmarkController bookmarkController = new BookmarkController(db,bookmark);
-        
-        updatePanel.setController(dashboardController);
-        
-        dashboardController.loadRecipesToHome();
-        dashboardController.loadBookmarkedRecipes();
-        
-        
-//        BookmarkController bookmarkController = new BookmarkController(db, bookmark);
-        
-//        Database db = new MySqlConnection();
-//        Bookmark bookmarkPanel = new Bookmark();
-//        
-//        new BookmarkController(db,bookmarkPanel);
-        
-//        new BookmarkController(adminDash,home,bookmark);
-        
-        Main_panel.add(home.home_panel,"home");
-        Main_panel.add(bookmark.Bookmarkpanel,"bookmark");
-        Main_panel.add(adminDash,"admin");
-        Main_panel.add(recipeDetailPanel,"detail");
-        Main_panel.add(updatePanel,"update");
-        
-        CardLayout cl = (CardLayout) Main_panel.getLayout();
-        cl.show(Main_panel, "home");
-        
-         getContentPane().add(Main_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 650, 590));
-
-     Filters.addActionListener(new java.awt.event.ActionListener(){
-        public void actionPerformed(java.awt.event.ActionEvent evt){
-          handleSearch();
-        }
-    });
-        
+        noteContainer.setLayout(new BoxLayout(noteContainer, BoxLayout.Y_AXIS));
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+//        new NoteController(this).loadNotes();
+        this.noteController = new NoteController(this);
+        noteController.loadNotes();
     }
-   
-//    private final SettingsDAO settingsDao = new SettingsDAO();
-//    private final UserSettings settingsView;
-    
-//    public Dashboard(UserSettings view){
-//        this. dashView = view;
-//        this.dashView.addSettingsListener(new SettingsListener());
-//    }
-//    
-//    void open(){
-//        
-//    }
-//    void close(){
-//        
-//    }
-//    
-//    public void setupSettingsListener(UserSettings view){
-//        view.addSettingsListener(new SettingsListener());
-//    }
-
-//    private void addSettingsListener(SettingsListener settingsListener) {
-//    }
-//    
-//    class SettingsListener implements ActionListener{
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            System.out.println("Settings Button clicked!");
-//            UserSettings dashView = new UserSettings();
-//            new SettingsController(dashView);
-//            dashView.setVisible(true);
-//            
-//            if(dashView != null) dashView.dispose();
-//        }
-//        
-//    }
-//    private void handleSearch(){
-//        String keyword = Search.getText().trim();
-//        if(keyword.isEmpty() || keyword.equals("Search")){
-//            JOptionPane.showMessageDialog(this, "Please enter a keyword to search.");
-//            return;
-//        }
-//        dashboardController.searchRecipes(keyword);
-//    }
-    
-    private void handleSearch(){
-    String keyword = Search.getText().trim();
-    if(keyword.isEmpty() || keyword.equals("Search")){
-        JOptionPane.showMessageDialog(this, "Please enter a keyword to search.");
-        return;
-    }
-
-    boolean found = dashboardController.searchRecipesWithFeedback(keyword);
-    if (!found) {
-        JOptionPane.showMessageDialog(this, "No results found for \"" + keyword + "\".");
-    }
-}
-
-      public JPanel getMainPanel() {
-    return Main_panel;
-}
-    private JPanel notesContainer;
-    private JScrollPane scrollPane;
-    private List<JPanel> noteCards = new ArrayList<>();
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -195,52 +59,51 @@ public class Dashboard extends javax.swing.JFrame {
         Menu_panel = new javax.swing.JPanel();
         Category_panel = new javax.swing.JPanel();
         Category = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         Selfnote_panel = new javax.swing.JPanel();
         selfNote = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
         Logo_label = new javax.swing.JLabel();
         Settings_panel = new javax.swing.JPanel();
         Settings = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         Myprofile_panel = new javax.swing.JPanel();
         myProfile = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
         Logout_panel = new javax.swing.JPanel();
         logOut = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         Bookmark_panel = new javax.swing.JPanel();
         Bookmark = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
         Challenges_panel = new javax.swing.JPanel();
         Challenges = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
         Home_panel = new javax.swing.JPanel();
         Home = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
         Myprofile_panel1 = new javax.swing.JPanel();
         admin = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jLabel40 = new javax.swing.JLabel();
         Search_panel = new javax.swing.JPanel();
         Search_border = new javax.swing.JPanel();
         Searchicon_label = new javax.swing.JLabel();
         Search = new javax.swing.JTextField();
         Filtericon_label = new javax.swing.JLabel();
         Filters = new javax.swing.JButton();
-        Main_panel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        emptyMessageLabel = new javax.swing.JLabel();
+        addNoteButton = new javax.swing.JButton();
+        scrollPane = new javax.swing.JScrollPane();
+        noteContainer = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Main_window");
-        setMinimumSize(new java.awt.Dimension(900, 700));
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Menu_panel.setBackground(new java.awt.Color(255, 255, 255));
         Menu_panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Menu_panel.setMaximumSize(new java.awt.Dimension(241, 982));
         Menu_panel.setMinimumSize(new java.awt.Dimension(241, 982));
-        Menu_panel.setPreferredSize(new java.awt.Dimension(241, 982));
 
         Category_panel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -261,7 +124,7 @@ public class Dashboard extends javax.swing.JFrame {
             Category_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Category_panelLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Category)
                 .addContainerGap())
@@ -271,8 +134,8 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Category_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Category_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                    .addComponent(Category, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Category, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -300,7 +163,7 @@ public class Dashboard extends javax.swing.JFrame {
             Selfnote_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Selfnote_panelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(selfNote)
                 .addContainerGap())
@@ -311,7 +174,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(selfNote, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         Settings_panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -333,7 +196,7 @@ public class Dashboard extends javax.swing.JFrame {
             Settings_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Settings_panelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Settings)
                 .addContainerGap())
@@ -344,7 +207,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(Settings, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         Myprofile_panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -366,7 +229,7 @@ public class Dashboard extends javax.swing.JFrame {
             Myprofile_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Myprofile_panelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(myProfile)
                 .addContainerGap())
@@ -377,7 +240,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(myProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         Logout_panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -399,15 +262,15 @@ public class Dashboard extends javax.swing.JFrame {
             Logout_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Logout_panelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(logOut)
                 .addGap(124, 124, 124))
         );
         Logout_panelLayout.setVerticalGroup(
             Logout_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-            .addComponent(logOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(logOut, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
         );
 
         Bookmark_panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -434,7 +297,7 @@ public class Dashboard extends javax.swing.JFrame {
             Bookmark_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Bookmark_panelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Bookmark)
                 .addContainerGap())
@@ -444,8 +307,8 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Bookmark_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Bookmark_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(Bookmark, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Bookmark, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -468,7 +331,7 @@ public class Dashboard extends javax.swing.JFrame {
             Challenges_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Challenges_panelLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Challenges)
                 .addContainerGap())
@@ -478,8 +341,8 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Challenges_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Challenges_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(Challenges, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Challenges, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -509,7 +372,7 @@ public class Dashboard extends javax.swing.JFrame {
             Home_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Home_panelLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Home)
                 .addContainerGap())
@@ -519,8 +382,8 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Home_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Home_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(Home, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Home, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -548,18 +411,18 @@ public class Dashboard extends javax.swing.JFrame {
             Myprofile_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Myprofile_panel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(admin)
                 .addContainerGap())
         );
         Myprofile_panel1Layout.setVerticalGroup(
             Myprofile_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+            .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(admin, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Images/Screenshot 2025-06-22 192617.png"))); // NOI18N
+        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Images/Screenshot 2025-06-22 192617.png"))); // NOI18N
 
         javax.swing.GroupLayout Menu_panelLayout = new javax.swing.GroupLayout(Menu_panel);
         Menu_panel.setLayout(Menu_panelLayout);
@@ -568,8 +431,8 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(Home_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(Menu_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Logo_label)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(Menu_panelLayout.createSequentialGroup()
@@ -593,7 +456,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(Menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Logo_label, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel40))
                 .addGap(32, 32, 32)
                 .addComponent(Home_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -612,10 +475,8 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(Logout_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Myprofile_panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(413, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        getContentPane().add(Menu_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         Search_panel.setBackground(new java.awt.Color(255, 255, 255));
         Search_panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -686,7 +547,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addGroup(Search_panelLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(Search_border, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1136, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Search_panelLayout.setVerticalGroup(
             Search_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -696,155 +557,174 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
-        getContentPane().add(Search_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 0, -1, -1));
+        emptyMessageLabel.setText("Click + to create your first note");
 
-        Main_panel.setLayout(new java.awt.CardLayout());
-        // Load panels from other files
-        Bookmark bookmark = new Bookmark();
-        Home home = new Home();
-        admin_dashboard adminDash = new admin_dashboard();
-        AdminDashboardController controller = new AdminDashboardController(adminDash, home, bookmark);
-        BookmarkController bookmarkController = new BookmarkController(adminDash, home, bookmark);
-        k selfNotePanel = new k();  // Assuming `k` extends JPanel
+        addNoteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Images/Screenshot 2025-06-15 193410.png"))); // NOI18N
+        addNoteButton.setToolTipText("Create New Note");
+        addNoteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        // Add panels to CardLayout
-        Main_panel.add(home.home_panel, "home");
-        Main_panel.add(bookmark.Bookmarkpanel, "bookmark");
-        Main_panel.add(adminDash, "admin");
-        Main_panel.add(selfNotePanel, "selfnote");
+        noteContainer.setLayout(new javax.swing.BoxLayout(noteContainer, javax.swing.BoxLayout.LINE_AXIS));
+        scrollPane.setViewportView(noteContainer);
 
-        // Show home panel by default
-        java.awt.CardLayout cl = (java.awt.CardLayout)(Main_panel.getLayout());
-        cl.show(Main_panel, "home");
-        getContentPane().add(Main_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 650, 590));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(emptyMessageLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(scrollPane)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(addNoteButton)))
+                .addGap(16, 16, 16))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(addNoteButton)
+                .addGap(3, 3, 3)
+                .addComponent(emptyMessageLabel)
+                .addGap(18, 18, 18)
+                .addComponent(scrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Menu_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Search_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 717, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Menu_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 632, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Search_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     private void CategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoryActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CategoryActionPerformed
 
-    private void BookmarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookmarkActionPerformed
+    private void selfNoteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selfNoteMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_BookmarkActionPerformed
+    }//GEN-LAST:event_selfNoteMouseClicked
 
     private void selfNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selfNoteActionPerformed
         // TODO add your handling code here:
-        
 //        CardLayout cl = (CardLayout)(Main_panel.getLayout());
 //        cl.show(Main_panel, "selfnote");  // Show your custom panel
-        
     }//GEN-LAST:event_selfNoteActionPerformed
 
     private void SettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingsActionPerformed
         // TODO add your handling code here:
-        UserSettings set = new UserSettings();
-        set.setUsername(LoggedInUser.getUsername());
-        set.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_SettingsActionPerformed
 
     private void myProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myProfileActionPerformed
         // TODO add your handling code here:
-        UserMyProfile profile = new UserMyProfile();
-        UserProfileController controller = new UserProfileController(profile, new UserDao());
-        profile.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_myProfileActionPerformed
 
     private void logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionPerformed
         // TODO add your handling code here:
-//        Sigininframe sigin = new Sigininframe();
-//        LoginController controller = new LoginController(sigin);
-//        
-//        controller.open();
-    // Show confirmation dialog
-    int choice = JOptionPane.showConfirmDialog(
+        //        Sigininframe sigin = new Sigininframe();
+        //        LoginController controller = new LoginController(sigin);
+        //
+        //        controller.open();
+        // Show confirmation dialog
+        int choice = JOptionPane.showConfirmDialog(
             null,
             "Do you want to logout?",
             "Logout Confirmation",
             JOptionPane.YES_NO_OPTION);
 
-    if (choice == JOptionPane.YES_OPTION) {
-        // Proceed with logout
-        Sigininframe sigin = new Sigininframe();
-        LoginController controller = new LoginController(sigin);
-        controller.open();
+        if (choice == JOptionPane.YES_OPTION) {
+            // Proceed with logout
+            Sigininframe sigin = new Sigininframe();
+            LoginController controller = new LoginController(sigin);
+            controller.open();
 
-
-        // Close current window (if this is a JFrame)
-        this.dispose(); // optional: closes the current window
-    } else {
-        // Logout cancelled
-        System.out.println("Logout cancelled by user.");
-    }
-
-
-        
+            // Close current window (if this is a JFrame)
+            this.dispose(); // optional: closes the current window
+        } else {
+            // Logout cancelled
+            System.out.println("Logout cancelled by user.");
+        }
     }//GEN-LAST:event_logOutActionPerformed
+
+    private void BookmarkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookmarkMouseClicked
+        // TODO add your handling code here:
+//        java.awt.CardLayout cl = (java.awt.CardLayout)(Main_panel.getLayout());
+//        cl.show(Main_panel, "bookmark");
+    }//GEN-LAST:event_BookmarkMouseClicked
+
+    private void BookmarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookmarkActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BookmarkActionPerformed
 
     private void ChallengesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChallengesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ChallengesActionPerformed
 
+    private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
+        // TODO add your handling code here:
+        java.awt.CardLayout cl = (java.awt.CardLayout)(Main_panel.getLayout());
+        cl.show(Main_panel, "home");
+    }//GEN-LAST:event_HomeMouseClicked
+
     private void HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
         // TODO add your handling code here:
-        
+        Dashboard dash = new Dashboard();
+        dash.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_HomeActionPerformed
+
+    private void adminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminMouseClicked
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout)(Main_panel.getLayout());
+        cl.show(Main_panel, "admin");
+    }//GEN-LAST:event_adminMouseClicked
+
+    private void adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_adminActionPerformed
 
     private void SearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchFocusGained
         // TODO add your handling code here:
         if(Search.getText().equals("Search")){
             Search.setText("");
         }
-        
-
     }//GEN-LAST:event_SearchFocusGained
 
     private void SearchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchFocusLost
         // TODO add your handling code here:
         if (Search.getText().isEmpty()) {
-    Search.setText("Search");
-}
-
+            Search.setText("Search");
+        }
     }//GEN-LAST:event_SearchFocusLost
-
-    private void BookmarkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookmarkMouseClicked
-        // TODO add your handling code here:
-           java.awt.CardLayout cl = (java.awt.CardLayout)(Main_panel.getLayout());
-    cl.show(Main_panel, "bookmark");
-    }//GEN-LAST:event_BookmarkMouseClicked
-
-    private void HomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeMouseClicked
-        // TODO add your handling code here:
-        java.awt.CardLayout cl = (java.awt.CardLayout)(Main_panel.getLayout());
-    cl.show(Main_panel, "home");
-    }//GEN-LAST:event_HomeMouseClicked
-
-    private void adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_adminActionPerformed
-
-    private void adminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminMouseClicked
-        // TODO add your handling code here:
-         CardLayout cl = (CardLayout)(Main_panel.getLayout());
-    cl.show(Main_panel, "admin");
-    }//GEN-LAST:event_adminMouseClicked
 
     private void FiltersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FiltersActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FiltersActionPerformed
-    private void selfNoteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_selfNoteMouseClicked
-        // TODO add your handling code here:
-      
-        
-    }//GEN-LAST:event_selfNoteMouseClicked
-
-public void addAddNoteListener (ActionListener listener){
-    
-}
 
     /**
      * @param args the command line arguments
@@ -862,16 +742,22 @@ public void addAddNoteListener (ActionListener listener){
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(SelfNote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(SelfNote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(SelfNote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(SelfNote.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new Dashboard().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new SelfNote().setVisible(true);
+            }
         });
     }
 
@@ -888,7 +774,6 @@ public void addAddNoteListener (ActionListener listener){
     private javax.swing.JPanel Home_panel;
     private javax.swing.JLabel Logo_label;
     private javax.swing.JPanel Logout_panel;
-    public static javax.swing.JPanel Main_panel;
     private javax.swing.JPanel Menu_panel;
     private javax.swing.JPanel Myprofile_panel;
     private javax.swing.JPanel Myprofile_panel1;
@@ -899,46 +784,212 @@ public void addAddNoteListener (ActionListener listener){
     private javax.swing.JPanel Selfnote_panel;
     private javax.swing.JButton Settings;
     private javax.swing.JPanel Settings_panel;
+    private javax.swing.JButton addNoteButton;
     private javax.swing.JButton admin;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel emptyMessageLabel;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton logOut;
     private javax.swing.JButton myProfile;
+    private javax.swing.JPanel noteContainer;
+    private javax.swing.JScrollPane scrollPane;
     private javax.swing.JButton selfNote;
     // End of variables declaration//GEN-END:variables
 
+public void showEmptyMessage() {
+    emptyMessageLabel.setVisible(true);
+    noteContainer.removeAll();
+    noteContainer.revalidate();
+    noteContainer.repaint();
+}
 
-    
-    public void addLogoutListener(ActionListener listener){
-        System.out.println("Attaching logout listener..");
-        logOut.addActionListener(listener);
-    } 
-//    public void addSettingListener(ActionListener listener){
-//        System.out.println("Settings button clicked!");
-//        Settings.addActionListener(listener);
-//    }
-//    public JButton getSettingsButton(){
-//          return Settings;
-//    }
+public void clearNotePanel() {
+    emptyMessageLabel.setVisible(false);
+    noteContainer.removeAll();
+    noteContainer.revalidate();
+    noteContainer.repaint();
+}
+// public void refreshNotes() {
+//     jPanel1.removeAll(); // Clear old notes
 
-//    public void addSearchListener (ActionListener listener){
-//        Filters.addActionListener(listener);
-//    }
-//    public String getSearchText(){
-//        return Search.getText();
-//    }
-    
-//    private AdminDashboardController dashboardController;
-    
-//    public void setDashboardController(AdminDashboardController controller){
-//        this.dashboardController = controller;
-//    }
+//     NoteController controller = new NoteController(this);
+//     java.util.List<Notes> notes = controller.getNotesByUserId(LoggedInUser.getId());
+
+//     for (Notes note : notes) {
+//         JPanel notePanel = new JPanel(new BorderLayout());
+//         notePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+//         notePanel.setBackground(Color.WHITE);
+
+//         JLabel titleLabel = new JLabel("Title: " + note.getTitle());
+//         JTextArea contentArea = new JTextArea(note.getContent());
+//         contentArea.setLineWrap(true);
+//         contentArea.setWrapStyleWord(true);
+//         contentArea.setEditable(false);
+
+//         JButton editBtn = new JButton("Edit");
+//         JButton deleteBtn = new JButton("Delete");
+
+//         editBtn.addActionListener(e -> {
+//             String newTitle = JOptionPane.showInputDialog(this, "Edit Title", note.getTitle());
+//             String newContent = JOptionPane.showInputDialog(this, "Edit Content", note.getContent());
+//             if (newTitle != null && newContent != null) {
+//                 note.setTitle(newTitle);
+//                 note.setContent(newContent);
+//                 new NoteController(this).updateNote(note);
+//             }
+//         });
+
+//         deleteBtn.addActionListener(e -> {
+//             int confirm = JOptionPane.showConfirmDialog(this, "Delete this note?");
+//             if (confirm == JOptionPane.YES_OPTION) {
+//                 new NoteController(this).deleteNote(note.getId());
+//             }
+//         });
+
+//         JPanel buttonPanel = new JPanel();
+//         buttonPanel.add(editBtn);
+//         buttonPanel.add(deleteBtn);
+
+//         notePanel.add(titleLabel, BorderLayout.NORTH);
+//         notePanel.add(new JScrollPane(contentArea), BorderLayout.CENTER);
+//         notePanel.add(buttonPanel, BorderLayout.SOUTH);
+
+//         jPanel1.add(notePanel);
+//     }
+
+//     jPanel1.revalidate();
+//     jPanel1.repaint();
+// }
+
+// 
+
+public void refreshNotes() {
+    noteContainer.removeAll(); // Clear previous notes
+
+    List<Notes> notes = noteController.getNotesByUserId(LoggedInUser.getId());
+
+    if (notes == null || notes.isEmpty()) {
+        JLabel emptyLabel = new JLabel("No notes found. Click + to add a new note.");
+        emptyLabel.setFont(new Font("Arial", Font.ITALIC, 14));
+        emptyLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        noteContainer.add(emptyLabel);
+    } else {
+        for (Notes note : notes) {
+            JPanel notePanel = new JPanel(new BorderLayout());
+            notePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            notePanel.setBackground(Color.WHITE);
+            notePanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 150));
+
+            JLabel titleLabel = new JLabel("Title: " + note.getTitle());
+            JTextArea contentArea = new JTextArea(note.getContent());
+            contentArea.setLineWrap(true);
+            contentArea.setWrapStyleWord(true);
+            contentArea.setEditable(false);
+
+            JButton editBtn = new JButton("Edit");
+            JButton deleteBtn = new JButton("Delete");
+
+            editBtn.addActionListener(e -> {
+                String newTitle = JOptionPane.showInputDialog(this, "Edit Title", note.getTitle());
+                String newContent = JOptionPane.showInputDialog(this, "Edit Content", note.getContent());
+                if (newTitle != null && newContent != null) {
+                    note.setTitle(newTitle);
+                    note.setContent(newContent);
+                    noteController.updateNote(note);
+                }
+            });
+
+            deleteBtn.addActionListener(e -> {
+                int confirm = JOptionPane.showConfirmDialog(this, "Delete this note?");
+                if (confirm == JOptionPane.YES_OPTION) {
+                    noteController.deleteNote(note.getId());
+                }
+            });
+
+            JPanel buttonPanel = new JPanel();
+            buttonPanel.add(editBtn);
+            buttonPanel.add(deleteBtn);
+
+            notePanel.add(titleLabel, BorderLayout.NORTH);
+            notePanel.add(new JScrollPane(contentArea), BorderLayout.CENTER);
+            notePanel.add(buttonPanel, BorderLayout.SOUTH);
+
+            noteContainer.add(notePanel);
+        }
+    }
+
+    noteContainer.revalidate();
+    noteContainer.repaint();
+}
+
+
+
+public void addNoteToPanel(Notes note, NoteController controller) {
+    JPanel notePanel = new JPanel();
+    notePanel.setLayout(new BorderLayout());
+    notePanel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+    notePanel.setBackground(Color.WHITE);
+
+    JLabel titleLabel = new JLabel(note.getTitle());
+    JTextArea contentArea = new JTextArea(note.getContent());
+    contentArea.setEditable(false);
+    contentArea.setLineWrap(true);
+    contentArea.setWrapStyleWord(true);
+
+    JButton editBtn = new JButton("Edit");
+    JButton deleteBtn = new JButton("Delete");
+
+    JPanel btnPanel = new JPanel();
+    btnPanel.add(editBtn);
+    btnPanel.add(deleteBtn);
+
+    notePanel.add(titleLabel, BorderLayout.NORTH);
+    notePanel.add(new JScrollPane(contentArea), BorderLayout.CENTER);
+    notePanel.add(btnPanel, BorderLayout.SOUTH);
+
+    noteContainer.add(notePanel);
+    noteContainer.revalidate();
+    noteContainer.repaint();
+
+    // Event handlers
+    editBtn.addActionListener(e -> {
+        String newTitle = JOptionPane.showInputDialog(this, "Edit Title", note.getTitle());
+        String newContent = JOptionPane.showInputDialog(this, "Edit Content", note.getContent());
+        if (newTitle != null && newContent != null) {
+            note.setTitle(newTitle);
+            note.setContent(newContent);
+            controller.updateNote(note);
+        }
+    });
+
+    deleteBtn.addActionListener(e -> {
+        int confirm = JOptionPane.showConfirmDialog(this, "Delete this note?", "Confirm", JOptionPane.YES_NO_OPTION);
+        if (confirm == JOptionPane.YES_OPTION) {
+            controller.deleteNote(note.getId());
+        }
+    });
+}
+
+private void setupAddNoteButton(){
+    addNoteButton.addActionListener( e-> {
+        String title = JOptionPane.showInputDialog(this, "Enter Note Title");
+        String content = JOptionPane.showInputDialog(this, "Enter Note Content");
+        
+        if(title != null && content != null && !title.trim().isEmpty()){
+            Notes note = new Notes(LoggedInUser.getId(), title , content);
+            new NoteController(this).saveNote(note);
+        }
+        
+    });
+}
+
 }
