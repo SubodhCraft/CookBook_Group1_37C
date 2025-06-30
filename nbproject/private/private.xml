@@ -58,7 +58,18 @@
             <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/Frame.jpg</file>
             <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/ResetPass.java</file>
             <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/verify.java</file>
-            <file>file:/C:/Users/Jay%20pradhan/Desktop/secure%202/CookBook_Group1_37C/src/cookbook/Dashboard.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/Model/BookmarkModel.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/SettingsPassword.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/Model/LoggedInUser.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/Model/SecAnswers.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/Model/UserData.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/DAO/NoteDao.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/Model/Notes.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/DAO/LoginDao.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/DAO/UserDao.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/UserProfileController.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/Model/LoginRequest.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/camera.png</file>
         </group>
     </open-files>
 </project-private>
