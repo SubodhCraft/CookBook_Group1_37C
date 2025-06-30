@@ -262,13 +262,16 @@ public class AuthController {
             }
              if (!newPassword.equals(confirmPassword)){
                  JOptionPane.showMessageDialog(userView3,"Passwords didn't match!");
+                 if(newPassword.length()<7){
+                 JOptionPane.showMessageDialog(userView3,"Password must be atleast 7 characters.");
+                 }
                  return;
                  
                          
              }
-             if(newPassword.length()<7){
-                 JOptionPane.showMessageDialog(userView3,"Password must be atleast 7 characters.");
-             }
+//             if(newPassword.length()<7){
+//                 JOptionPane.showMessageDialog(userView3,"Password must be atleast 7 characters.");
+//             }
              String email= LoggedInUser.getEmail();
              String username = LoggedInUser.getUsername();
              userView3.setUsername(username);

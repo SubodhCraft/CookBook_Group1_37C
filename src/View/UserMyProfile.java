@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
+import DAO.UserDao;
+import Model.LoggedInUser;
+import Model.UserData;
+import controller.AuthController;
 import controller.LoginController;
 import cookbook.Dashboard;
 import static cookbook.Dashboard.Main_panel;
@@ -13,6 +17,7 @@ import javax.swing.JFileChooser;
 import javax.swing.ImageIcon;
 import java.io.File;
 import java.awt.Image;
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 /**
  *
@@ -40,7 +45,6 @@ public class UserMyProfile extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         AccountOverview = new javax.swing.JButton();
         jLabel32 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         lblPhoto = new javax.swing.JLabel();
         btnChangePhoto = new javax.swing.JButton();
         jRecipeStatus = new javax.swing.JButton();
@@ -48,14 +52,11 @@ public class UserMyProfile extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jUsername = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jEmail = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        btnUpdate = new javax.swing.JButton();
-        jFirstName = new javax.swing.JTextField();
-        jLastName = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jRadioButtonMale = new javax.swing.JRadioButton();
-        jRadioButtonFemale = new javax.swing.JRadioButton();
-        jRadioButtonOther = new javax.swing.JRadioButton();
+        jUserid = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -124,10 +125,6 @@ public class UserMyProfile extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Angela Pradhan");
-
         lblPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/dp.png"))); // NOI18N
 
         btnChangePhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/camera.png"))); // NOI18N
@@ -165,9 +162,7 @@ public class UserMyProfile extends javax.swing.JFrame {
                         .addComponent(btnChangePhoto)
                         .addGap(73, 73, 73))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPhoto))
+                        .addComponent(lblPhoto)
                         .addGap(25, 25, 25))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -183,13 +178,11 @@ public class UserMyProfile extends javax.swing.JFrame {
                 .addComponent(btnChangePhoto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel32)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addGap(38, 38, 38)
                 .addComponent(AccountOverview, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jRecipeStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addContainerGap(260, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(java.awt.Color.white);
@@ -200,82 +193,37 @@ public class UserMyProfile extends javax.swing.JFrame {
         jLabel10.setText("Personal Details");
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jLabel11.setText("First Name");
+        jLabel11.setText("User Name");
 
-        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jLabel12.setText("Last Name");
-
-        btnUpdate.setBackground(new java.awt.Color(127, 1, 31));
-        btnUpdate.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        btnUpdate.setForeground(java.awt.Color.white);
-        btnUpdate.setText("Update");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-
-        jFirstName.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jFirstName.setForeground(new java.awt.Color(191, 191, 191));
-        jFirstName.setText("Angela");
-        jFirstName.addFocusListener(new java.awt.event.FocusAdapter() {
+        jUsername.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jUsername.setForeground(new java.awt.Color(191, 191, 191));
+        jUsername.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jFirstNameFocusGained(evt);
+                jUsernameFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jFirstNameFocusLost(evt);
+                jUsernameFocusLost(evt);
             }
         });
-        jFirstName.addActionListener(new java.awt.event.ActionListener() {
+        jUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFirstNameActionPerformed(evt);
+                jUsernameActionPerformed(evt);
             }
         });
 
-        jLastName.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLastName.setForeground(new java.awt.Color(191, 191, 191));
-        jLastName.setText("Pradhan");
-        jLastName.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jLastNameFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jLastNameFocusLost(evt);
-            }
-        });
-        jLastName.addActionListener(new java.awt.event.ActionListener() {
+        jLabel13.setText("Email ");
+
+        jEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jLastNameActionPerformed(evt);
+                jEmailActionPerformed(evt);
             }
         });
 
-        jLabel14.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jLabel14.setText("Gender");
+        jLabel12.setText("User Id");
 
-        jRadioButtonMale.setForeground(new java.awt.Color(191, 191, 191));
-        jRadioButtonMale.setText("Male");
-        jRadioButtonMale.setBorder(null);
-        jRadioButtonMale.addActionListener(new java.awt.event.ActionListener() {
+        jUserid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonMaleActionPerformed(evt);
-            }
-        });
-
-        jRadioButtonFemale.setForeground(new java.awt.Color(191, 191, 191));
-        jRadioButtonFemale.setText("Female");
-        jRadioButtonFemale.setBorder(null);
-        jRadioButtonFemale.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonFemaleActionPerformed(evt);
-            }
-        });
-
-        jRadioButtonOther.setForeground(new java.awt.Color(191, 191, 191));
-        jRadioButtonOther.setText("Other");
-        jRadioButtonOther.setBorder(null);
-        jRadioButtonOther.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonOtherActionPerformed(evt);
+                jUseridActionPerformed(evt);
             }
         });
 
@@ -287,33 +235,25 @@ public class UserMyProfile extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addContainerGap(405, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(0, 5, Short.MAX_VALUE)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 139, Short.MAX_VALUE))
-                            .addComponent(jLastName)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addGap(131, 131, 131))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jRadioButtonMale)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButtonFemale)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButtonOther)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                            .addComponent(jLabel12)
+                            .addComponent(jUserid, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,21 +263,18 @@ public class UserMyProfile extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jLabel12))
+                    .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButtonMale, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButtonFemale, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButtonOther, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jEmail)
+                        .addGap(5, 5, 5)))
                 .addGap(18, 18, 18)
-                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jUserid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(java.awt.Color.white);
@@ -470,7 +407,7 @@ public class UserMyProfile extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
@@ -949,7 +886,7 @@ public class UserMyProfile extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(Search_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addComponent(Search_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 717, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -961,10 +898,10 @@ public class UserMyProfile extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addComponent(Menu_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(Menu_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 693, Short.MAX_VALUE)
         );
 
         pack();
@@ -995,68 +932,48 @@ public class UserMyProfile extends javax.swing.JFrame {
 
             // If you want to save the file path or image, you can do that here too
             System.out.println("Selected file: " + selectedFile.getAbsolutePath());
+            
+            String selectedImagePath = selectedFile.getAbsolutePath();
+            
+            UserDao userDao = new UserDao();
+            boolean updated = userDao.updateProfilePictureUrl(LoggedInUser.getId(), selectedImagePath);
+            
+            if(updated){
+                JOptionPane.showMessageDialog(this, "Profile picture updated in database!");
+            }else{
+                JOptionPane.showMessageDialog(this, "Failed to update profile picture in database.");
+            }
         }
     }//GEN-LAST:event_btnChangePhotoActionPerformed
 
     private void jRecipeStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRecipeStatusActionPerformed
         // TODO add your handling code here:
-        UserMyProfile2nd second = new UserMyProfile2nd();  // Create an instance of the second JFrame
+//        UserMyProfile2nd second = new UserMyProfile2nd();  // Create an instance of the second JFrame4
+        ImageIcon icon = (ImageIcon) lblPhoto.getIcon();
+        UserMyProfile2nd second = new UserMyProfile2nd(icon); 
+//        String imagePath = LoggedInUser.getUser().getProfilePictureUrl();
+//        second.setUserProfilePicture(imagePath);
         second.setVisible(true);                 // Show the second frame
         this.dispose();
     }//GEN-LAST:event_jRecipeStatusActionPerformed
 
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+    private void jUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jUsernameFocusGained
         // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnUpdateActionPerformed
-
-    private void jFirstNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jFirstNameFocusGained
-        // TODO add your handling code here:
-        if (jFirstName.getText().equals("Angela")){
-            jFirstName.setText("");
+        if (jUsername.getText().equals("")){
+            jUsername.setText("");
         }
-    }//GEN-LAST:event_jFirstNameFocusGained
+    }//GEN-LAST:event_jUsernameFocusGained
 
-    private void jFirstNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jFirstNameFocusLost
+    private void jUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jUsernameFocusLost
         // TODO add your handling code here:
-        if(jFirstName.getText().isEmpty()){
-            jFirstName.setText("Angela");
+        if(jUsername.getText().isEmpty()){
+            jUsername.setText("");
         }
-    }//GEN-LAST:event_jFirstNameFocusLost
+    }//GEN-LAST:event_jUsernameFocusLost
 
-    private void jFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFirstNameActionPerformed
+    private void jUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jFirstNameActionPerformed
-
-    private void jLastNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLastNameFocusGained
-        // TODO add your handling code here:
-        if (jLastName.getText().equals("Pradhan")){
-            jLastName.setText("");
-        }
-    }//GEN-LAST:event_jLastNameFocusGained
-
-    private void jLastNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLastNameFocusLost
-        // TODO add your handling code here:
-        if(jLastName.getText().isEmpty()){
-            jLastName.setText("Pradhan");
-        }
-    }//GEN-LAST:event_jLastNameFocusLost
-
-    private void jLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLastNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLastNameActionPerformed
-
-    private void jRadioButtonMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMaleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonMaleActionPerformed
-
-    private void jRadioButtonFemaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonFemaleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonFemaleActionPerformed
-
-    private void jRadioButtonOtherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonOtherActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonOtherActionPerformed
+    }//GEN-LAST:event_jUsernameActionPerformed
 
     private void CategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CategoryActionPerformed
         // TODO add your handling code here:
@@ -1074,6 +991,13 @@ public class UserMyProfile extends javax.swing.JFrame {
 
     private void SettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingsActionPerformed
         // TODO add your handling code here:
+        ImageIcon icon = (ImageIcon) lblPhoto.getIcon();
+        UserSettings set = new UserSettings(icon); 
+//        String imagePath = LoggedInUser.getUser().getProfilePictureUrl();
+//        second.setUserProfilePicture(imagePath);
+        AuthController control = new AuthController(set);
+        set.setVisible(true);                 // Show the second frame
+        this.dispose();
     }//GEN-LAST:event_SettingsActionPerformed
 
     private void myProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myProfileActionPerformed
@@ -1165,6 +1089,14 @@ public class UserMyProfile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_FiltersActionPerformed
 
+    private void jEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jEmailActionPerformed
+
+    private void jUseridActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUseridActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jUseridActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1226,19 +1158,17 @@ public class UserMyProfile extends javax.swing.JFrame {
     private javax.swing.JPanel Settings_panel;
     private javax.swing.JButton admin;
     private javax.swing.JButton btnChangePhoto;
-    private javax.swing.JButton btnUpdate;
-    private javax.swing.JTextField jFirstName;
+    private javax.swing.JTextField jEmail;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1258,19 +1188,56 @@ public class UserMyProfile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jLastName;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JRadioButton jRadioButtonFemale;
-    private javax.swing.JRadioButton jRadioButtonMale;
-    private javax.swing.JRadioButton jRadioButtonOther;
     private javax.swing.JButton jRecipeStatus;
+    private javax.swing.JTextField jUserid;
+    private javax.swing.JTextField jUsername;
     private javax.swing.JLabel lblPhoto;
     private javax.swing.JButton logOut;
     private javax.swing.JButton myProfile;
     private javax.swing.JButton selfNote;
     // End of variables declaration//GEN-END:variables
+public void setUserInfo(UserData user){
+    jUsername.setText(user.getUsername());
+    jEmail.setText(user.getEmail());
+    jUserid.setText(String.valueOf(user.getId()));
+    
+    String imagePath = user.getProfilePictureUrl();
+    ImageIcon icon = null;
+    
+    if(imagePath !=null && !imagePath.isEmpty()){
+        File imageFile = new File(imagePath);
+        if(imageFile.exists()){
+            icon = new ImageIcon(imagePath);
+        }
+//        Image img = icon.getImage().getScaledInstance(lblPhoto.getWidth(),lblPhoto.getHeight(),Image.SCALE_SMOOTH);
+//        lblPhoto.setIcon(new ImageIcon(img));
+    }if (icon == null){
+        try{
+            icon = new ImageIcon (getClass().getClassLoader().getResource("View/Images/pp.jpg"));
+        }catch(Exception e){
+            System.out.println("Default image not found!");
+            return;
+        }
+    }
+    
+    int width = 100;
+    int height =100;
+    Image img = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+    lblPhoto.setIcon(new ImageIcon(img));
+//    else{
+//        lblPhoto.setIcon(new ImageIcon("View.Image/pp.jpg"));
+//    }
+}
+// public void addProfileListener(ActionListener listener){
+//    btnChangePhoto.addActionListener(listener);
+//}
+
+public void addRecipeStatusActionListener(ActionListener listener){
+    jRecipeStatus.addActionListener(listener);
+}
 }

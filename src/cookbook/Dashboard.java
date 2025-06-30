@@ -7,6 +7,7 @@ package cookbook;
 import DAO.BookmarkDAO;
 import DAO.RecipeDAO;
 import DAO.SettingsDAO;
+import DAO.UserDao;
 import Database.Database;
 import Database.MySqlConnection;
 import Model.LoggedInUser;
@@ -35,6 +36,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import View.k;   
 import controller.SettingsController;
+import controller.UserProfileController;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 
@@ -746,6 +748,7 @@ public class Dashboard extends javax.swing.JFrame {
     private void myProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myProfileActionPerformed
         // TODO add your handling code here:
         UserMyProfile profile = new UserMyProfile();
+        UserProfileController controller = new UserProfileController(profile, new UserDao());
         profile.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_myProfileActionPerformed
@@ -925,4 +928,16 @@ public void addAddNoteListener (ActionListener listener){
 //          return Settings;
 //    }
 
+//    public void addSearchListener (ActionListener listener){
+//        Filters.addActionListener(listener);
+//    }
+//    public String getSearchText(){
+//        return Search.getText();
+//    }
+    
+//    private AdminDashboardController dashboardController;
+    
+//    public void setDashboardController(AdminDashboardController controller){
+//        this.dashboardController = controller;
+//    }
 }

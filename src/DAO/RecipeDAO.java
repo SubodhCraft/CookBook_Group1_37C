@@ -71,7 +71,7 @@ public List<Recipe> getAllRecipes() {
             );
             r.setCategory(rs.getString("category")); // set category separately
             r.setReward(rs.getDouble("reward")); 
-            r.setCompleted(r.getReward() >= 2.5);
+            r.setCompleted(r.getReward() >= 7);
             recipes.add(r);
         }
 

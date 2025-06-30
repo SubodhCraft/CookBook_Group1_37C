@@ -22,12 +22,13 @@ public class UserDao {
     // SIGNUP method returns boolean now
     public void UserDao(UserData user) {
         Connection conn = mysql.openConnection();
-        String sql = "INSERT INTO users (username, email, set_password, confirm_password) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO users (username, email, set_password, confirm_password, profile_picture_url) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, user.getUsername());
             pstmt.setString(2, user.getEmail());
             pstmt.setString(3, user.getset_Password());
             pstmt.setString(4, user.getconfirm_Password());
+            pstmt.setString(5,"View.Images/pp.jpg");
 
             pstmt.executeUpdate();
            
@@ -139,5 +140,49 @@ public class UserDao {
         }
         return false;
     }
+    
+    public UserData getUserById(int userId){
+        Connection conn = mysql.openConnection();
+        String sql = "SELECT * FROM users WHERE id = ?";
+        
+        try(PreparedStatement pstmt = conn.prepareStatement(sql)){
+            pstmt.setInt(1, userId);
+            ResultSet rs = pstmt.executeQuery();
+            
+            if (rs.next()){
+                UserData user = new UserData(
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("set_password"),
+                        rs.getString("confirm_password")
+                );
+                user.setId(rs.getInt("id"));
+                user.setProfilePictureUrl(rs.getString("profile_picture_url"));
+                return user;
+            }
+        }catch(SQLException e){
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, e);
+        }finally {
+            mysql.closeConnection(conn);
+        }
+        return null;
     }
+    
+    public boolean updateProfilePictureUrl(int userId, String pictureUrl) {
+    Connection conn = mysql.openConnection();
+    String sql = "UPDATE users SET profile_picture_url = ? WHERE id = ?";
+    
+    try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        pstmt.setString(1, pictureUrl);
+        pstmt.setInt(2, userId);
+        return pstmt.executeUpdate() > 0;
+    } catch (SQLException e) {
+        Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, e);
+    } finally {
+        mysql.closeConnection(conn);
+    }
+    return false;
+}
+
+}
 

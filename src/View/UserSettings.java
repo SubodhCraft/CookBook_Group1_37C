@@ -13,6 +13,7 @@ import cookbook.admin_dashboard;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 
 import javax.swing.JOptionPane;
 /**
@@ -26,6 +27,7 @@ public class UserSettings extends javax.swing.JFrame {
      */
     public UserSettings() {
         initComponents();
+       
         
         AuthController control = new AuthController(this);
         setVisible(true); 
@@ -34,6 +36,10 @@ public class UserSettings extends javax.swing.JFrame {
 //        setVisible(true);
 
 
+    }
+    public UserSettings(ImageIcon icon){
+        initComponents();
+         jLabel7.setIcon(icon);
     }
     
 

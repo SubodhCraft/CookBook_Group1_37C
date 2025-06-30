@@ -57,6 +57,16 @@ public class UserData {
     public void setconfirm_Password(String confirm_password) {
         this.confirm_password = confirm_password;
     }
+    
+    private String profilePictureUrl;
+    
+    public String getProfilePictureUrl(){
+        return profilePictureUrl;
+    }
+    
+    public void setProfilePictureUrl(String profilePictureUrl){
+        this.profilePictureUrl = profilePictureUrl;
+    }
 
     public UserData(String username, String email, String set_password, String confirm_password){
         this.username= username;
@@ -71,9 +81,14 @@ public class UserData {
         this.username=username;
         this.email=email;
     }
-    public UserData(){
+    public UserData(int id, String username, String email, String profilePictureUrl){
+        this.id=id;
+        this.username=username;
+        this.email= email;
+        this.profilePictureUrl = profilePictureUrl;
         
     }
-    
-
+    public UserData() {
+        System.out.print("UserData default constructor works!");
+    }
 }

@@ -77,6 +77,7 @@ private  javax.swing.JPanel mainPanel;
         
         dashboardView.addChooseImageListener(new ChooseImageListener());
         dashboardView.addRecipeListener(new AddRecipeListener());
+//        view.addSearchListener(new GlobalSearchListener());
 //        view.getSettingsButton().addActionListener(new SettingsListener());
 //        dashboardView.getSettingsButton().addActionListener(new SettingsListener());
         this.updatePanel = updatePanel;
@@ -441,5 +442,23 @@ int userId =LoggedInUser.getId();
         // dashboard.dispose(); // Optional, only if you want to close the Dashboard
     }
 }
+//    class GlobalSearchListener implements ActionListener{
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            String keyword = view.getSearchText().trim();
+//            
+//            if(keyword.isEmpty()){
+//                JOptionPane.showMessageDialog(view, "Please enter a search keyword!");
+//                return;
+//            }
+//            
+//            boolean found = searchRecipes(keyword);
+//            if(!found){
+//                JOptionPane.showMessageDialog(view, "No recipes found for: "+keyword);
+//            }
+//        }
+//        
+//    }
 
-    }
+}

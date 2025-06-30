@@ -4,7 +4,9 @@
  */
 package View;
 
+import DAO.UserDao;
 import controller.LoginController;
+import controller.UserProfileController;
 import cookbook.Dashboard;
 import static cookbook.Dashboard.Main_panel;
 import java.awt.CardLayout;
@@ -26,7 +28,10 @@ public class UserMyProfile2nd extends javax.swing.JFrame {
     public UserMyProfile2nd() {
         initComponents();
     }
-
+    public UserMyProfile2nd(ImageIcon icon){
+        initComponents();
+        jLabel7.setIcon(icon);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,7 +45,6 @@ public class UserMyProfile2nd extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel32 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -123,10 +127,6 @@ public class UserMyProfile2nd extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Angela Pradhan");
-
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/dp.png"))); // NOI18N
 
         jButton4.setBackground(new java.awt.Color(127, 1, 31));
@@ -145,7 +145,6 @@ public class UserMyProfile2nd extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,10 +156,10 @@ public class UserMyProfile2nd extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(10, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel32))
-                .addGap(42, 42, 42))
+                .addGap(58, 58, 58))
+            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,13 +172,11 @@ public class UserMyProfile2nd extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(39, 39, 39)
                 .addComponent(jLabel32)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGap(53, 53, 53)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(java.awt.Color.white);
@@ -932,6 +929,7 @@ public class UserMyProfile2nd extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         UserMyProfile first = new UserMyProfile();  // Create an instance of the second JFrame
+        UserProfileController controller = new UserProfileController(first, new UserDao());
         first.setVisible(true);                 // Show the second frame
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -1123,7 +1121,6 @@ public class UserMyProfile2nd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -1167,4 +1164,27 @@ public class UserMyProfile2nd extends javax.swing.JFrame {
     private javax.swing.JButton myProfile;
     private javax.swing.JButton selfNote;
     // End of variables declaration//GEN-END:variables
+//public void setUserProfilePicture(String imagePath) {
+//    ImageIcon icon = null;
+//
+//    if (imagePath != null && !imagePath.isEmpty()) {
+//        File imageFile = new File(imagePath);
+//        if (imageFile.exists()) {
+//            icon = new ImageIcon(imagePath);
+//        }
+//    }
+//
+//    if (icon == null) {
+//        icon = new ImageIcon(getClass().getClassLoader().getResource("View/Images/pp.jpg"));
+//    }
+//
+//    int width = jLabel7.getWidth() > 0 ? jLabel7.getWidth() : 100;
+//    int height = jLabel7.getHeight() > 0 ? jLabel7.getHeight() : 100;
+//
+//    Image img = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+//    jLabel7.setIcon(new ImageIcon(img));
+//}
+
+
+
 }
