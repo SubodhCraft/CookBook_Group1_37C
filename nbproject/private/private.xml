@@ -7,6 +7,19 @@
             <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/SettingsController.java</file>
             <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/AdminDashboardController.java</file>
             <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/DashboardController.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/Model/UserData.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/DAO/LoginDao.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/BookmarkController.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/BookmarkUIController.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/cookbook/Bookmark.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/controller/NoteController.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/cookbook/RecipeDetailPanel.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/cookbook/Dashboard.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/cookbook/Home.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/View/SelfNote.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/cookbook/admin_dashboard.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/Model/Recipe.java</file>
+            <file>file:/C:/Users/LEGION/Documents/NetBeansProjects/CookBook_Group1_37C/src/DAO/RecipeDAO.java</file>
         </group>
     </open-files>
 </project-private>

@@ -47,7 +47,8 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="backButton" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="321" max="-2" attributes="0"/>
+                                          <Component id="QR" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="284" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="durationLabel" min="-2" pref="262" max="-2" attributes="0"/>
                                               <Component id="jScrollPane1" min="-2" pref="314" max="-2" attributes="0"/>
@@ -87,10 +88,18 @@
                       <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="imageLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                      <Component id="durationLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="176" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="durationLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="176" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                              <Component id="QR" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -206,6 +215,11 @@
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Add a comment:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="QR">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="QR"/>
               </Properties>
             </Component>
           </SubComponents>

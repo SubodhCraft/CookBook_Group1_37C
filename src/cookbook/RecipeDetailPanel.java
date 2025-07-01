@@ -68,17 +68,13 @@ public Recipe getRecipe() {
     public RecipeDetailPanel() {
         initComponents();
     }
-    public void loadRecipeDetails(Recipe recipe) {
-    // Set title text
+   public void loadRecipeDetails(Recipe recipe) {
+    // Existing code for title, duration, process, imageLabel...
     titleLabel.setText(recipe.getName());
-
-    // Set duration text
     durationLabel.setText("Duration: " + recipe.getDuration() + " mins");
-
-    // Set process text in text area
     processArea.setText(recipe.getProcess());
 
-    // Load and scale image for imageLabel
+    // Load recipe image
     if (recipe.getImagePath() != null && !recipe.getImagePath().isEmpty()) {
         File imageFile = new File(recipe.getImagePath());
         if (imageFile.exists()) {
@@ -86,12 +82,28 @@ public Recipe getRecipe() {
             Image scaledImage = icon.getImage().getScaledInstance(300, 200, Image.SCALE_SMOOTH);
             imageLabel.setIcon(new ImageIcon(scaledImage));
         } else {
-            imageLabel.setIcon(null); // no image available
+            imageLabel.setIcon(null);
         }
     } else {
-        imageLabel.setIcon(null); // no image path
+        imageLabel.setIcon(null);
     }
-      if (recipe.isCompleted()) {
+
+    // Load QR code image similarly
+    if (recipe.getQrCodePath() != null && !recipe.getQrCodePath().isEmpty()) {
+        File qrFile = new File(recipe.getQrCodePath());
+        if (qrFile.exists()) {
+            ImageIcon qrIcon = new ImageIcon(recipe.getQrCodePath());
+            Image scaledQr = qrIcon.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH); // Adjust size as needed
+            QR.setIcon(new ImageIcon(scaledQr));
+        } else {
+            QR.setIcon(null);
+        }
+    } else {
+        QR.setIcon(null);
+    }
+
+    // Existing mark complete button text logic...
+    if (recipe.isCompleted()) {
         MarkasComplete.setText("Marked as Complete");
         isCompleted = true;
     } else {
@@ -99,6 +111,7 @@ public Recipe getRecipe() {
         isCompleted = false;
     }
 }
+
    private void toggleCompletion() {
     Database db = new MySqlConnection(); 
     RecipeDAO recipeDAO = new RecipeDAO(db);
@@ -185,6 +198,7 @@ public Recipe getRecipe() {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        QR = new javax.swing.JLabel();
 
         submitCommentButton.setText("Submit");
         submitCommentButton.addActionListener(new java.awt.event.ActionListener() {
@@ -235,6 +249,8 @@ public Recipe getRecipe() {
 
         jLabel1.setText("Add a comment:");
 
+        QR.setText("QR");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -248,7 +264,8 @@ public Recipe getRecipe() {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(backButton)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(321, 321, 321)
+                                    .addComponent(QR)
+                                    .addGap(284, 284, 284)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(durationLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -277,10 +294,15 @@ public Recipe getRecipe() {
                 .addComponent(titleLabel)
                 .addGap(18, 18, 18)
                 .addComponent(imageLabel)
-                .addGap(42, 42, 42)
-                .addComponent(durationLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(durationLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(QR)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
@@ -349,6 +371,7 @@ public Recipe getRecipe() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MarkasComplete;
+    private javax.swing.JLabel QR;
     private javax.swing.JButton backButton;
     private javax.swing.JTextArea commentInputArea;
     private javax.swing.JPanel commentListPanel;

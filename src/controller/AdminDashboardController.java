@@ -39,6 +39,8 @@ private  javax.swing.JPanel mainPanel;
     private admin_dashboard adminDash;
     private Home home;
     private Bookmark bookmark;
+    private String selectedQRCodePath = null;
+
     
     
     MySqlConnection mysql = new MySqlConnection();
@@ -62,7 +64,7 @@ private  javax.swing.JPanel mainPanel;
 //    dashboardView.addRecipeListener(new AddRecipeListener());
 //}
 //     public AdminDashboardController(){}
-
+    
     public AdminDashboardController(admin_dashboard dashboardView, Home homeView, Bookmark bookmarkView, RecipeDAO recipeDAO, BookmarkDAO bookmarkDAO, cookbook.update updatePanel, javax.swing.JPanel mainPanel) {
 //       public AdminDashboardController(Dashboard view){
 //        this.view=view;
@@ -76,6 +78,8 @@ private  javax.swing.JPanel mainPanel;
         
         
         dashboardView.addChooseImageListener(new ChooseImageListener());
+        dashboardView.getChooseQRButton().addActionListener(new ChooseQRListener());
+
         dashboardView.addRecipeListener(new AddRecipeListener());
 //        view.addSearchListener(new GlobalSearchListener());
 //        view.getSettingsButton().addActionListener(new SettingsListener());
@@ -88,7 +92,32 @@ private  javax.swing.JPanel mainPanel;
         this.home = home;
         this.bookmark = bookmark;
     }
-    
+    class ChooseQRListener implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Select QR Code Image");
+        int result = fileChooser.showOpenDialog(dashboardView);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            File imagesDir = new File("images");
+            if (!imagesDir.exists()) {
+                imagesDir.mkdir();
+            }
+            File destination = new File(imagesDir, selectedFile.getName());
+            try {
+                Files.copy(selectedFile.toPath(), destination.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                selectedQRCodePath = destination.getPath(); // save relative path
+                // Optionally notify user of success or update UI element showing selected QR path
+                JOptionPane.showMessageDialog(dashboardView, "QR code selected: " + selectedQRCodePath);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(dashboardView, "Failed to copy QR code image.");
+                ex.printStackTrace();
+            }
+        }
+    }
+}
+
 
 
 
@@ -129,8 +158,9 @@ int duration = Integer.parseInt(dashboardView.getRecipeDurationText().getText())
 String process = dashboardView.getRecipeProcessText().getText();
 String category = dashboardView.getCategoryField().getText();
 String imagePath = dashboardView.selectedImagePath;
+String qrCodePath = selectedQRCodePath; 
 
-Recipe recipe = new Recipe(name, duration, process, imagePath, category); // Without ID
+Recipe recipe = new Recipe(name, duration, process, imagePath, category, qrCodePath); // Without ID
 
 
                 boolean inserted = recipeDAO.insertRecipe(recipe);
@@ -479,10 +509,10 @@ int userId =LoggedInUser.getId();
     class SettingsListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Settings button clicked"); // ✅ Add this for debugging
+        System.out.println("Settings button clicked"); // Add this for debugging
 
         View.UserSettings settingsView = new View.UserSettings();
-        settingsView.setVisible(true); // ✅ This MUST be here
+        settingsView.setVisible(true); // This MUST be here
          adminDash.dispose(); // Optional, only if you want to close the Dashboard
     }
 }
