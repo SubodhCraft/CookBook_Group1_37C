@@ -11,6 +11,10 @@ package Model;
 public class UserData {
 
     private int id ;
+
+    public UserData() {
+
+    }
     
     public int getId() {
         return id;
@@ -88,7 +92,7 @@ public class UserData {
         this.profilePictureUrl = profilePictureUrl;
         
     }
-    public UserData() {
-        System.out.print("UserData default constructor works!");
-    }
+//    public UserData() {
+//        System.out.print("UserData default constructor works!");
+//    }
 }

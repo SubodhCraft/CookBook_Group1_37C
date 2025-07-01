@@ -35,10 +35,13 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import View.k;   
+import controller.NoteController;
 import controller.SettingsController;
 import controller.UserProfileController;
+import java.awt.Container;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import javax.swing.SwingWorker;
 
 public class Dashboard extends javax.swing.JFrame {
     private AdminDashboardController dashboardController;
@@ -57,7 +60,7 @@ public class Dashboard extends javax.swing.JFrame {
        setVisible(true);
 //        logOut=new javax.swing.JButton();
         logOut.setText("Logout");
-        Filters.addActionListener(evt -> handleSearch());
+//        Filters.addActionListener(evt -> handleSearch());
         
         Database db = new MySqlConnection();
         RecipeDAO recipeDAO = new RecipeDAO(db);
@@ -110,13 +113,13 @@ public class Dashboard extends javax.swing.JFrame {
         
          getContentPane().add(Main_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 650, 590));
 
-     Filters.addActionListener(new java.awt.event.ActionListener(){
-        public void actionPerformed(java.awt.event.ActionEvent evt){
-          handleSearch();
-        }
-    });
-        
-    }
+//     Filters.addActionListener(new java.awt.event.ActionListener(){
+//        public void actionPerformed(java.awt.event.ActionEvent evt){
+//          handleSearch();
+//        }
+//    });
+//        
+//    }
    
 //    private final SettingsDAO settingsDao = new SettingsDAO();
 //    private final UserSettings settingsView;
@@ -162,18 +165,53 @@ public class Dashboard extends javax.swing.JFrame {
 //        dashboardController.searchRecipes(keyword);
 //    }
     
-    private void handleSearch(){
+//    private void handleSearch(){
+//    String keyword = Search.getText().trim();
+//    if(keyword.isEmpty() || keyword.equals("Search")){
+//        JOptionPane.showMessageDialog(this, "Please enter a keyword to search.");
+//        return;
+//    }
+
+//    boolean found = dashboardController.searchRecipesWithFeedback(keyword);
+//    if (!found) {
+//        JOptionPane.showMessageDialog(this, "No results found for \"" + keyword + "\".");
+//    }
+//}
+Filters.addActionListener(evt -> {
     String keyword = Search.getText().trim();
-    if(keyword.isEmpty() || keyword.equals("Search")){
-        JOptionPane.showMessageDialog(this, "Please enter a keyword to search.");
+    if (keyword.isEmpty() || keyword.equals("Search")) {
+        JOptionPane.showMessageDialog(null, "Please enter a keyword to search."); // null = show on center
         return;
     }
 
-    boolean found = dashboardController.searchRecipesWithFeedback(keyword);
-    if (!found) {
-        JOptionPane.showMessageDialog(this, "No results found for \"" + keyword + "\".");
+    new SwingWorker<Boolean, Void>() {
+        @Override
+        protected Boolean doInBackground() throws Exception {
+            return dashboardController.searchRecipesWithFeedback(keyword);
+        }
+
+        @Override
+        protected void done() {
+            try {
+                boolean found = get();
+                if (!found) {
+                    JOptionPane.showMessageDialog(null, "No results found for \"" + keyword + "\".");
+                } else {
+                    // Optional: Switch to home panel if results go there
+                    CardLayout cl = (CardLayout) Main_panel.getLayout();
+                    cl.show(Main_panel, "home");
+                    Main_panel.revalidate();
+                    Main_panel.repaint();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "An error occurred during search.");
+            }
+        }
+    }.execute();
+});
+
     }
-}
 
       public JPanel getMainPanel() {
     return Main_panel;
@@ -732,6 +770,10 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void selfNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selfNoteActionPerformed
         // TODO add your handling code here:
+        SelfNote note = new SelfNote();
+        NoteController control = new NoteController(note);
+        note.setVisible(true);
+        this.dispose();
         
 //        CardLayout cl = (CardLayout)(Main_panel.getLayout());
 //        cl.show(Main_panel, "selfnote");  // Show your custom panel
@@ -742,7 +784,8 @@ public class Dashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         UserSettings set = new UserSettings();
         set.setUsername(LoggedInUser.getUsername());
-        set.setVisible(true);
+        SettingsController controller = new SettingsController(set);
+        controller.open();
         this.dispose();
     }//GEN-LAST:event_SettingsActionPerformed
 
@@ -780,6 +823,12 @@ public class Dashboard extends javax.swing.JFrame {
         // Logout cancelled
         System.out.println("Logout cancelled by user.");
     }
+//    Home.addActionListener(e -> {
+//    dashboardController.loadRecipesToHome();
+//    Search.setText("");  // clear the search bar
+//    System.out.println("Home button clicked!");
+//});
+
 
 
         
@@ -791,6 +840,10 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
         // TODO add your handling code here:
+        dashboardController.loadRecipesToHome();  // Refresh full home recipes view
+Search.setText("Search");                        // Clear the search bar (if Search is your search JTextField)
+System.out.println("Home button clicked!");
+
         
     }//GEN-LAST:event_HomeActionPerformed
 
@@ -921,6 +974,12 @@ public void addAddNoteListener (ActionListener listener){
         System.out.println("Attaching logout listener..");
         logOut.addActionListener(listener);
     } 
+//    public void showBookmarkPage() {
+//        Container mainPanel = null;
+//    CardLayout cl = (CardLayout) mainPanel.getLayout();
+//    cl.show(mainPanel, "bookmarkCard");  // "bookmarkCard" is the name for Bookmark panel
+//}
+
 //    public void addSettingListener(ActionListener listener){
 //        System.out.println("Settings button clicked!");
 //        Settings.addActionListener(listener);

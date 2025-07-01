@@ -12,6 +12,8 @@ import DAO.NoteDao;
 import Model.LoggedInUser;
 import Model.Notes;
 import View.SelfNote;
+import View.UserMyProfile;
+import View.UserSettings;
 //import View.Self_Note;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,12 +30,17 @@ public class NoteController {
         this.dao = new NoteDao();
         this.view = view;
 
-//        view.addAddNoteListener(new AddNoteButtonListener());
+        view.addSettingsListener(new SettingsListener());
+        view.addUserMyProfileListener(new MyProfileListener());
+//        view.addBookmarkListener(new BookmarkListener());
         loadNotes();
     }
     public void open(){
         view.setVisible(true);
         loadNotes();
+    }
+    public void dispose(){
+        view.setVisible(true);
     }
 
     public void loadNotes() {
@@ -90,6 +97,48 @@ public void deleteNote(int noteId) {
     }
 }
 
+class SettingsListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            UserSettings set = new UserSettings();
+            AuthController control = new AuthController(set);
+            set.setVisible(true);
+            control.open();
+            view.dispose();
+        }
+
+}
+
+class MyProfileListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            UserMyProfile profile = new UserMyProfile();
+//            AuthController control = new AuthController(profile);
+            profile.setVisible(true);
+//            control.open();
+        }
+
+}
+}
+
+//class BookmarkListener implements ActionListener{
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            
+//        }
+//        }
+//    }
+
+class AdminListener implements ActionListener {
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+    }
+    
 }
 
 //     public void loadNotes() {

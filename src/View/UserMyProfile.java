@@ -992,7 +992,7 @@ public class UserMyProfile extends javax.swing.JFrame {
     private void SettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingsActionPerformed
         // TODO add your handling code here:
         ImageIcon icon = (ImageIcon) lblPhoto.getIcon();
-        UserSettings set = new UserSettings(icon); 
+        UserSettings set = new UserSettings(); 
 //        String imagePath = LoggedInUser.getUser().getProfilePictureUrl();
 //        second.setUserProfilePicture(imagePath);
         AuthController control = new AuthController(set);

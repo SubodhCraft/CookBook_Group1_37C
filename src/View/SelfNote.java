@@ -15,11 +15,13 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -33,12 +35,16 @@ import javax.swing.SwingConstants;
  */
 public class SelfNote extends javax.swing.JFrame {
  private NoteController noteController;
+ 
     /**
      * Creates new form SelfNote
      */
     public SelfNote() { 
         initComponents();
         setupAddNoteButton();
+        
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setVisible(true);
         
         noteContainer.setLayout(new BoxLayout(noteContainer, BoxLayout.Y_AXIS));
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -74,7 +80,7 @@ public class SelfNote extends javax.swing.JFrame {
         logOut = new javax.swing.JButton();
         jLabel26 = new javax.swing.JLabel();
         Bookmark_panel = new javax.swing.JPanel();
-        Bookmark = new javax.swing.JButton();
+        Bookmarkbutton = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
         Challenges_panel = new javax.swing.JPanel();
         Challenges = new javax.swing.JButton();
@@ -275,19 +281,19 @@ public class SelfNote extends javax.swing.JFrame {
 
         Bookmark_panel.setBackground(new java.awt.Color(255, 255, 255));
 
-        Bookmark.setText("Bookmark");
-        Bookmark.setBorder(null);
-        Bookmark.setBorderPainted(false);
-        Bookmark.setContentAreaFilled(false);
-        Bookmark.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Bookmark.addMouseListener(new java.awt.event.MouseAdapter() {
+        Bookmarkbutton.setText("Bookmark");
+        Bookmarkbutton.setBorder(null);
+        Bookmarkbutton.setBorderPainted(false);
+        Bookmarkbutton.setContentAreaFilled(false);
+        Bookmarkbutton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Bookmarkbutton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BookmarkMouseClicked(evt);
+                BookmarkbuttonMouseClicked(evt);
             }
         });
-        Bookmark.addActionListener(new java.awt.event.ActionListener() {
+        Bookmarkbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BookmarkActionPerformed(evt);
+                BookmarkbuttonActionPerformed(evt);
             }
         });
 
@@ -299,7 +305,7 @@ public class SelfNote extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Bookmark)
+                .addComponent(Bookmarkbutton)
                 .addContainerGap())
         );
         Bookmark_panelLayout.setVerticalGroup(
@@ -308,7 +314,7 @@ public class SelfNote extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(Bookmark_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Bookmark, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                    .addComponent(Bookmarkbutton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -575,9 +581,7 @@ public class SelfNote extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(emptyMessageLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(emptyMessageLabel)
                             .addComponent(scrollPane)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -670,15 +674,15 @@ public class SelfNote extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_logOutActionPerformed
 
-    private void BookmarkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookmarkMouseClicked
+    private void BookmarkbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BookmarkbuttonMouseClicked
         // TODO add your handling code here:
 //        java.awt.CardLayout cl = (java.awt.CardLayout)(Main_panel.getLayout());
 //        cl.show(Main_panel, "bookmark");
-    }//GEN-LAST:event_BookmarkMouseClicked
+    }//GEN-LAST:event_BookmarkbuttonMouseClicked
 
-    private void BookmarkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookmarkActionPerformed
+    private void BookmarkbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookmarkbuttonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BookmarkActionPerformed
+    }//GEN-LAST:event_BookmarkbuttonActionPerformed
 
     private void ChallengesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChallengesActionPerformed
         // TODO add your handling code here:
@@ -762,8 +766,8 @@ public class SelfNote extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Bookmark;
     private javax.swing.JPanel Bookmark_panel;
+    private javax.swing.JButton Bookmarkbutton;
     private javax.swing.JButton Category;
     private javax.swing.JPanel Category_panel;
     private javax.swing.JButton Challenges;
@@ -818,6 +822,10 @@ public void clearNotePanel() {
     noteContainer.revalidate();
     noteContainer.repaint();
 }
+//public void addBookmarkListener(ActionListener listener) {
+//    BookmarkButton.addActionListener(listener);
+//}
+
 // public void refreshNotes() {
 //     jPanel1.removeAll(); // Clear old notes
 
@@ -990,6 +998,14 @@ private void setupAddNoteButton(){
         }
         
     });
+}
+
+public void addSettingsListener(ActionListener listener){
+    Settings.addActionListener(listener);
+}
+
+public void addUserMyProfileListener(ActionListener listener){
+    myProfile.addActionListener(listener);
 }
 
 }

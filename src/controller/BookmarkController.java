@@ -14,6 +14,7 @@ import Database.Database;
 import Database.MySqlConnection;
 import Model.LoggedInUser;
 import Model.Recipe;
+import cookbook.RecipeDetailPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -99,27 +100,40 @@ public class BookmarkController {
         bookmarkView.getRecipePanel().repaint();
     }
 
-    private JPanel createBookmarkCard(Recipe recipe) {
-        JPanel panel = new JPanel();
-        panel.setLayout(new BorderLayout());
-        panel.setPreferredSize(new Dimension(200, 150));
-        panel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+  private JPanel createBookmarkCard(Recipe recipe) {
+    JPanel panel = new JPanel();
+    panel.setLayout(new BorderLayout());
+    panel.setPreferredSize(new Dimension(200, 150));
+    panel.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 
-        JLabel nameLabel = new JLabel(recipe.getName());
-        nameLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        panel.add(nameLabel, BorderLayout.NORTH);
+    JLabel nameLabel = new JLabel(recipe.getName(), SwingConstants.CENTER);
+    JLabel durationLabel = new JLabel("Duration: " + recipe.getDuration() + " mins", SwingConstants.CENTER);
 
-        JLabel durationLabel = new JLabel("Duration: " + recipe.getDuration() + " mins");
-        durationLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        panel.add(durationLabel, BorderLayout.CENTER);
+    panel.add(nameLabel, BorderLayout.NORTH);
+    panel.add(durationLabel, BorderLayout.CENTER);
 
-        // You can add image loading here if you want:
-        // ImageIcon icon = new ImageIcon(recipe.getImagePath());
-        // JLabel imageLabel = new JLabel(new ImageIcon(icon.getImage().getScaledInstance(180, 100, Image.SCALE_SMOOTH)));
-        // panel.add(imageLabel, BorderLayout.SOUTH);
+    panel.addMouseListener(new java.awt.event.MouseAdapter() {
+        @Override
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            System.out.println("Clicked recipe: " + recipe.getName());
 
-        return panel;
-    }
+            RecipeDetailPanel detailPanel = new RecipeDetailPanel();
+            detailPanel.setRecipe(recipe);
+
+            JDialog dialog = new JDialog();
+            dialog.setTitle("Recipe Details");
+            dialog.setModal(true);
+            dialog.getContentPane().add(detailPanel);
+            dialog.pack();
+            dialog.setLocationRelativeTo(null);
+            dialog.setVisible(true);
+        }
+    });
+
+    return panel;
+}
+
+
 }
 
 

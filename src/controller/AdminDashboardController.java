@@ -251,6 +251,8 @@ int userId =LoggedInUser.getId();
 
     homeView.getRecipeDisplayPanel().revalidate();
     homeView.getRecipeDisplayPanel().repaint();
+     CardLayout cl = (CardLayout) mainPanel.getLayout();
+    cl.show(mainPanel, "home");
 }
 
 
@@ -364,21 +366,63 @@ int userId =LoggedInUser.getId();
 //}
 //    }
     
-    public boolean searchRecipes(String keyword){
-        List<Recipe> results = recipeDAO.searchRecipesByTitleOrCategory(keyword);
-        if(results.isEmpty()){
-            return false;
-        }
-//    JOptionPane.showMessageDialog(null,"No matching recipes found.");
-//}else{
-    homeView.displayRecipes(results);
+//    public boolean searchRecipes(String keyword){
+//        List<Recipe> results = recipeDAO.searchRecipesByTitleOrCategory(keyword);
+//        
+//        if(results.isEmpty()){
+//            return false;
+//        }
+////    JOptionPane.showMessageDialog(null,"No matching recipes found.");
+////}else{
+//
+//    homeView.displayRecipes(results);
+//    CardLayout cl = (CardLayout) mainPanel.getLayout();
+//    cl.show(mainPanel,"home");
+//    return true;
+////    }
+//
+//
+//}
+   public boolean searchRecipes(String keyword) {
+    List<Recipe> results = recipeDAO.searchRecipesByTitleOrCategory(keyword);
+    
+    if (results.isEmpty()) {
+        return false;
+    }
+    
+    // Clear the current home panel
+    homeView.getRecipeDisplayPanel().removeAll();
+    
+    for (Recipe recipe : results) {
+        // Create a clickable recipe card like in your normal loading method
+        JPanel recipeCard = createRecipeCard(recipe);
+        
+        recipeCard.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RecipeDetailPanel detailPanel = new RecipeDetailPanel();
+                detailPanel.setRecipe(recipe);
+
+                // Add detail panel to mainPanel and show it
+                mainPanel.add(detailPanel, "detail");
+                CardLayout cl = (CardLayout) mainPanel.getLayout();
+                cl.show(mainPanel, "detail");
+            }
+        });
+        
+        homeView.getRecipeDisplayPanel().add(recipeCard);
+    }
+    
+    homeView.getRecipeDisplayPanel().revalidate();
+    homeView.getRecipeDisplayPanel().repaint();
+    
+    // Show the home panel with the filtered clickable cards
     CardLayout cl = (CardLayout) mainPanel.getLayout();
-    cl.show(mainPanel,"home");
+    cl.show(mainPanel, "home");
+    
     return true;
-//    }
-
-
 }
+
  public boolean searchRecipesWithFeedback(String keyword) {
     boolean found = searchRecipes(keyword);
     return found;
@@ -439,7 +483,7 @@ int userId =LoggedInUser.getId();
 
         View.UserSettings settingsView = new View.UserSettings();
         settingsView.setVisible(true); // ✅ This MUST be here
-        // dashboard.dispose(); // Optional, only if you want to close the Dashboard
+         adminDash.dispose(); // Optional, only if you want to close the Dashboard
     }
 }
 //    class GlobalSearchListener implements ActionListener{

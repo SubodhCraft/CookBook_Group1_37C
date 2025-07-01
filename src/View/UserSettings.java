@@ -5,6 +5,7 @@
 package View;
 
 import DAO.NoteDao;
+import Model.UserData;
 import controller.AuthController;
 import controller.LoginController;
 import controller.NoteController;
@@ -14,7 +15,9 @@ import static cookbook.Dashboard.Main_panel;
 import cookbook.admin_dashboard;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.ImageIcon;
 
 import javax.swing.JOptionPane;
@@ -29,7 +32,6 @@ public class UserSettings extends javax.swing.JFrame {
      */
     public UserSettings() {
         initComponents();
-       
         
         AuthController control = new AuthController(this);
         setVisible(true); 
@@ -39,10 +41,41 @@ public class UserSettings extends javax.swing.JFrame {
 
 
     }
-    public UserSettings(ImageIcon icon){
-        initComponents();
-         jLabel7.setIcon(icon);
+    
+    public void setUserInfo(UserData user){
+
+    
+    String imagePath = user.getProfilePictureUrl();
+    ImageIcon icon = null;
+    
+    if(imagePath !=null && !imagePath.isEmpty()){
+        File imageFile = new File(imagePath);
+        if(imageFile.exists()){
+            icon = new ImageIcon(imagePath);
+        }
+//        Image img = icon.getImage().getScaledInstance(lblPhoto.getWidth(),lblPhoto.getHeight(),Image.SCALE_SMOOTH);
+//        lblPhoto.setIcon(new ImageIcon(img));
+    }if (icon == null){
+        try{
+            icon = new ImageIcon (getClass().getClassLoader().getResource("View/Images/pp.jpg"));
+        }catch(Exception e){
+            System.out.println("Default image not found!");
+            return;
+        }
     }
+    
+    int width = 100;
+    int height =100;
+    Image img = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+    jLabel7.setIcon(new ImageIcon(img));
+//    else{
+//        lblPhoto.setIcon(new ImageIcon("View.Image/pp.jpg"));
+//    }
+}
+//    public UserSettings(ImageIcon icon){
+//        initComponents();
+//         jLabel7.setIcon(icon);
+//    }
     
 
     /**

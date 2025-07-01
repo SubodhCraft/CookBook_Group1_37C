@@ -5,10 +5,13 @@
 package controller;
 
 import DAO.SettingsDAO;
+import DAO.UserDao;
 import Model.LoggedInUser;
+import Model.UserData;
 import View.UserSettings;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,10 +19,14 @@ import java.awt.event.ActionListener;
  */
 public class SettingsController {
     private final UserSettings settingsView;
+    private UserDao userDao;
+
     
     public SettingsController(UserSettings View) {
         this.settingsView = View;
+        this.userDao = new UserDao();
         loadUserInfo();
+        loadUserData();
         
 //        settingsView.add
     }
@@ -27,6 +34,20 @@ public class SettingsController {
     private void loadUserInfo(){
         String username = LoggedInUser.getUsername();
         settingsView.setUsername(username);
+    }
+    
+    public void open(){
+        this.settingsView.setVisible(true);
+    }
+    
+    private void loadUserData() {
+        int userId = LoggedInUser.getId();
+        UserData user = userDao.getUserById(userId);
+        if (user != null) {
+            settingsView.setUserInfo(user);
+        } else {
+            JOptionPane.showMessageDialog(settingsView, "Failed to load user info.");
+        }
     }
 //    private final SettingsDAO settingsDao = new SettingsDAO();
 //    private final UserSettings settingsView;

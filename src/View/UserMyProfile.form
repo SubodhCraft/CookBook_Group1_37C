@@ -252,7 +252,6 @@
                           <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel12" min="-2" pref="16" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jUserid" min="-2" max="-2" attributes="0"/>
