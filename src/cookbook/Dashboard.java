@@ -58,6 +58,8 @@ public class Dashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 //       AdminDashboardController controller = new AdminDashboardController(this);
        setVisible(true);
+       setSize(920, 707);
+       setLocationRelativeTo(null);
 //        logOut=new javax.swing.JButton();
         logOut.setText("Logout");
 //        Filters.addActionListener(evt -> handleSearch());
@@ -783,7 +785,7 @@ Filters.addActionListener(evt -> {
     private void SettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SettingsActionPerformed
         // TODO add your handling code here:
         UserSettings set = new UserSettings();
-        set.setUsername(LoggedInUser.getUsername());
+//        set.setUsername(LoggedInUser.getUsername());
         SettingsController controller = new SettingsController(set);
         controller.open();
         this.dispose();

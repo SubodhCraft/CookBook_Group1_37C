@@ -9,10 +9,13 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.util.List;
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
 /**
@@ -28,8 +31,12 @@ public class Bookmark extends javax.swing.JPanel {
     public Bookmark() {
         initComponents();
         bookmarkRecipePanel = new JPanel();
-    bookmarkRecipePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        bookmarkRecipePanel.setLayout(new GridLayout(0,5,15,15));
+//    bookmarkRecipePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
     bookmarkScrollPane.setViewportView(bookmarkRecipePanel);
+    
+    bookmarkScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+    bookmarkScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
     }
     
     public void addBookmarkedRecipe(JPanel recipeCard) {
@@ -89,8 +96,8 @@ public class Bookmark extends javax.swing.JPanel {
                 .addGap(38, 38, 38)
                 .addComponent(Popularthisweek_label, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bookmarkScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(bookmarkScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         add(Bookmarkpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
@@ -152,15 +159,25 @@ public void displayBookmarks(List<Recipe> bookmarks){
 
 private JPanel createBookmarkCard(Recipe recipe){
     JPanel card = new JPanel();
-    card.setLayout(new BorderLayout());
-    card.setPreferredSize(new Dimension(200,150));
-    card.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+    card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
+//    card.setLayout(new BorderLayout());
+    card.setPreferredSize(new Dimension(180,150));
+    card.setBorder(BorderFactory.createTitledBorder(recipe.getName()));
+    card.setBackground(Color.WHITE);
+//    card.setBorder(BorderFactory.createLineBorder(Color.GRAY));
     
-    JLabel nameLabel = new JLabel(recipe.getName(), SwingConstants.CENTER);
-    JLabel timeLabel = new JLabel("Time: "+recipe.getDuration()+ " mins", SwingConstants.CENTER);
-    
-    card.add(nameLabel,BorderLayout.NORTH);
-    card.add(timeLabel,BorderLayout.CENTER);
+//    JLabel nameLabel = new JLabel(recipe.getName(), SwingConstants.CENTER);
+//    JLabel timeLabel = new JLabel("Time: "+recipe.getDuration()+ " mins", SwingConstants.CENTER);
+//    
+//    card.add(nameLabel,BorderLayout.NORTH);
+//    card.add(timeLabel,BorderLayout.CENTER);
+
+JLabel timeLabel = new JLabel("Duration: "+recipe.getDuration()+ "mins");
+JLabel nameLabel = new JLabel(recipe.getName());
+
+card.add(nameLabel);
+card.add(timeLabel);
+
     
     return card;
 }

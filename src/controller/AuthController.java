@@ -274,7 +274,7 @@ public class AuthController {
 //             }
              String email= LoggedInUser.getEmail();
              String username = LoggedInUser.getUsername();
-             userView3.setUsername(username);
+//             userView3.setUsername(username);
              
              if (email == null || email.isEmpty()){
                  JOptionPane.showMessageDialog(userView3,"User not logged in properly!");

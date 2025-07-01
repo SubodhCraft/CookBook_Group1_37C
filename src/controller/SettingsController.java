@@ -33,7 +33,7 @@ public class SettingsController {
     
     private void loadUserInfo(){
         String username = LoggedInUser.getUsername();
-        settingsView.setUsername(username);
+//        settingsView.setUsername(username);
     }
     
     public void open(){

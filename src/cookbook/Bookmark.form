@@ -58,8 +58,8 @@
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   <Component id="Popularthisweek_label" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="bookmarkScrollPane" pref="490" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="bookmarkScrollPane" min="-2" pref="470" max="-2" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

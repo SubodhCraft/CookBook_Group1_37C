@@ -8,6 +8,7 @@ import Model.Recipe;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.File;
 import java.util.List;
@@ -36,11 +37,12 @@ public class Home extends javax.swing.JFrame {
 //        home_panel = new JPanel();
 //        home_panel.setLayout(new BoxLayout(home_panel,BoxLayout.Y_AXIS));
 //        add(home_panel);
-        
-        recipeDisplayPanel.setLayout(new BoxLayout(recipeDisplayPanel, BoxLayout.X_AXIS));
+        recipeDisplayPanel.setLayout(new GridLayout(0,5,15,15));
+//        recipeDisplayPanel.setLayout(new BoxLayout(recipeDisplayPanel, BoxLayout.X_AXIS));
     jScrollPane1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-    jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+    jScrollPane1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
+    jScrollPane1.setViewportView(recipeDisplayPanel);
 
     }
     
@@ -56,74 +58,20 @@ public class Home extends javax.swing.JFrame {
 
         home_panel = new javax.swing.JPanel();
         Popularthisweek_label = new javax.swing.JLabel();
-        rating_1 = new javax.swing.JPanel();
-        katsuimg_label = new javax.swing.JLabel();
-        Japanese_kastsu = new javax.swing.JTextField();
-        Bestratings_label = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         recipeDisplayPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        // getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Popularthisweek_label.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         Popularthisweek_label.setForeground(new java.awt.Color(127, 1, 31));
         Popularthisweek_label.setText("Popular This Week");
 
-        rating_1.setBackground(new java.awt.Color(255, 255, 255));
-        rating_1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        rating_1.setMaximumSize(new java.awt.Dimension(180, 307));
-        rating_1.setMinimumSize(new java.awt.Dimension(180, 307));
-        rating_1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                rating_1MouseClicked(evt);
-            }
-        });
-
-        katsuimg_label.setIcon(new javax.swing.ImageIcon("D:\\oop\\icons\\katsu.png")); // NOI18N
-
-        Japanese_kastsu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        Japanese_kastsu.setForeground(new java.awt.Color(127, 1, 31));
-        Japanese_kastsu.setText("Japanese Katsu Bowl");
-        Japanese_kastsu.setBorder(null);
-        Japanese_kastsu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Japanese_kastsuActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout rating_1Layout = new javax.swing.GroupLayout(rating_1);
-        rating_1.setLayout(rating_1Layout);
-        rating_1Layout.setHorizontalGroup(
-            rating_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(rating_1Layout.createSequentialGroup()
-                .addGroup(rating_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(rating_1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(katsuimg_label))
-                    .addGroup(rating_1Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(Japanese_kastsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        rating_1Layout.setVerticalGroup(
-            rating_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(rating_1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(katsuimg_label)
-                .addGap(18, 18, 18)
-                .addComponent(Japanese_kastsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
-        );
-
-        Bestratings_label.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        Bestratings_label.setForeground(new java.awt.Color(127, 1, 31));
-        Bestratings_label.setText("Best Ratings");
-
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(null);
 
-        recipeDisplayPanel.setBackground(new java.awt.Color(255, 255, 255));
+        recipeDisplayPanel.setBackground(new java.awt.Color(204, 204, 204));
         jScrollPane1.setViewportView(recipeDisplayPanel);
 
         javax.swing.GroupLayout home_panelLayout = new javax.swing.GroupLayout(home_panel);
@@ -132,10 +80,7 @@ public class Home extends javax.swing.JFrame {
             home_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(home_panelLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(home_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Popularthisweek_label, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Bestratings_label, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rating_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Popularthisweek_label, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(291, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, home_panelLayout.createSequentialGroup()
                 .addContainerGap()
@@ -147,27 +92,14 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(Popularthisweek_label, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Bestratings_label, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(rating_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        // getContentPane().add(home_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 670, 590));
+        getContentPane().add(home_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 670, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Japanese_kastsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Japanese_kastsuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Japanese_kastsuActionPerformed
-
-    private void rating_1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rating_1MouseClicked
-        // TODO add your handling code here:
-        System.out.println("clicked succesfully");
-    }//GEN-LAST:event_rating_1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -203,13 +135,9 @@ public class Home extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Bestratings_label;
-    private javax.swing.JTextField Japanese_kastsu;
     private javax.swing.JLabel Popularthisweek_label;
     public javax.swing.JPanel home_panel;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel katsuimg_label;
-    private javax.swing.JPanel rating_1;
     private javax.swing.JPanel recipeDisplayPanel;
     // End of variables declaration//GEN-END:variables
 public void displayRecipes(List<Recipe> recipes){

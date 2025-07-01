@@ -42,8 +42,10 @@ public class SelfNote extends javax.swing.JFrame {
     public SelfNote() { 
         initComponents();
         setupAddNoteButton();
+        setLocationRelativeTo(null);
+//        setSize(920, 707);
         
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setVisible(true);
         
         noteContainer.setLayout(new BoxLayout(noteContainer, BoxLayout.Y_AXIS));

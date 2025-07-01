@@ -179,111 +179,189 @@ Recipe recipe = new Recipe(name, duration, process, imagePath, category, qrCodeP
         }
     }
 
+//
+//  public void loadRecipesToHome() {
+//
+//    
+//
+//    homeView.getRecipeDisplayPanel().removeAll();
+//
+//    List<Recipe> recipes = recipeDAO.getAllRecipes();
+//
+//    for (Recipe recipe : recipes) {
+//        JPanel recipeCard = createRecipeCard(recipe);
+//          recipeCard.addMouseListener(new java.awt.event.MouseAdapter() {
+//            @Override
+//            public void mouseClicked(java.awt.event.MouseEvent evt) {
+//              
+//                RecipeDetailPanel detailPanel = new RecipeDetailPanel();
+//                detailPanel.setRecipe(recipe);  
+//
+//                
+//                mainPanel.add(detailPanel, "detail");
+//
+//               
+//                CardLayout cl = (CardLayout) mainPanel.getLayout();
+//                cl.show(mainPanel, "detail");
+//            }
+//    });
+//
+//
+//        // Create Edit button
+//        JButton editButton = new JButton("Edit");
+//        editButton.setPreferredSize(new Dimension(80, 25));
+//        editButton.addActionListener(e -> {
+//            System.out.println("Edit clicked for recipe ID: " + recipe.getId());
+//            // TODO: add edit logic here
+//            
+//    edit editPanel = new edit(recipeDAO, this, mainPanel, updatePanel); // pass 4 args
+//editPanel.setRecipeId(recipe.getId());
+//
+//                JDialog dialog = new JDialog();
+//    dialog.setTitle("Edit Recipe");
+//    dialog.setModal(true);
+//    dialog.getContentPane().add(editPanel);
+//    dialog.pack();
+//    dialog.setLocationRelativeTo(null);
+//    dialog.setVisible(true);
+//
+//    
+//        });
+//
+//        // Create Bookmark button
+//        JButton bookmarkButton = new JButton();
+//
+//        
+//
+//
+//        int recipeId = recipe.getId();
+//
+//int userId =LoggedInUser.getId();
+//        boolean isBookmarked = bookmarkDAO.getBookmarkedRecipeIds(userId).contains(recipeId);
+//        bookmarkButton.setText(isBookmarked ? "Bookmarked" : "Bookmark");
+//        bookmarkButton.setPreferredSize(new Dimension(100, 25));
+//
+//        bookmarkButton.addActionListener(e -> {
+//            boolean toggled = bookmarkDAO.toggleBookmark(userId,recipeId);
+//
+//            if (toggled) {
+//                // Update the button text based on new state
+//                boolean nowBookmarked = bookmarkDAO.getBookmarkedRecipeIds(userId).contains(recipeId);
+//                bookmarkButton.setText(nowBookmarked ? "Bookmarked" : "Bookmark");
+//
+//                // Reload the bookmark panel to reflect the change
+//                loadBookmarkedRecipes();
+//            } else {
+//                JOptionPane.showMessageDialog(homeView, "Failed to toggle bookmark.");
+//            }
+//        });
+//
+//
+//        // Create panel to hold buttons side by side
+//        JPanel buttonsPanel = new JPanel();
+//        buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.X_AXIS));
+//        buttonsPanel.setMaximumSize(new Dimension(200, 30));
+//        buttonsPanel.setBackground(Color.WHITE);
+//        buttonsPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+//
+//        // Add buttons to the panel
+//        buttonsPanel.add(editButton);
+//        buttonsPanel.add(Box.createHorizontalStrut(10)); // space between buttons
+//        buttonsPanel.add(bookmarkButton);
+//
+//        // Add buttons panel to recipe card
+//        recipeCard.add(buttonsPanel);
+//
+//        // Add the card to the home panel
+//
+//       
+//
+//        homeView.getRecipeDisplayPanel().add(recipeCard);
+//    }
+//
+//    homeView.getRecipeDisplayPanel().revalidate();
+//    homeView.getRecipeDisplayPanel().repaint();
+//     CardLayout cl = (CardLayout) mainPanel.getLayout();
+//    cl.show(mainPanel, "home");
+//}
 
-  public void loadRecipesToHome() {
+public void loadRecipesToHome() {
+    JPanel displayPanel = homeView.getRecipeDisplayPanel();
+    displayPanel.removeAll();
 
-    
-
-    homeView.getRecipeDisplayPanel().removeAll();
+    // Set GridLayout: dynamic rows, 5 columns
+    displayPanel.setLayout(new GridLayout(0, 5, 15, 15)); // 5 columns, with gaps
 
     List<Recipe> recipes = recipeDAO.getAllRecipes();
 
     for (Recipe recipe : recipes) {
         JPanel recipeCard = createRecipeCard(recipe);
-          recipeCard.addMouseListener(new java.awt.event.MouseAdapter() {
+
+        // Add click listener to open detail panel
+        recipeCard.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-              
                 RecipeDetailPanel detailPanel = new RecipeDetailPanel();
-                detailPanel.setRecipe(recipe);  
-
-                
+                detailPanel.setRecipe(recipe);
                 mainPanel.add(detailPanel, "detail");
 
-               
                 CardLayout cl = (CardLayout) mainPanel.getLayout();
                 cl.show(mainPanel, "detail");
             }
-    });
+        });
 
-
-        // Create Edit button
+        // Edit button
         JButton editButton = new JButton("Edit");
         editButton.setPreferredSize(new Dimension(80, 25));
         editButton.addActionListener(e -> {
-            System.out.println("Edit clicked for recipe ID: " + recipe.getId());
-            // TODO: add edit logic here
-            
-    edit editPanel = new edit(recipeDAO, this, mainPanel, updatePanel); // pass 4 args
-editPanel.setRecipeId(recipe.getId());
+            edit editPanel = new edit(recipeDAO, this, mainPanel, updatePanel);
+            editPanel.setRecipeId(recipe.getId());
 
-                JDialog dialog = new JDialog();
-    dialog.setTitle("Edit Recipe");
-    dialog.setModal(true);
-    dialog.getContentPane().add(editPanel);
-    dialog.pack();
-    dialog.setLocationRelativeTo(null);
-    dialog.setVisible(true);
-
-    
+            JDialog dialog = new JDialog();
+            dialog.setTitle("Edit Recipe");
+            dialog.setModal(true);
+            dialog.getContentPane().add(editPanel);
+            dialog.pack();
+            dialog.setLocationRelativeTo(null);
+            dialog.setVisible(true);
         });
 
-        // Create Bookmark button
+        // Bookmark button
         JButton bookmarkButton = new JButton();
-
-        
-
-
         int recipeId = recipe.getId();
-
-int userId =LoggedInUser.getId();
+        int userId = LoggedInUser.getId();
         boolean isBookmarked = bookmarkDAO.getBookmarkedRecipeIds(userId).contains(recipeId);
         bookmarkButton.setText(isBookmarked ? "Bookmarked" : "Bookmark");
         bookmarkButton.setPreferredSize(new Dimension(100, 25));
 
         bookmarkButton.addActionListener(e -> {
-            boolean toggled = bookmarkDAO.toggleBookmark(userId,recipeId);
-
+            boolean toggled = bookmarkDAO.toggleBookmark(userId, recipeId);
             if (toggled) {
-                // Update the button text based on new state
                 boolean nowBookmarked = bookmarkDAO.getBookmarkedRecipeIds(userId).contains(recipeId);
                 bookmarkButton.setText(nowBookmarked ? "Bookmarked" : "Bookmark");
-
-                // Reload the bookmark panel to reflect the change
                 loadBookmarkedRecipes();
             } else {
                 JOptionPane.showMessageDialog(homeView, "Failed to toggle bookmark.");
             }
         });
 
-
-        // Create panel to hold buttons side by side
+        // Panel for buttons
         JPanel buttonsPanel = new JPanel();
-        buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.X_AXIS));
-        buttonsPanel.setMaximumSize(new Dimension(200, 30));
+        buttonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         buttonsPanel.setBackground(Color.WHITE);
-        buttonsPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        // Add buttons to the panel
         buttonsPanel.add(editButton);
-        buttonsPanel.add(Box.createHorizontalStrut(10)); // space between buttons
         buttonsPanel.add(bookmarkButton);
 
-        // Add buttons panel to recipe card
         recipeCard.add(buttonsPanel);
 
-        // Add the card to the home panel
-
-       
-
-        homeView.getRecipeDisplayPanel().add(recipeCard);
+        // Add recipe card to display panel
+        displayPanel.add(recipeCard);
     }
 
-    homeView.getRecipeDisplayPanel().revalidate();
-    homeView.getRecipeDisplayPanel().repaint();
-     CardLayout cl = (CardLayout) mainPanel.getLayout();
-    cl.show(mainPanel, "home");
+    displayPanel.revalidate();
+    displayPanel.repaint();
 }
+
 
 
 
