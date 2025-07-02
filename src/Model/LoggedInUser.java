@@ -13,6 +13,7 @@ public class LoggedInUser {
     private static String username;
     private static String email;
     private static String profilePictureUrl;
+    private static String role;
     
     private static UserData user;
     
@@ -42,6 +43,13 @@ public class LoggedInUser {
     public static String getProfilePictureUrl() {
         return profilePictureUrl;
     }
+    public static String getRole(){
+        return role;
+    }
+    public static void setRole(String r){
+         role = r;
+    }
+    
     
 
 //    public static void setProfilePictureUrl(String profilePictureUrl) {

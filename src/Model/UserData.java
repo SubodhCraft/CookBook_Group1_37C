@@ -71,12 +71,33 @@ public class UserData {
     public void setProfilePictureUrl(String profilePictureUrl){
         this.profilePictureUrl = profilePictureUrl;
     }
-
+    
+    private String role;
+    
+    public String getRole(){
+        return role;
+    }
+    
+    public void setRole(String role){
+        this.role = role;
+    }
+    
     public UserData(String username, String email, String set_password, String confirm_password){
         this.username= username;
         this.email = email;
         this.set_password = set_password;
         this.confirm_password=confirm_password;
+       
+        
+      
+    }
+
+    public UserData(String username, String email, String set_password, String confirm_password, String role){
+        this.username= username;
+        this.email = email;
+        this.set_password = set_password;
+        this.confirm_password=confirm_password;
+        this.role = role;
         
       
     }

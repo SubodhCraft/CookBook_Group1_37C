@@ -4,6 +4,7 @@
  */
 package cookbook;
 
+import Model.LoggedInUser;
 import Model.Recipe;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -207,7 +208,23 @@ private JPanel createRecipeCard(Recipe recipe) {
 
     card.add(durationLabel);
     card.add(categoryLabel);
+    
+//    if (!LoggedInUser.getRole().equalsIgnoreCase("admin")){
+//        
+//    }
 
+//    if ("admin".equalsIgnoreCase(Model.LoggedInUser.getRole())) {
+//        javax.swing.JButton btnEdit = new javax.swing.JButton("Edit");
+//        btnEdit.setAlignmentX(JPanel.CENTER_ALIGNMENT);
+//        btnEdit.addActionListener(e -> {
+//            // Open your edit panel or call controller logic here
+//            System.out.println("Edit clicked for: " + recipe.getName());
+//        });
+//        card.add(btnEdit);
+//    }
+
+
+    
     return card;
 }
 

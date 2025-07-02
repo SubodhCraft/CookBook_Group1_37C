@@ -55,6 +55,11 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard() {
         initComponents();
+        if(!LoggedInUser.getRole().equalsIgnoreCase("admin")){
+            admin.setVisible(false);
+        }else{
+            admin.setVisible(true);
+        }
         setLocationRelativeTo(null);
 //       AdminDashboardController controller = new AdminDashboardController(this);
        setVisible(true);

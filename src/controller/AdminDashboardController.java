@@ -309,22 +309,44 @@ public void loadRecipesToHome() {
                 cl.show(mainPanel, "detail");
             }
         });
+        
+        JButton editButton = null;
+        
+        if("admin".equalsIgnoreCase(LoggedInUser.getRole())){
+            editButton = new JButton("Edit");
+            editButton.setPreferredSize(new Dimension(80,25));
+            editButton.addActionListener( e-> {
+                edit editPanel = new edit (recipeDAO, this, mainPanel, updatePanel);
+                editPanel.setRecipeId(recipe.getId());
+                
+                JDialog dialog = new JDialog();
+                dialog.setTitle("Edit Recipe");
+                dialog.setModal(true);
+                dialog.getContentPane().add(editPanel);
+                dialog.pack();
+                dialog.setLocationRelativeTo(null);
+                dialog.setVisible(true);
+            });
+        }
 
-        // Edit button
-        JButton editButton = new JButton("Edit");
-        editButton.setPreferredSize(new Dimension(80, 25));
-        editButton.addActionListener(e -> {
-            edit editPanel = new edit(recipeDAO, this, mainPanel, updatePanel);
-            editPanel.setRecipeId(recipe.getId());
+//        // Edit button
+//        JButton editButton = new JButton("Edit");
+//        editButton.setPreferredSize(new Dimension(80, 25));
+//        editButton.addActionListener(e -> {
+//            edit editPanel = new edit(recipeDAO, this, mainPanel, updatePanel);
+//            editPanel.setRecipeId(recipe.getId());
+//
+//            JDialog dialog = new JDialog();
+//            dialog.setTitle("Edit Recipe");
+//            dialog.setModal(true);
+//            dialog.getContentPane().add(editPanel);
+//            dialog.pack();
+//            dialog.setLocationRelativeTo(null);
+//            dialog.setVisible(true);
+//            
+//            
+//        });
 
-            JDialog dialog = new JDialog();
-            dialog.setTitle("Edit Recipe");
-            dialog.setModal(true);
-            dialog.getContentPane().add(editPanel);
-            dialog.pack();
-            dialog.setLocationRelativeTo(null);
-            dialog.setVisible(true);
-        });
 
         // Bookmark button
         JButton bookmarkButton = new JButton();
@@ -349,7 +371,11 @@ public void loadRecipesToHome() {
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
         buttonsPanel.setBackground(Color.WHITE);
-        buttonsPanel.add(editButton);
+        
+        if(editButton != null){
+            buttonsPanel.add(editButton);
+        }
+//        buttonsPanel.add(editButton);
         buttonsPanel.add(bookmarkButton);
 
         recipeCard.add(buttonsPanel);

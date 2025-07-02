@@ -77,6 +77,12 @@ public class LoginDao {
             userData.setId(rs.getInt("Id")); 
             userData.setEmail(rs.getString("Email"));
             userData.setUsername(rs.getString("username"));
+            userData.setRole(rs.getString("role"));
+            
+            LoggedInUser.setId(userData.getId());
+            LoggedInUser.setUsername(userData.getUsername()); 
+             LoggedInUser.setEmail(userData.getEmail());
+              LoggedInUser.setRole(userData.getRole());
           
         }
     } catch (SQLException e) {
