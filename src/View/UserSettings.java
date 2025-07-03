@@ -910,6 +910,8 @@ public class UserSettings extends javax.swing.JFrame {
     
       jLabelPreferences.setForeground(java.awt.Color.WHITE); // Preferences title
     jLabelSetPassword.setForeground(java.awt.Color.WHITE);
+    Menu_panel.setForeground(java.awt.Color.WHITE);
+    Search_panel.setForeground(java.awt.Color.WHITE);
         
         jLabel3.setForeground(java.awt.Color.WHITE);
     } else {
@@ -925,6 +927,8 @@ public class UserSettings extends javax.swing.JFrame {
     jPanel3.setBackground(java.awt.Color.WHITE); 
     jLabelPreferences.setForeground(java.awt.Color.BLACK); // Reset text color
     jLabelSetPassword.setForeground(java.awt.Color.BLACK);
+    Menu_panel.setForeground(java.awt.Color.BLACK);
+    Search_panel.setForeground(java.awt.Color.BLACK);
     }
        
 

@@ -24,6 +24,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Model.Comment;
 import Model.LoggedInUser;
+import DAO.UserRecipeCompletionDAO;
 
 
 /**
@@ -37,11 +38,13 @@ public class RecipeDetailPanel extends javax.swing.JPanel {
      */
     Database db = new MySqlConnection();
     private CommentDAO commentDAO = new CommentDAO(db);
+    private UserRecipeCompletionDAO userRecipeCompletionDAO = new UserRecipeCompletionDAO(db);
 
     
     private Recipe currentRecipe;
     private java.awt.event.ActionListener backButtonListener;
     private boolean isCompleted = false;  // or fetch actual state from DB
+    
  
 
 
@@ -103,37 +106,71 @@ public Recipe getRecipe() {
     } else {
         QR.setIcon(null);
     }
+  isCompleted = userRecipeCompletionDAO.isRecipeCompletedByUser(currentUserId, recipe.getId());
 
-    // Existing mark complete button text logic...
-    if (recipe.isCompleted()) {
+    if (isCompleted) {
         MarkasComplete.setText("Marked as Complete");
-        isCompleted = true;
     } else {
         MarkasComplete.setText("Mark as Complete");
-        isCompleted = false;
     }
+
 }
 
+//   private void toggleCompletion() {
+//    Database db = new MySqlConnection(); 
+//    RecipeDAO recipeDAO = new RecipeDAO(db);
+//    int recipeId = currentRecipe.getId();
+//
+//    if (!isCompleted) {
+//        // Mark as complete: set reward to 2.5 (fixed)
+//        currentRecipe.setReward(2.5);
+//        MarkasComplete.setText("Marked as Complete");
+//    } else {
+//        // Unmark complete: set reward back to 0
+//        currentRecipe.setReward(0);
+//        MarkasComplete.setText("Mark as Complete");
+//    }
+//
+//    isCompleted = !isCompleted;
+//
+//    // Update reward in database
+//    recipeDAO.updateRecipeReward(recipeId, currentRecipe.getReward());
+//}
+//   private void toggleCompletion() {
+//    Database db = new MySqlConnection(); 
+//    RecipeDAO recipeDAO = new RecipeDAO(db);
+//    int recipeId = currentRecipe.getId();
+//
+//    if (!isCompleted) {
+//        currentRecipe.setReward(2.5);
+//        MarkasComplete.setText("Marked as Complete");
+//    } else {
+//        currentRecipe.setReward(0);
+//        MarkasComplete.setText("Mark as Complete");
+//    }
+//
+//    isCompleted = !isCompleted;
+//    recipeDAO.updateRecipeReward(recipeId, currentRecipe.getReward());
+//}
    private void toggleCompletion() {
-    Database db = new MySqlConnection(); 
-    RecipeDAO recipeDAO = new RecipeDAO(db);
+    int userId = currentUserId;  // Logged in user id
     int recipeId = currentRecipe.getId();
 
+    double rewardForCompletion = 2.5;  // example reward value
+
     if (!isCompleted) {
-        // Mark as complete: set reward to 2.5 (fixed)
-        currentRecipe.setReward(2.5);
+        // Mark as complete with reward
+        userRecipeCompletionDAO.setRecipeCompletion(userId, recipeId, true, rewardForCompletion);
         MarkasComplete.setText("Marked as Complete");
     } else {
-        // Unmark complete: set reward back to 0
-        currentRecipe.setReward(0);
+        // Unmark completion
+        userRecipeCompletionDAO.setRecipeCompletion(userId, recipeId, false, 0);
         MarkasComplete.setText("Mark as Complete");
     }
 
     isCompleted = !isCompleted;
-
-    // Update reward in database
-    recipeDAO.updateRecipeReward(recipeId, currentRecipe.getReward());
 }
+
    private void loadComments() {
     commentListPanel.removeAll();
 
@@ -363,12 +400,7 @@ public Recipe getRecipe() {
 
     private void MarkasCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarkasCompleteActionPerformed
         // TODO add your handling code here:
-        MarkasComplete.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                toggleCompletion();
-            }
-        });
+         toggleCompletion();
     }//GEN-LAST:event_MarkasCompleteActionPerformed
 
     private void backButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMouseClicked
