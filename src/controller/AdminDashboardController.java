@@ -155,11 +155,12 @@ private  javax.swing.JPanel mainPanel;
             try {
               String name = dashboardView.getRecipeNameText().getText();
 int duration = Integer.parseInt(dashboardView.getRecipeDurationText().getText());
+String process = dashboardView.getRecipeProcessText().getText();
 String category = dashboardView.getCategoryField().getText();
 String imagePath = dashboardView.selectedImagePath;
 String qrCodePath = selectedQRCodePath; 
 
-Recipe recipe = new Recipe(name, duration, imagePath, category, qrCodePath); // Without ID
+Recipe recipe = new Recipe(name, duration, process, imagePath, category, qrCodePath); // Without ID
 
 
                 boolean inserted = recipeDAO.insertRecipe(recipe);
