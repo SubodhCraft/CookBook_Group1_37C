@@ -22,7 +22,7 @@ public class UserDao {
     // SIGNUP method returns boolean now
     public void UserDao(UserData user) {
         Connection conn = mysql.openConnection();
-        String sql = "INSERT INTO users (username, email, set_password, confirm_password, profile_picture_url, role) VALUES (?, ?, ?, ?, ?,?)";
+        String sql = "INSERT INTO users (username, Email, set_password, confirm_password, profile_picture_url, role) VALUES (?, ?, ?, ?, ?,?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, user.getUsername());
             pstmt.setString(2, user.getEmail());

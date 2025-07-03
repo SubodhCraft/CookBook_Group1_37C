@@ -54,9 +54,14 @@ public class LoginController {
                 UserData userData = loginDao.validateAndFetchUser(user);
                 System.out.println("Fetched user ID: "+userData.getId());
 //                UserData userData = loginDao.getUserByEmailAndPassword(email, password);
-                if(userData != null){
-                    LoggedInUser.setUser(userData);
+                System.out.println("userData from DAO: "+userData);
+                if(userData == null){
+                    JOptionPane.showMessageDialog(userView,"Invalid Credentials");
+                    return;
+                }
                     System.out.println("Fetched user ID: "+userData.getId());
+                    LoggedInUser.setUser(userData);
+//                    System.out.println("Fetched user ID: "+userData.getId());
                     System.out.println("LoggedInUser ID: "+ LoggedInUser.getId());
                     System.out.print("Logged in user:"+ LoggedInUser.getUsername());
 //                    LoggedInUser.setId(userData.getId());
@@ -75,9 +80,11 @@ public class LoginController {
 //                    Dashboard dashboard= new Dashboard();
 //                    dashboard.setVisible(true);
                     
-                }else{
-                    JOptionPane.showMessageDialog(userView,"Invalid Credentials");
-                }
+//                }
+//                
+//                else{
+//                    JOptionPane.showMessageDialog(userView,"Invalid Credentials");
+//                }
                 
                 
 //                Sigininframe login = new Sigininframe();
@@ -100,6 +107,7 @@ public class LoginController {
 //                }
             }catch(Exception ex){
                 System.out.println("Error during login: " + ex.getMessage());
+                JOptionPane.showMessageDialog(userView,"Invalid credentials ");
             }
 //            new Sigininframe().setVisible(true);
         }

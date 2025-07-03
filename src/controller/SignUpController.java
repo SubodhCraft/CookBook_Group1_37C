@@ -44,7 +44,7 @@ public class SignUpController {
                 String confirm_password = userView.getConfrimPassword().getText();
                 
                 
-                UserData user = new UserData(username,email,set_password,confirm_password);
+                UserData user = new UserData(username,email,set_password,confirm_password, "user");
                  
                  
                 boolean check = userDao.CheckUser(user);

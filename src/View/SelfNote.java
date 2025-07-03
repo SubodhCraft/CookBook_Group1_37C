@@ -90,9 +90,6 @@ public class SelfNote extends javax.swing.JFrame {
         Home_panel = new javax.swing.JPanel();
         Home = new javax.swing.JButton();
         jLabel35 = new javax.swing.JLabel();
-        Myprofile_panel1 = new javax.swing.JPanel();
-        admin = new javax.swing.JButton();
-        jLabel39 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
         Search_panel = new javax.swing.JPanel();
         Search_border = new javax.swing.JPanel();
@@ -395,41 +392,6 @@ public class SelfNote extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Myprofile_panel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        admin.setText("Admin");
-        admin.setBorder(null);
-        admin.setBorderPainted(false);
-        admin.setContentAreaFilled(false);
-        admin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        admin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                adminMouseClicked(evt);
-            }
-        });
-        admin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adminActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout Myprofile_panel1Layout = new javax.swing.GroupLayout(Myprofile_panel1);
-        Myprofile_panel1.setLayout(Myprofile_panel1Layout);
-        Myprofile_panel1Layout.setHorizontalGroup(
-            Myprofile_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Myprofile_panel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(admin)
-                .addContainerGap())
-        );
-        Myprofile_panel1Layout.setVerticalGroup(
-            Myprofile_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel39, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(admin, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-        );
-
         jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Images/Screenshot 2025-06-22 192617.png"))); // NOI18N
 
         javax.swing.GroupLayout Menu_panelLayout = new javax.swing.GroupLayout(Menu_panel);
@@ -453,8 +415,7 @@ public class SelfNote extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(Menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Settings_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Myprofile_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Myprofile_panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(Myprofile_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(Logout_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -481,8 +442,6 @@ public class SelfNote extends javax.swing.JFrame {
                 .addComponent(Myprofile_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Logout_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Myprofile_panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -703,17 +662,6 @@ public class SelfNote extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_HomeActionPerformed
 
-    private void adminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminMouseClicked
-        // TODO add your handling code here:
-        CardLayout cl = (CardLayout)(Main_panel.getLayout());
-        cl.show(Main_panel, "admin");
-    }//GEN-LAST:event_adminMouseClicked
-
-    private void adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_adminActionPerformed
-
     private void SearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchFocusGained
         // TODO add your handling code here:
         if(Search.getText().equals("Search")){
@@ -782,7 +730,6 @@ public class SelfNote extends javax.swing.JFrame {
     private javax.swing.JPanel Logout_panel;
     private javax.swing.JPanel Menu_panel;
     private javax.swing.JPanel Myprofile_panel;
-    private javax.swing.JPanel Myprofile_panel1;
     private javax.swing.JTextField Search;
     private javax.swing.JPanel Search_border;
     private javax.swing.JPanel Search_panel;
@@ -791,7 +738,6 @@ public class SelfNote extends javax.swing.JFrame {
     private javax.swing.JButton Settings;
     private javax.swing.JPanel Settings_panel;
     private javax.swing.JButton addNoteButton;
-    private javax.swing.JButton admin;
     private javax.swing.JLabel emptyMessageLabel;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -801,7 +747,6 @@ public class SelfNote extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton logOut;

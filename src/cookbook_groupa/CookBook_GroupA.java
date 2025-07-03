@@ -28,8 +28,11 @@ public class CookBook_GroupA {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+//        new View.LandingPage().setVisible(true);
 //         TODO code application logic here
        LandingPage landingForm = new LandingPage();
+       landingForm.setVisible(true);
        Langinpage landingController = new Langinpage(landingForm);
        landingController.open();
 //

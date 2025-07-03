@@ -100,9 +100,6 @@ public class UserMyProfile extends javax.swing.JFrame {
         Home_panel = new javax.swing.JPanel();
         Home = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
-        Myprofile_panel1 = new javax.swing.JPanel();
-        admin = new javax.swing.JButton();
-        jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         Search_panel = new javax.swing.JPanel();
         Search_border = new javax.swing.JPanel();
@@ -695,41 +692,6 @@ public class UserMyProfile extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        Myprofile_panel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        admin.setText("Admin");
-        admin.setBorder(null);
-        admin.setBorderPainted(false);
-        admin.setContentAreaFilled(false);
-        admin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        admin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                adminMouseClicked(evt);
-            }
-        });
-        admin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                adminActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout Myprofile_panel1Layout = new javax.swing.GroupLayout(Myprofile_panel1);
-        Myprofile_panel1.setLayout(Myprofile_panel1Layout);
-        Myprofile_panel1Layout.setHorizontalGroup(
-            Myprofile_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Myprofile_panel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(admin)
-                .addContainerGap())
-        );
-        Myprofile_panel1Layout.setVerticalGroup(
-            Myprofile_panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(admin, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-        );
-
         jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/Images/Screenshot 2025-06-22 192617.png"))); // NOI18N
 
         javax.swing.GroupLayout Menu_panelLayout = new javax.swing.GroupLayout(Menu_panel);
@@ -753,8 +715,7 @@ public class UserMyProfile extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(Menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Settings_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Myprofile_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Myprofile_panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(Myprofile_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(Logout_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -781,8 +742,6 @@ public class UserMyProfile extends javax.swing.JFrame {
                 .addComponent(Myprofile_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Logout_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Myprofile_panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -879,8 +838,8 @@ public class UserMyProfile extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                    .addComponent(Search_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 449, Short.MAX_VALUE)))
+                    .addComponent(Search_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 634, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -897,7 +856,7 @@ public class UserMyProfile extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(Menu_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(Menu_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 668, Short.MAX_VALUE)
         );
 
         pack();
@@ -953,6 +912,7 @@ setLocationRelativeTo(null);
         second.setVisible(true); 
         // Show the second frame
         setSize(920, 707);
+         setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jRecipeStatusActionPerformed
 
@@ -1057,19 +1017,6 @@ setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_HomeActionPerformed
 
-    private void adminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminMouseClicked
-        // TODO add your handling code here:
-        CardLayout cl = (CardLayout)(Main_panel.getLayout());
-        cl.show(Main_panel, "admin");
-    }//GEN-LAST:event_adminMouseClicked
-
-    private void adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminActionPerformed
-        // TODO add your handling code here:
-        admin_dashboard admintd = new admin_dashboard();
-        admintd.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_adminActionPerformed
-
     private void SearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_SearchFocusGained
         // TODO add your handling code here:
         if(Search.getText().equals("Search")){
@@ -1147,7 +1094,6 @@ setLocationRelativeTo(null);
     private javax.swing.JPanel Logout_panel;
     private javax.swing.JPanel Menu_panel;
     private javax.swing.JPanel Myprofile_panel;
-    private javax.swing.JPanel Myprofile_panel1;
     private javax.swing.JTextField Search;
     private javax.swing.JPanel Search_border;
     private javax.swing.JPanel Search_panel;
@@ -1155,7 +1101,6 @@ setLocationRelativeTo(null);
     private javax.swing.JPanel Selfnote_panel;
     private javax.swing.JButton Settings;
     private javax.swing.JPanel Settings_panel;
-    private javax.swing.JButton admin;
     private javax.swing.JButton btnChangePhoto;
     private javax.swing.JTextField jEmail;
     private javax.swing.JLabel jLabel1;
@@ -1177,7 +1122,6 @@ setLocationRelativeTo(null);
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel32;
