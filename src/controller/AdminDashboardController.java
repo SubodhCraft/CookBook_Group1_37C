@@ -155,12 +155,11 @@ private  javax.swing.JPanel mainPanel;
             try {
               String name = dashboardView.getRecipeNameText().getText();
 int duration = Integer.parseInt(dashboardView.getRecipeDurationText().getText());
-String process = dashboardView.getRecipeProcessText().getText();
 String category = dashboardView.getCategoryField().getText();
 String imagePath = dashboardView.selectedImagePath;
 String qrCodePath = selectedQRCodePath; 
 
-Recipe recipe = new Recipe(name, duration, process, imagePath, category, qrCodePath); // Without ID
+Recipe recipe = new Recipe(name, duration, imagePath, category, qrCodePath); // Without ID
 
 
                 boolean inserted = recipeDAO.insertRecipe(recipe);
@@ -395,8 +394,8 @@ public void loadRecipesToHome() {
         JPanel card = new JPanel();
         card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
         card.setBorder(BorderFactory.createTitledBorder(recipe.getName()));
-        card.setPreferredSize(new Dimension(200, 220));
-        card.setMaximumSize(new Dimension(200, 220));
+        card.setPreferredSize(new Dimension(200, 180));
+        card.setMaximumSize(new Dimension(200, 180));
         card.setBackground(Color.WHITE);
 
         if (recipe.getImagePath() != null && !recipe.getImagePath().isEmpty()) {
@@ -410,14 +409,14 @@ public void loadRecipesToHome() {
         }
 
         JLabel durationLabel = new JLabel("Duration: " + recipe.getDuration() + " mins");
-        JTextArea processArea = new JTextArea(recipe.getProcess());
-        processArea.setLineWrap(true);
-        processArea.setWrapStyleWord(true);
-        processArea.setEditable(false);
-        processArea.setOpaque(false);
+//        JTextArea processArea = new JTextArea(recipe.getProcess());
+//        processArea.setLineWrap(true);
+//        processArea.setWrapStyleWord(true);
+//        processArea.setEditable(false);
+//        processArea.setOpaque(false);
 
         card.add(durationLabel);
-        card.add(processArea);
+//        card.add(processArea);
 
         return card;
     }
