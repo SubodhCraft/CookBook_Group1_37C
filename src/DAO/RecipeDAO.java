@@ -16,7 +16,7 @@ public class RecipeDAO {
 
     // Insert recipe with qr_code_path
     public boolean insertRecipe(Recipe recipe) {
-        String query = "INSERT INTO recipes (name, duration, process, image_path, category, qr_code_path) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO recipes (name, duration, process, image_path, category, qr_code_path, link) VALUES (?, ?, ?, ?, ?, ?,?)";
         try (Connection conn = db.openConnection();
              PreparedStatement pstmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -26,6 +26,7 @@ public class RecipeDAO {
             pstmt.setString(4, recipe.getImagePath());
             pstmt.setString(5, recipe.getCategory());
             pstmt.setString(6, recipe.getQrCodePath());
+            pstmt.setString(7, recipe.getLink());
 
             int affectedRows = pstmt.executeUpdate();
             if (affectedRows == 0) {

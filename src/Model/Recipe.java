@@ -8,6 +8,7 @@ public class Recipe {
     private String imagePath;
     private String category;
     private String qrCodePath;   // New field for QR code path
+    private String Link;
     private double reward;
     private boolean completed;
 
@@ -116,5 +117,21 @@ public class Recipe {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+     public String getLink() {
+        return Link;
+    }
+
+    public void setLink(String Link) {
+        this.Link = Link;
+    }
+     public Recipe(String name, int duration, String process, String imagePath, String category, String qrCodePath, String Link) {
+        this.name = name;
+        this.duration = duration;
+        this.process = process;
+        this.imagePath = imagePath;
+        this.category = category;
+        this.qrCodePath = qrCodePath;
+        this.Link=Link;
     }
 }

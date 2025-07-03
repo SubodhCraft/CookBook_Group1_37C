@@ -87,12 +87,12 @@ public JTextField getCategoryField() {
 
         Popularthisweek_label.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         Popularthisweek_label.setForeground(new java.awt.Color(127, 1, 31));
-        Popularthisweek_label.setText("Add Your Recipie");
+        Popularthisweek_label.setText("Add Your Recipe");
 
         jPanel1.setBackground(new java.awt.Color(127, 1, 31));
 
         recipeNameText.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        recipeNameText.setText("Recipie name");
+        recipeNameText.setText("Recipe name");
         recipeNameText.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 recipeNameTextFocusGained(evt);
@@ -116,7 +116,7 @@ public JTextField getCategoryField() {
         });
 
         recipeDurationText.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        recipeDurationText.setText("Recipie duration");
+        recipeDurationText.setText("Recipe duration");
         recipeDurationText.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 recipeDurationTextFocusGained(evt);
@@ -156,24 +156,27 @@ public JTextField getCategoryField() {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(recipeNameText)
-                                    .addComponent(recipeDurationText))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(chooseImageButton, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                                    .addComponent(ChooseQRButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(284, 284, 284)
-                        .addComponent(addRecipeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(360, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(181, 181, 181)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(284, 284, 284)
+                            .addComponent(addRecipeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(44, 44, 44)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(recipeNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(recipeDurationText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(150, 150, 150)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(chooseImageButton, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                .addComponent(ChooseQRButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(365, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,10 +185,10 @@ public JTextField getCategoryField() {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(recipeNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chooseImageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(recipeDurationText, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                    .addComponent(ChooseQRButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ChooseQRButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(recipeDurationText, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -230,7 +233,7 @@ public JTextField getCategoryField() {
 
     private void recipeNameTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recipeNameTextFocusGained
         // TODO add your handling code here:
-        if(recipeNameText.getText().equals("Recipie name")){
+        if(recipeNameText.getText().equals("Recipe name")){
         recipeNameText.setText("");
         }
     
@@ -239,13 +242,13 @@ public JTextField getCategoryField() {
     private void recipeNameTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recipeNameTextFocusLost
         // TODO add your handling code here:
         if(recipeNameText.getText().isEmpty()){
-        recipeNameText.setText("Recipie name");
+        recipeNameText.setText("Recipe name");
         }
     }//GEN-LAST:event_recipeNameTextFocusLost
 
     private void recipeDurationTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recipeDurationTextFocusGained
         // TODO add your handling code here:
-        if(recipeDurationText.getText().equals("Recipie duration")){
+        if(recipeDurationText.getText().equals("Recipe duration")){
         recipeDurationText.setText("");
         }
         
@@ -254,7 +257,7 @@ public JTextField getCategoryField() {
     private void recipeDurationTextFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recipeDurationTextFocusLost
         // TODO add your handling code here:
         if(recipeDurationText.getText().isEmpty()){
-        recipeDurationText.setText("Recipie duration");}
+        recipeDurationText.setText("Recipe duration");}
     }//GEN-LAST:event_recipeDurationTextFocusLost
 
     private void categoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryActionPerformed

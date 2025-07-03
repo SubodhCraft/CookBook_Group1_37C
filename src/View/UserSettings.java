@@ -5,11 +5,13 @@
 package View;
 
 import DAO.NoteDao;
+import DAO.UserDao;
 import Model.UserData;
 import controller.AuthController;
 import controller.LoginController;
 import controller.NoteController;
 import controller.SettingsController;
+import controller.UserProfileController;
 import cookbook.Dashboard;
 import static cookbook.Dashboard.Main_panel;
 import cookbook.admin_dashboard;
@@ -1034,6 +1036,10 @@ view.setVisible(true);
 
     private void myProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myProfileActionPerformed
         // TODO add your handling code here:
+        UserMyProfile profile = new UserMyProfile();
+        UserProfileController controller = new UserProfileController(profile, new UserDao());
+        profile.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_myProfileActionPerformed
 
     private void logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutActionPerformed

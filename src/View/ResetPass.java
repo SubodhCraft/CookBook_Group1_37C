@@ -176,12 +176,15 @@ if (password1.getText().equals("password123")){
     }
     private void password1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_password1FocusLost
         // TODO add your handling code here:
-if (String.valueOf(password1.getPassword()).trim().equals("")) {
-        password1.setText("Set Password");
-        password1.setForeground(Color.GRAY);
-        password1.setEchoChar((char) 0); 
+        if (password1.getText().isEmpty()){
+            password1.setText("password123");
+        }
+//if (String.valueOf(password1.getPassword()).trim().equals("")) {
+//        password1.setText("Set Password");
+//        password1.setForeground(Color.GRAY);
+//        password1.setEchoChar((char) 0); 
     }//GEN-LAST:event_password1FocusLost
-}
+//}
     private void password2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_password2FocusGained
         // TODO add your handling code here:
 if (String.valueOf(password2.getPassword()).trim().equals("")) {

@@ -458,14 +458,14 @@ public void loadRecipesToHome() {
         }
 
         JLabel durationLabel = new JLabel("Duration: " + recipe.getDuration() + " mins");
-        JTextArea processArea = new JTextArea(recipe.getProcess());
-        processArea.setLineWrap(true);
-        processArea.setWrapStyleWord(true);
-        processArea.setEditable(false);
-        processArea.setOpaque(false);
+//        JTextArea processArea = new JTextArea(recipe.getProcess());
+//        processArea.setLineWrap(true);
+//        processArea.setWrapStyleWord(true);
+//        processArea.setEditable(false);
+//        processArea.setOpaque(false);
 
         card.add(durationLabel);
-        card.add(processArea);
+//        card.add(processArea);
 
         return card;
     }
