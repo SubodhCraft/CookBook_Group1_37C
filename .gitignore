@@ -1,5 +1,16 @@
 
 /build/
 /nbproject/private/
+<<<<<<< HEAD
 
 /dist/
+=======
+=======
+/nbproject/private/
+/build/
+<<<<<<< Updated upstream
+>>>>>>> Dashboard
+=======
+/dist/
+>>>>>>> Stashed changes
+>>>>>>> origin/Jay
