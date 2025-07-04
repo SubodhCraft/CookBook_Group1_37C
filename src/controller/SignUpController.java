@@ -65,105 +65,17 @@ public class SignUpController {
                     AuthController controller = new AuthController(reset);
                     controller.open();
                     
-//                    Sigininframe signIn = new Sigininframe();
-//                    signIn.setVisible(true);
-//                    Sigininframe userloginform = new Sigininframe();
-//                    LoginController controller = new LoginController(userloginform);
-//                    controller.open();
                 }
-//                signUpp(username,email,set_password,confirm_password);
-//                String UserData(username, email, set_password, confirm_password);
-                
 
-//                if (check) {
-//                  JOptionPane.showMessageDialog(userView, "Duplicate user");
-//               } else {
-//                    userDao.Createsignup(user);
-////
-//                }
             } catch (Exception ex) {
                 System.out.println("Error Adding user" + ex.getMessage());
 //                ex.printStackTrace();
 //            
 //                JOptionPane.showMessageDialog(null,"Error adding user: " + ex.getMessage());
             }
-//            Security_Questions reset=new Security_Questions("store",email);
-//            reset.setVisible(true);
-//            AuthController controller = new AuthController(reset);
-//            controller.open();
-
-        }
-//        public boolean signUpp(String username, String email, String set_password, String confirm_password) {
-////            UserDao userDao = new UserDao(); 
-//           if (username == null || username.trim().isEmpty()) {
-//                JOptionPane.showMessageDialog(null, "Username cannot be empty.");
-//                return false;
-//            }
-////           
-//
-//            if (email == null || email.trim().isEmpty()) {
-//                JOptionPane.showMessageDialog(userView, "Email cannot be empty.");
-//                return false;
-////                if (!email.contains("@")) {
-////                JOptionPane.showMessageDialog(null, "Enter a valid email");
-////                return false;
-////            }
-//            }
-//
-//            if (set_password == null || set_password.trim().isEmpty() || set_password.equals("Set Password")) {
-//                JOptionPane.showMessageDialog(userView, "Please enter a valid password.");
-//                return false;
-//            }
-//
-//            if (!set_password.equals(confirm_password)) {
-//                JOptionPane.showMessageDialog(userView, "Confirm password didn't match!");
-//                return false;
-//            }
-//
-//            if (userDao.isEmailExists(email)) {
-//                JOptionPane.showMessageDialog(userView, "Email already in use!");
-//                return false;
-//            }
-//
-//            UserData user = new UserData(username, email, set_password, confirm_password);
-//            boolean success = userDao.CheckUser(user);
-//
-//            if (success) {
-//                JOptionPane.showMessageDialog(userView, "User already exists!");
-//             
-//            } else if (!email.contains("@")){
-//                JOptionPane.showMessageDialog(userView,"Enter a Valid Email");
-//            } else if (!set_password.equals(confirm_password)){
-//                JOptionPane.showMessageDialog(userView,"Password doesn't Match");
-//            
-//            }else {
-//                userDao.UserDao(user);
-//                    JOptionPane.showMessageDialog(null, "Registration successful Redirecting to Login...");
-//                    userView.dispose();
-//                    
-//                    Sigininframe signIn = new Sigininframe();
-//                    signIn.setVisible(true);
-//                    Sigininframe userloginform = new Sigininframe();
-//                    LoginController controller = new LoginController(userloginform);
-//                    controller.open();
-////                    close();
-//
-//                }
-//               return success;
-//            }
+        }        
         }          
-//        class AddLoginListener implements ActionListener{
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            Sigininframe loginView = new Sigininframe();
-//            LoginController login = new LoginController(loginView);
-//            close();
-//            login.open();
-//        }
-    
-//        } 
-//class 
+
 class LoginListener implements ActionListener{
 
         @Override
@@ -179,8 +91,3 @@ class LoginListener implements ActionListener{
 
     }
     
-    
-
-  
-         
-

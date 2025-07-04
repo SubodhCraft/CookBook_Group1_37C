@@ -40,39 +40,5 @@ public class UserProfileController {
             JOptionPane.showMessageDialog(view, "Failed to load user info.");
         }
     }
-//    public void openUserProfile2ndView() {
-//    UserData loggedUser = LoggedInUser.getUser();
-//
-//    if (loggedUser != null) {
-//        String imagePath = loggedUser.getProfilePictureUrl();
-//
-//        UserMyProfile2nd second = new UserMyProfile2nd();
-//        second.setUserProfilePicture(imagePath);
-//        second.setVisible(true);
-//
-//        view.dispose();  // Assuming 'view' is a reference to UserMyProfile
-//    } else {
-//        JOptionPane.showMessageDialog(view, "User not logged in. Please log in again.");
-//    }
-}
 
-    
-    
-//    private void initListeners(){
-//        view.addProfileListener( e -> handleProfilePictureChange());
-//    }
-//    
-//    private void handleProfilePictureChange(){
-//        JFileChooser fileChooser = new JFileChooser();
-//        int result = fileChooser.showOpenDialog(null);
-//        
-//        if(result ==JFileChooser.APPROVE_OPTION){
-//            File result = fileChooser.getSelectedFile();
-//            
-//            try{
-//                File dir = new File("profile_pictures");
-//                if (!dir.exists()) dir.mkdir
-//            }
-//        }
-//    }
-//}
+}
