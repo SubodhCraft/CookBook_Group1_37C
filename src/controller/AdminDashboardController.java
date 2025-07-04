@@ -83,8 +83,8 @@ private  javax.swing.JPanel mainPanel;
             File destination = new File(imagesDir, selectedFile.getName());
             try {
                 Files.copy(selectedFile.toPath(), destination.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                selectedQRCodePath = destination.getPath(); // save relative path
-                // Optionally notify user of success or update UI element showing selected QR path
+                selectedQRCodePath = destination.getPath(); 
+                
                 JOptionPane.showMessageDialog(dashboardView, "QR code selected: " + selectedQRCodePath);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(dashboardView, "Failed to copy QR code image.");
@@ -99,7 +99,7 @@ private  javax.swing.JPanel mainPanel;
 
 
 
-    // Modified to copy selected image into /images folder and store relative path
+   
     class ChooseImageListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -160,15 +160,15 @@ public void loadRecipesToHome() {
     JPanel displayPanel = homeView.getRecipeDisplayPanel();
     displayPanel.removeAll();
 
-    // Set GridLayout: dynamic rows, 5 columns
-    displayPanel.setLayout(new GridLayout(0, 5, 15, 15)); // 5 columns, with gaps
+    
+    displayPanel.setLayout(new GridLayout(0, 5, 15, 15)); 
 
     List<Recipe> recipes = recipeDAO.getAllRecipes();
 
     for (Recipe recipe : recipes) {
         JPanel recipeCard = createRecipeCard(recipe);
 
-        // Add click listener to open detail panel
+        
         recipeCard.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -345,7 +345,7 @@ public void loadRecipesToHome() {
     homeView.getRecipeDisplayPanel().removeAll();
     
     for (Recipe recipe : results) {
-        // Create a clickable recipe card like in your normal loading method
+        
         JPanel recipeCard = createRecipeCard(recipe);
         
         recipeCard.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -354,7 +354,7 @@ public void loadRecipesToHome() {
                 RecipeDetailPanel detailPanel = new RecipeDetailPanel();
                 detailPanel.setRecipe(recipe);
 
-                // Add detail panel to mainPanel and show it
+               
                 mainPanel.add(detailPanel, "detail");
                 CardLayout cl = (CardLayout) mainPanel.getLayout();
                 cl.show(mainPanel, "detail");
@@ -367,7 +367,7 @@ public void loadRecipesToHome() {
     homeView.getRecipeDisplayPanel().revalidate();
     homeView.getRecipeDisplayPanel().repaint();
     
-    // Show the home panel with the filtered clickable cards
+  
     CardLayout cl = (CardLayout) mainPanel.getLayout();
     cl.show(mainPanel, "home");
     
@@ -394,8 +394,8 @@ public void loadRecipesToHome() {
         LoginController controller = new LoginController(sigin);
         controller.open();
 
-        // Close current window (if this is a JFrame)
-        this.dispose(); // optional: closes the current window
+        
+        this.dispose(); 
     } else {
         // Logout cancelled
         System.out.println("Logout cancelled by user.");
@@ -411,11 +411,11 @@ public void loadRecipesToHome() {
     class SettingsListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Settings button clicked"); // Add this for debugging
+        System.out.println("Settings button clicked"); 
 
         View.UserSettings settingsView = new View.UserSettings();
-        settingsView.setVisible(true); // This MUST be here
-         adminDash.dispose(); // Optional, only if you want to close the Dashboard
+        settingsView.setVisible(true);
+         adminDash.dispose();
     }
 }
 
