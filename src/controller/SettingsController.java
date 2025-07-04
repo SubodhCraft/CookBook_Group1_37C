@@ -49,33 +49,5 @@ public class SettingsController {
             JOptionPane.showMessageDialog(settingsView, "Failed to load user info.");
         }
     }
-//    private final SettingsDAO settingsDao = new SettingsDAO();
-//    private final UserSettings settingsView;
-//    
-//    public SettingsController(UserSettings view){
-//        this. settingsView = view;
-//        this.settingsView.addSettingsListener(new SettingsListener());
-//    }
-//    
-//    void open(){
-//        
-//    }
-//    void close(){
-//        
-//    }
-//    
-//    public void setupSettingsListener(UserSettings view){
-//        view.addSettingsListener(new SettingsListener());
-//    }
-//    
-//    class SettingsListener implements ActionListener{
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            System.out.println("Settings Button clicked!");
-//            UserSettings userSettings = new UserSettings();
-//            new S
-//        }
-//        
-//    }
+
 }
