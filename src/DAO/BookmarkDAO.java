@@ -61,10 +61,7 @@ public class BookmarkDAO {
 //        return rowsAffected > 0;
 
 //    }
-//       catch (SQLException e) {
-//        e.printStackTrace();
-//        return false;
-//    }
+//     
 }
     
     public boolean isBookmarked(int userId, int recipeId){
