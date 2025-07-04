@@ -113,7 +113,5 @@ public class UserData {
         this.profilePictureUrl = profilePictureUrl;
         
     }
-//    public UserData() {
-//        System.out.print("UserData default constructor works!");
-//    }
+
 }
