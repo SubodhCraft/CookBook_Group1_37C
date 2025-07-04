@@ -66,7 +66,7 @@ public class BookmarkController {
         List<Recipe> allRecipes = recipeDAO.getAllRecipes();
         Set<Integer> bookmarkedIds = bookmarkDAO.getBookmarkedRecipeIds(userId);
 
-        // Clear current bookmarks (optional, in case you want to refresh)
+       
         bookmarkView.getRecipePanel().removeAll();
 
         for (Recipe recipe : allRecipes) {
