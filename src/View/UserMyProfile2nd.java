@@ -1050,26 +1050,7 @@ public class UserMyProfile2nd extends javax.swing.JFrame {
     private javax.swing.JButton myProfile;
     private javax.swing.JButton selfNote;
     // End of variables declaration//GEN-END:variables
-//public void setUserProfilePicture(String imagePath) {
-//    ImageIcon icon = null;
-//
-//    if (imagePath != null && !imagePath.isEmpty()) {
-//        File imageFile = new File(imagePath);
-//        if (imageFile.exists()) {
-//            icon = new ImageIcon(imagePath);
-//        }
-//    }
-//
-//    if (icon == null) {
-//        icon = new ImageIcon(getClass().getClassLoader().getResource("View/Images/pp.jpg"));
-//    }
-//
-//    int width = jLabel7.getWidth() > 0 ? jLabel7.getWidth() : 100;
-//    int height = jLabel7.getHeight() > 0 ? jLabel7.getHeight() : 100;
-//
-//    Image img = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
-//    jLabel7.setIcon(new ImageIcon(img));
-//}
+
 
 
 
