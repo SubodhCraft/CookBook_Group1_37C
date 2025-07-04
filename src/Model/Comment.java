@@ -11,7 +11,7 @@ public class Comment {
     private String username;  // Username of the commenter
     private String content;   // The actual comment text
 
-    // --- Constructors ---
+   
 
     public Comment() {
         // Empty constructor
