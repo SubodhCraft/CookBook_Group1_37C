@@ -187,7 +187,7 @@ public class Dashboard extends javax.swing.JFrame {
 Filters.addActionListener(evt -> {
     String keyword = Search.getText().trim();
     if (keyword.isEmpty() || keyword.equals("Search")) {
-        JOptionPane.showMessageDialog(null, "Please enter a keyword to search."); // null = show on center
+        JOptionPane.showMessageDialog(null, "Please enter a keyword to search."); 
         return;
     }
 
