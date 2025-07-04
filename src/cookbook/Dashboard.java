@@ -187,7 +187,7 @@ public class Dashboard extends javax.swing.JFrame {
 Filters.addActionListener(evt -> {
     String keyword = Search.getText().trim();
     if (keyword.isEmpty() || keyword.equals("Search")) {
-        JOptionPane.showMessageDialog(null, "Please enter a keyword to search."); 
+        JOptionPane.showMessageDialog(null, "Please enter a keyword to search.");
         return;
     }
 
@@ -204,7 +204,7 @@ Filters.addActionListener(evt -> {
                 if (!found) {
                     JOptionPane.showMessageDialog(null, "No results found for \"" + keyword + "\".");
                 } else {
-                    // Optional: Switch to home panel if results go there
+                    
                     CardLayout cl = (CardLayout) Main_panel.getLayout();
                     cl.show(Main_panel, "home");
                     Main_panel.revalidate();
@@ -818,16 +818,16 @@ Filters.addActionListener(evt -> {
             JOptionPane.YES_NO_OPTION);
 
     if (choice == JOptionPane.YES_OPTION) {
-        // Proceed with logout
+        
         Sigininframe sigin = new Sigininframe();
         LoginController controller = new LoginController(sigin);
         controller.open();
 
 
         // Close current window (if this is a JFrame)
-        this.dispose(); // optional: closes the current window
+        this.dispose();
     } else {
-        // Logout cancelled
+        
         System.out.println("Logout cancelled by user.");
     }
 //    Home.addActionListener(e -> {
@@ -847,8 +847,8 @@ Filters.addActionListener(evt -> {
 
     private void HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
         // TODO add your handling code here:
-        dashboardController.loadRecipesToHome();  // Refresh full home recipes view
-Search.setText("Search");                        // Clear the search bar (if Search is your search JTextField)
+        dashboardController.loadRecipesToHome();  
+Search.setText("Search");                        
 System.out.println("Home button clicked!");
 
         
