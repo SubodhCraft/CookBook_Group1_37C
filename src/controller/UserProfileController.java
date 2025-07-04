@@ -26,7 +26,7 @@ public class UserProfileController {
         this.view = view;
         this.userDao = userDAO;
 
-//        view.addRecipeStatusActionListener(e -> openUserProfile2ndView());
+
         loadUserData();
 //        initListeners();
     }
