@@ -140,18 +140,7 @@ public class BookmarkDAO {
         }
         return ids;
     }
-//    public boolean removeBookmark(int recipeId) {
-//    String query = "DELETE FROM bookmarks WHERE recipe_id = ?";
-//    try (Connection conn = db.openConnection();
-//         PreparedStatement stmt = conn.prepareStatement(query)) {
-//        stmt.setInt(1, recipeId);
-//        int rowsAffected = stmt.executeUpdate();
-//        return rowsAffected > 0;
-//    } catch (SQLException e) {
-//        e.printStackTrace();
-//        return false;
-//    }
-//}
+
 
 
 
