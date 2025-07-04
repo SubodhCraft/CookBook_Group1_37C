@@ -170,18 +170,6 @@ public class NewPassword extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-//    String password = new String(password1.getPassword()); // or txtPassword.getText()
-//
-//    if (isValidPassword(password)) {
-//        // Proceed to set the password in the database or wherever you store it
-//        JOptionPane.showMessageDialog(this, "Password is valid and has been set!");
-//    } else {
-//        // Show an error message
-//        JOptionPane.showMessageDialog(this,
-//            "Password must be exactly 6 characters long, contain a letter, a digit, and a special character.",
-//            "Invalid Password",
-//            JOptionPane.ERROR_MESSAGE);
-//    }
 
         JOptionPane.showMessageDialog(NewPassword.this,"New Password set successfully");
     }//GEN-LAST:event_jButton1ActionPerformed
