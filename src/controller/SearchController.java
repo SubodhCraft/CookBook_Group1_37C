@@ -29,7 +29,7 @@ public class SearchController {
         if (results.isEmpty()) {
             JOptionPane.showMessageDialog(null, "No recipes found for: " + keyword);
         } else {
-            homePanel.displayRecipes(results);  // This assumes Home has a method to show recipes.
+            homePanel.displayRecipes(results);  
         }
     }
     public List<Recipe> searchByCategory(String categoryKeyword){
