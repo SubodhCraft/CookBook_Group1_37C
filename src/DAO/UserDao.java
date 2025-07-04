@@ -42,25 +42,7 @@ public class UserDao {
          
     }
 
-    // LOGIN/VALIDATION method
-//        public boolean Logincredentials(String email, String password) {
-//            Connection conn = mysql.openConnection();
-//            try {
-//                String sql = "SELECT * FROM users WHERE email = ? AND password = ?";
-//                PreparedStatement ps = conn.prepareStatement(sql);
-//                ps.setString(1, email);
-//                ps.setString(2, password);
-//
-//                ResultSet rs = ps.executeQuery();
-//                return rs.next(); // returns true if a record is found
-//            } catch (Exception e) {
-//                System.out.println("Sign in error: " + e);
-//                return false;
-//            } finally {
-//                mysql.closeConnection(conn);
-//            }
-//        }
-        
+ 
 
     
     
