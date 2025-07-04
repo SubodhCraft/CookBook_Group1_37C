@@ -246,13 +246,7 @@ public JPasswordField getPasswordField(){
     // End of variables declaration//GEN-END:variables
 public void addLoginUserListener(ActionListener listener) {
         btnSignIn.addActionListener(listener);
-    }
-
-//public void addLoginListener(ActionListener listener) {
-//         lblSignUp.addActionListener(listener);
-//         
-//}
- 
+} 
 public void addRegisterListener (ActionListener listener){
     lblSignUp.addActionListener(listener);
 }
@@ -269,10 +263,5 @@ public void addForgetPassListener (ActionListener listener){
     /**
      * @return the passwordField
      */
-//    public javax.swing.JTextField getPasswordField() {
-//        return txtPassword;
-//    }
-//    public JPasswordField getPasswordField(){
-//        return passwordField;
-//    }
+
 }
