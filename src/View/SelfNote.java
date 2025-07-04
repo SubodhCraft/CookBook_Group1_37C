@@ -769,63 +769,7 @@ public void clearNotePanel() {
     noteContainer.revalidate();
     noteContainer.repaint();
 }
-//public void addBookmarkListener(ActionListener listener) {
-//    BookmarkButton.addActionListener(listener);
-//}
 
-// public void refreshNotes() {
-//     jPanel1.removeAll(); // Clear old notes
-
-//     NoteController controller = new NoteController(this);
-//     java.util.List<Notes> notes = controller.getNotesByUserId(LoggedInUser.getId());
-
-//     for (Notes note : notes) {
-//         JPanel notePanel = new JPanel(new BorderLayout());
-//         notePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-//         notePanel.setBackground(Color.WHITE);
-
-//         JLabel titleLabel = new JLabel("Title: " + note.getTitle());
-//         JTextArea contentArea = new JTextArea(note.getContent());
-//         contentArea.setLineWrap(true);
-//         contentArea.setWrapStyleWord(true);
-//         contentArea.setEditable(false);
-
-//         JButton editBtn = new JButton("Edit");
-//         JButton deleteBtn = new JButton("Delete");
-
-//         editBtn.addActionListener(e -> {
-//             String newTitle = JOptionPane.showInputDialog(this, "Edit Title", note.getTitle());
-//             String newContent = JOptionPane.showInputDialog(this, "Edit Content", note.getContent());
-//             if (newTitle != null && newContent != null) {
-//                 note.setTitle(newTitle);
-//                 note.setContent(newContent);
-//                 new NoteController(this).updateNote(note);
-//             }
-//         });
-
-//         deleteBtn.addActionListener(e -> {
-//             int confirm = JOptionPane.showConfirmDialog(this, "Delete this note?");
-//             if (confirm == JOptionPane.YES_OPTION) {
-//                 new NoteController(this).deleteNote(note.getId());
-//             }
-//         });
-
-//         JPanel buttonPanel = new JPanel();
-//         buttonPanel.add(editBtn);
-//         buttonPanel.add(deleteBtn);
-
-//         notePanel.add(titleLabel, BorderLayout.NORTH);
-//         notePanel.add(new JScrollPane(contentArea), BorderLayout.CENTER);
-//         notePanel.add(buttonPanel, BorderLayout.SOUTH);
-
-//         jPanel1.add(notePanel);
-//     }
-
-//     jPanel1.revalidate();
-//     jPanel1.repaint();
-// }
-
-// 
 
 public void refreshNotes() {
     noteContainer.removeAll(); // Clear previous notes
