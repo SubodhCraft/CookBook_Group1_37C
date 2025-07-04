@@ -14,7 +14,7 @@ public class RecipeDAO {
         this.db = db;
     }
 
-    // Insert recipe with qr_code_path
+    //Insert recipe with qr_code_path
     public boolean insertRecipe(Recipe recipe) {
         String query = "INSERT INTO recipes (name, duration, process, image_path, category, qr_code_path) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = db.openConnection();
