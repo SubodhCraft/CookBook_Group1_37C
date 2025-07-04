@@ -52,15 +52,7 @@ public class BookmarkDAO {
 //        return false; // Already bookmarked, do nothing
 //    }
 //
-//    String query = "INSERT INTO bookmarks (recipe_id) VALUES (?)";
-//    try (Connection conn = db.openConnection();
-//         PreparedStatement stmt = conn.prepareStatement(query)) {
-//
-//        stmt.setInt(1, recipeId);
-//        int rowsAffected = stmt.executeUpdate();
-//        return rowsAffected > 0;
-
-//    }
+//   
 //     
 }
     
