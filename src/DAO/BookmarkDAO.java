@@ -152,14 +152,7 @@ public class BookmarkDAO {
 //        return false;
 //    }
 //}
-//public boolean toggleBookmark(int recipeId) {
-//    if (getBookmarkedRecipeIds().contains(recipeId)) {
-//        return removeBookmark(recipeId);
-//    } else {
-//        return bookmarkRecipe(recipeId);
-//    }
-//}
-//
+
 
 
 }
