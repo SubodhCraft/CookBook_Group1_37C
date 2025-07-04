@@ -55,21 +55,7 @@ public class UserDao {
     
     
     
-    // Check if email already exists
-//    public boolean isEmailExists(String email) {
-//        Connection conn = mysql.openConnection();
-//        String sql = "SELECT 1 FROM users WHERE email = ?";
-//        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-//            pstmt.setString(1, email);
-//            ResultSet result = pstmt.executeQuery();
-//            return result.next();  // returns true if email is found
-//        } catch (SQLException ex) {
-//            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//            mysql.closeConnection(conn);
-//        }
-//        return false;
-//    }
+
 //    
 //    public UserData signIn(LoginRequest login){
 //        Connection conn = mysql.openConnection();
