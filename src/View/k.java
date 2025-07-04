@@ -160,42 +160,7 @@ public class k extends javax.swing.JPanel {
         notesContainer.repaint();
     }
     
-// public void displayNotes(List<Notes> notes) {
-//        notesContainer.removeAll();
-//        for (Notes note : notes) {
-//            JPanel noteCard = createNoteCard(note);
-//            notesContainer.add(noteCard);
-//        }
-//        notesContainer.revalidate();
-//        notesContainer.repaint();
-// }
-//    public JPanel createNoteCard(Notes note) {
-//        JPanel card = new JPanel(new BorderLayout());
-//        card.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-//        card.setBackground(new Color(245, 245, 245));
-//        card.setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, 100));
-//
-//        JLabel title = new JLabel(note.getTitle());
-//        title.setFont(new Font("Serif", Font.BOLD, 16));
-//        JTextArea content = new JTextArea(note.getContent());
-//        content.setEditable(false);
-//        content.setLineWrap(true);
-//        content.setWrapStyleWord(true);
-//        content.setBackground(card.getBackground());
-//
-//        JPanel topPanel = new JPanel(new BorderLayout());
-//        topPanel.setOpaque(false);
-//        topPanel.add(title, BorderLayout.WEST);
-//
-//        JButton deleteBtn = new JButton("Delete");
-//        deleteBtn.addActionListener(deleteListener);
-//        topPanel.add(deleteBtn, BorderLayout.EAST);
-//
-//        card.add(topPanel, BorderLayout.NORTH);
-//        card.add(new JScrollPane(content), BorderLayout.CENTER);
-//
-//        return card;
-//    }
+
 public Notes showEditNoteDialog(Notes note) {
     JTextField titleField = new JTextField(note.getTitle());
     JTextArea contentArea = new JTextArea(note.getContent(), 5, 20);
