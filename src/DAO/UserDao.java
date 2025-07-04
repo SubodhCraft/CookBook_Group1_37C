@@ -41,22 +41,7 @@ public class UserDao {
 //        return false;
          
     }
-
  
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-//    
 //    public UserData signIn(LoginRequest login){
 //        Connection conn = mysql.openConnection();
 //        String sql = "SELECT * FROM users where Email = ? and set_password = ?";
