@@ -52,15 +52,6 @@ public class LoggedInUser {
     
     
 
-//    public static void setProfilePictureUrl(String profilePictureUrl) {
-//        LoggedInUser.profilePictureUrl = profilePictureUrl;
-//    }
-    
-//     public static void setUser(UserData user){
-//        id = user.getId();
-//        username = user.getUsername();
-//        email = user.getEmail();
-//    }
      
     public static void clear(){
         id = 0;
