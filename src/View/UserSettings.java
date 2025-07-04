@@ -56,8 +56,7 @@ public class UserSettings extends javax.swing.JFrame {
         if(imageFile.exists()){
             icon = new ImageIcon(imagePath);
         }
-//        Image img = icon.getImage().getScaledInstance(lblPhoto.getWidth(),lblPhoto.getHeight(),Image.SCALE_SMOOTH);
-//        lblPhoto.setIcon(new ImageIcon(img));
+
     }if (icon == null){
         try{
             icon = new ImageIcon (getClass().getClassLoader().getResource("View/Images/pp.jpg"));
@@ -943,14 +942,7 @@ public class UserSettings extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
 
-    
-    //if (controller.deleteAccount()) {
-      //  JOptionPane.showMessageDialog(this, "Account deleted successfully!");
-     //   this.dispose(); // Or redirect to login screen
-   // } else {
-     //   JOptionPane.showMessageDialog(this, "Account deletion failed.");
-   // }
-        
+  
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void newPasswordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newPasswordFieldFocusGained
@@ -996,15 +988,6 @@ public class UserSettings extends javax.swing.JFrame {
         // TODO add your handling code here:
         String newPassword = newPasswordField.getText();
     String confirmPassword = confirmPasswordField.getText();
-
-  
-    
-  //  if (controller.updatePassword(newPassword, confirmPassword)) {
-  //      JOptionPane.showMessageDialog(this, "Password updated successfully!");
-  //  } else {
-   //     String error = controller.getPasswordErrorMessage(newPassword, confirmPassword);
-   //     JOptionPane.showMessageDialog(this, "Password update failed: " + error);
-  //  }
 
     }//GEN-LAST:event_jUpdateActionPerformed
 
@@ -1223,11 +1206,6 @@ public String getNewPasswordField(){
 public String getConfirmPasswordField(){
     return new String(confirmPasswordField.getPassword());
 }
-
-//public void setUsername(String username){
-//    textUsername.setText(username);
-//    textUsername.setEditable(false);
-//}
 public void addDeleteListener(ActionListener listener){
     btnDelete.addActionListener(listener);
 }
