@@ -15,7 +15,7 @@ import View.ResetPass;
 import View.Security_Questions;
 import View.Sigininframe;
 import View.UserSettings;
-//import controller.AuthController.PassChangeListener.DeleteAccountListener;
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -258,7 +258,7 @@ public class AuthController {
                 JOptionPane.showMessageDialog(userView3, "User not logged in properly.");
             }
         }
-        // Else: user clicked No — do nothing
+        
     
            }
             
