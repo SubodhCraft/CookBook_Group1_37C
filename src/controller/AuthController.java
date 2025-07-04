@@ -84,37 +84,7 @@ public class AuthController {
     public boolean changePassword(String email, String changePass){
         return authdao.settingsPassUpdate(email, changePass);
     }
-//    public boolean handleSecurityCheck(String email, String[] answers, JFrame currentFrame) {
-//    boolean valid = checkSecurityAnswers(email, answers);
-//    if (valid) {
-//        JOptionPane.showMessageDialog(currentFrame, "Verified! Set your new password.");
-//        new NewPassword(email).setVisible(true);
-//        currentFrame.dispose();
-//    } else {
-//        JOptionPane.showMessageDialog(currentFrame, "Incorrect answers. Try again.");
-//    }
-//    return valid;
-//    
-//}
-//    public void goToSecurityQuestions(String email, JFrame currentFrame){
-//        new View.Security_Questions(email).setVisible(true);
-//        currentFrame.dispose();
-//    }
-//    class AddCheckListener implements ActionListener{
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-////             String email = userView.getEmailField().getText();
-////            Security_Questions reset=new Security_Questions( );
-////            reset.setVisible(true);
-////            AuthController controller = new AuthController(reset);
-////            controller.open();
-////            
-////             userView.dispose();
-//        }
-//      
-//        
-//    }
+
     class SubmitListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -125,10 +95,7 @@ public class AuthController {
                 String answer3 = userView1.getanswer3().getText().trim();
 //            AuthDao authdao = new AuthDao(); 
             try{
-//                String email = userView1.getEmailField().getText();
-//                String answer1 = userView1.getanswer1().getText();
-//                String answer2 = userView1.getanswer2().getText();
-//                String answer3 = userView1.getanswer3().getText();
+//                
                 if (email.isEmpty() || answer1.isEmpty() || answer2.isEmpty() || answer3.isEmpty()){
                     JOptionPane.showMessageDialog(userView1,"Please fill in all fields.");
                     return;
@@ -154,9 +121,7 @@ public class AuthController {
                 Sigininframe signin = new Sigininframe();
                 signin.setVisible(true);
                 new LoginController(signin).open();
-                
-//                LoginController controller = new LoginController(signin);
-//                controller.open();
+               
                 
                 userView1.dispose();
                 }else if (userView1.getMode().equals("verify")){
@@ -180,25 +145,7 @@ public class AuthController {
                JOptionPane.showMessageDialog(userView1,"Something went wrong:" + ex.getMessage());
                 ex.printStackTrace();
             }
-//            String email = userView1.getEmailField().getText();
-//            Security_Questions reset=new Security_Questions("store",email );
-//            reset.setVisible(true);
-//            AuthController controller = new AuthController(reset);
-//            controller.open();
-//            
-//            userView1.dispose();
-                
-            
-//            Sigininframe signin = new Sigininframe();
-//            signin.setVisible(true);
-//            LoginController controller = new LoginController(signin);
-//            controller.open();
-                
-//            ResetPass setnew= new ResetPass();
-//            setnew.setVisible(true);
-//            AuthController controller = new AuthController(setnew);
-//            controller.open();
-//            
+    
         }
     
 }
@@ -236,17 +183,6 @@ public class AuthController {
         
     }
     
-//        class addSubmitListener implements ActionListener{
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            ResetPass setnew= new ResetPass();
-//            setnew.setVisible(true);
-//            AuthController controller = new AuthController(setnew);
-//            controller.open();
-//            System.out.println("got it");
-//        }
-    
     
     
     class PassChangeListener implements ActionListener{
@@ -283,13 +219,7 @@ public class AuthController {
              boolean success = changePassword(email,newPassword);
              if(success){
                  JOptionPane.showMessageDialog(userView3,"Password updated successfully!");
-//                 new Sigininframe().setVisible(true);
-//                 userView2.dispose();
-//                 Sigininframe login = new Sigininframe();
-//                 login.setVisible(true);
-//                 LoginController controller = new LoginController(login);
-//                 controller.open();
-//                 userView3.dispose();
+            
              }else{
                  JOptionPane.showMessageDialog(userView3,"Failed to update password.");
              }

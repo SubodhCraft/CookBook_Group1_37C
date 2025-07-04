@@ -44,32 +44,10 @@ private  javax.swing.JPanel mainPanel;
     
     
     MySqlConnection mysql = new MySqlConnection();
-//    private final Dashboard dashView;
-    
-//    public AdminDashboardController(Dashboard view){
-//        this.dashView = view;
-//    }
-    
 
-//   public AdminDashboardController(admin_dashboard dashboardView, Home homeView, Bookmark bookmarkView, RecipeDAO recipeDAO, BookmarkDAO bookmarkDAO, JPanel mainPanel, update updatePanel) {
-//    this.dashboardView = dashboardView;
-//    this.homeView = homeView;
-//    this.bookmarkView = bookmarkView;
-//    this.recipeDAO = recipeDAO;
-//    this.bookmarkDAO = bookmarkDAO;
-//    this.mainPanel = mainPanel;     // now correctly references parameter 'mainPanel'
-//    this.updatePanel = updatePanel; // now correctly references parameter 'updatePanel'
-//
-//    dashboardView.addChooseImageListener(new ChooseImageListener());
-//    dashboardView.addRecipeListener(new AddRecipeListener());
-//}
-//     public AdminDashboardController(){}
     
     public AdminDashboardController(admin_dashboard dashboardView, Home homeView, Bookmark bookmarkView, RecipeDAO recipeDAO, BookmarkDAO bookmarkDAO, cookbook.update updatePanel, javax.swing.JPanel mainPanel) {
-//       public AdminDashboardController(Dashboard view){
-//        this.view=view;
-//        view.addLogoutListener(new addLogoutListener(view));
-//        dashboardController.setupLogoutListener(dashboardView);
+
         this.dashboardView = dashboardView;
         this.homeView = homeView;
         this.bookmarkView = bookmarkView;
@@ -81,9 +59,7 @@ private  javax.swing.JPanel mainPanel;
         dashboardView.getChooseQRButton().addActionListener(new ChooseQRListener());
 
         dashboardView.addRecipeListener(new AddRecipeListener());
-//        view.addSearchListener(new GlobalSearchListener());
-//        view.getSettingsButton().addActionListener(new SettingsListener());
-//        dashboardView.getSettingsButton().addActionListener(new SettingsListener());
+
         this.updatePanel = updatePanel;
         this.mainPanel = mainPanel;
     }
@@ -123,7 +99,7 @@ private  javax.swing.JPanel mainPanel;
 
 
 
-    // ✅ Modified to copy selected image into /images folder and store relative path
+    // Modified to copy selected image into /images folder and store relative path
     class ChooseImageListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -179,111 +155,6 @@ Recipe recipe = new Recipe(name, duration, process, imagePath, category, qrCodeP
         }
     }
 
-//
-//  public void loadRecipesToHome() {
-//
-//    
-//
-//    homeView.getRecipeDisplayPanel().removeAll();
-//
-//    List<Recipe> recipes = recipeDAO.getAllRecipes();
-//
-//    for (Recipe recipe : recipes) {
-//        JPanel recipeCard = createRecipeCard(recipe);
-//          recipeCard.addMouseListener(new java.awt.event.MouseAdapter() {
-//            @Override
-//            public void mouseClicked(java.awt.event.MouseEvent evt) {
-//              
-//                RecipeDetailPanel detailPanel = new RecipeDetailPanel();
-//                detailPanel.setRecipe(recipe);  
-//
-//                
-//                mainPanel.add(detailPanel, "detail");
-//
-//               
-//                CardLayout cl = (CardLayout) mainPanel.getLayout();
-//                cl.show(mainPanel, "detail");
-//            }
-//    });
-//
-//
-//        // Create Edit button
-//        JButton editButton = new JButton("Edit");
-//        editButton.setPreferredSize(new Dimension(80, 25));
-//        editButton.addActionListener(e -> {
-//            System.out.println("Edit clicked for recipe ID: " + recipe.getId());
-//            // TODO: add edit logic here
-//            
-//    edit editPanel = new edit(recipeDAO, this, mainPanel, updatePanel); // pass 4 args
-//editPanel.setRecipeId(recipe.getId());
-//
-//                JDialog dialog = new JDialog();
-//    dialog.setTitle("Edit Recipe");
-//    dialog.setModal(true);
-//    dialog.getContentPane().add(editPanel);
-//    dialog.pack();
-//    dialog.setLocationRelativeTo(null);
-//    dialog.setVisible(true);
-//
-//    
-//        });
-//
-//        // Create Bookmark button
-//        JButton bookmarkButton = new JButton();
-//
-//        
-//
-//
-//        int recipeId = recipe.getId();
-//
-//int userId =LoggedInUser.getId();
-//        boolean isBookmarked = bookmarkDAO.getBookmarkedRecipeIds(userId).contains(recipeId);
-//        bookmarkButton.setText(isBookmarked ? "Bookmarked" : "Bookmark");
-//        bookmarkButton.setPreferredSize(new Dimension(100, 25));
-//
-//        bookmarkButton.addActionListener(e -> {
-//            boolean toggled = bookmarkDAO.toggleBookmark(userId,recipeId);
-//
-//            if (toggled) {
-//                // Update the button text based on new state
-//                boolean nowBookmarked = bookmarkDAO.getBookmarkedRecipeIds(userId).contains(recipeId);
-//                bookmarkButton.setText(nowBookmarked ? "Bookmarked" : "Bookmark");
-//
-//                // Reload the bookmark panel to reflect the change
-//                loadBookmarkedRecipes();
-//            } else {
-//                JOptionPane.showMessageDialog(homeView, "Failed to toggle bookmark.");
-//            }
-//        });
-//
-//
-//        // Create panel to hold buttons side by side
-//        JPanel buttonsPanel = new JPanel();
-//        buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.X_AXIS));
-//        buttonsPanel.setMaximumSize(new Dimension(200, 30));
-//        buttonsPanel.setBackground(Color.WHITE);
-//        buttonsPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-//
-//        // Add buttons to the panel
-//        buttonsPanel.add(editButton);
-//        buttonsPanel.add(Box.createHorizontalStrut(10)); // space between buttons
-//        buttonsPanel.add(bookmarkButton);
-//
-//        // Add buttons panel to recipe card
-//        recipeCard.add(buttonsPanel);
-//
-//        // Add the card to the home panel
-//
-//       
-//
-//        homeView.getRecipeDisplayPanel().add(recipeCard);
-//    }
-//
-//    homeView.getRecipeDisplayPanel().revalidate();
-//    homeView.getRecipeDisplayPanel().repaint();
-//     CardLayout cl = (CardLayout) mainPanel.getLayout();
-//    cl.show(mainPanel, "home");
-//}
 
 public void loadRecipesToHome() {
     JPanel displayPanel = homeView.getRecipeDisplayPanel();
@@ -329,23 +200,6 @@ public void loadRecipesToHome() {
             });
         }
 
-//        // Edit button
-//        JButton editButton = new JButton("Edit");
-//        editButton.setPreferredSize(new Dimension(80, 25));
-//        editButton.addActionListener(e -> {
-//            edit editPanel = new edit(recipeDAO, this, mainPanel, updatePanel);
-//            editPanel.setRecipeId(recipe.getId());
-//
-//            JDialog dialog = new JDialog();
-//            dialog.setTitle("Edit Recipe");
-//            dialog.setModal(true);
-//            dialog.getContentPane().add(editPanel);
-//            dialog.pack();
-//            dialog.setLocationRelativeTo(null);
-//            dialog.setVisible(true);
-//            
-//            
-//        });
 
 
         // Bookmark button
@@ -410,11 +264,6 @@ public void loadRecipesToHome() {
         }
 
         JLabel durationLabel = new JLabel("Duration: " + recipe.getDuration() + " mins");
-//        JTextArea processArea = new JTextArea(recipe.getProcess());
-//        processArea.setLineWrap(true);
-//        processArea.setWrapStyleWord(true);
-//        processArea.setEditable(false);
-//        processArea.setOpaque(false);
 
         card.add(durationLabel);
 //        card.add(processArea);
@@ -458,11 +307,7 @@ public void loadRecipesToHome() {
         }
 
         JLabel durationLabel = new JLabel("Duration: " + recipe.getDuration() + " mins");
-//        JTextArea processArea = new JTextArea(recipe.getProcess());
-//        processArea.setLineWrap(true);
-//        processArea.setWrapStyleWord(true);
-//        processArea.setEditable(false);
-//        processArea.setOpaque(false);
+
 
         card.add(durationLabel);
 //        card.add(processArea);
@@ -488,35 +333,7 @@ public void loadRecipesToHome() {
         JOptionPane.showMessageDialog(null, "Recipe data not found.");
     }
 }
-//    public void searchRecipes(String keyword){
-//        List<Recipe> results = recipeDAO.searchRecipesByTitle(keyword);
-////        homeView.displayRecipes(results);
-//if(results.isEmpty()){
-//    JOptionPane.showMessageDialog(null,"No matching recipes found.");
-//}else{
-//    homeView.displayRecipes(results);
-//    CardLayout cl = (CardLayout) mainPanel.getLayout();
-//    cl.show(mainPanel,"home");
-//}
-//    }
-    
-//    public boolean searchRecipes(String keyword){
-//        List<Recipe> results = recipeDAO.searchRecipesByTitleOrCategory(keyword);
-//        
-//        if(results.isEmpty()){
-//            return false;
-//        }
-////    JOptionPane.showMessageDialog(null,"No matching recipes found.");
-////}else{
-//
-//    homeView.displayRecipes(results);
-//    CardLayout cl = (CardLayout) mainPanel.getLayout();
-//    cl.show(mainPanel,"home");
-//    return true;
-////    }
-//
-//
-//}
+
    public boolean searchRecipes(String keyword) {
     List<Recipe> results = recipeDAO.searchRecipesByTitleOrCategory(keyword);
     
@@ -562,26 +379,7 @@ public void loadRecipesToHome() {
     return found;
 }
    
-// public void setupLogoutListener(Dashboard view){
-//     view.addLogoutListener(new addLogoutListener(view));
-//}
-// class addLogoutListener implements ActionListener{
-//     private JFrame currentFrame;
-//     
-//     public addLogoutListener(JFrame frame){
-//         this.currentFrame=frame;
-//     }
 
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//           System.out.println("Logout button clicked"); 
-//           int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?",
-//                   "Logout Confirmation",
-//                   JOptionPane.YES_NO_OPTION);
-//           if(confirm==JOptionPane.YES_OPTION){
-//               currentFrame.dispose();
-//               new Sigininframe().setVisible(true);
-//           }
            private void logOutActionPerformed(java.awt.event.ActionEvent evt) {                                       
     // Show confirmation dialog
     int choice = JOptionPane.showConfirmDialog(
@@ -620,23 +418,6 @@ public void loadRecipesToHome() {
          adminDash.dispose(); // Optional, only if you want to close the Dashboard
     }
 }
-//    class GlobalSearchListener implements ActionListener{
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            String keyword = view.getSearchText().trim();
-//            
-//            if(keyword.isEmpty()){
-//                JOptionPane.showMessageDialog(view, "Please enter a search keyword!");
-//                return;
-//            }
-//            
-//            boolean found = searchRecipes(keyword);
-//            if(!found){
-//                JOptionPane.showMessageDialog(view, "No recipes found for: "+keyword);
-//            }
-//        }
-//        
-//    }
+
 
 }

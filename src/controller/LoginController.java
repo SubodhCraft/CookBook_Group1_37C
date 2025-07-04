@@ -72,39 +72,6 @@ public class LoginController {
                     userView.dispose();
                 
                     
-//                    My previous logic before distinguishing different userId
-//                boolean check = loginDao.validateUser(user);
-//                if (check){
-//                    JOptionPane.showMessageDialog(userView,"Login successful");
-//                    
-//                    Dashboard dashboard= new Dashboard();
-//                    dashboard.setVisible(true);
-                    
-//                }
-//                
-//                else{
-//                    JOptionPane.showMessageDialog(userView,"Invalid Credentials");
-//                }
-                
-                
-//                Sigininframe login = new Sigininframe();
-//                login.setVisible(true);
-//                LoginController controller = new LoginController(login);
-//                controller.open();
-                
-                
-//                UserData signInUser  = userDao.signIn(user);
-////                new Sigininframe().setVisible(true);
-//                
-//                if(signInUser == null){
-//                    JOptionPane.showMessageDialog(userView,"Login Successful");
-//
-//                }else{
-//                    JOptionPane.showMessageDialog(userView,"Invalid Credentials");
-//                    
-//                    
-//                    
-//                }
             }catch(Exception ex){
                 System.out.println("Error during login: " + ex.getMessage());
                 JOptionPane.showMessageDialog(userView,"Invalid credentials ");

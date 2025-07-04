@@ -13,19 +13,5 @@ import java.awt.event.ActionListener;
  * @author LEGION
  */
 public class DashboardController {
-//    private Dashboard dashboard;
-//    public DashboardController(){
-//            dashboard.getSettingsButton().addActionListener(new SettingsListener());
-//
-//    }
-//    
-//    class SettingsListener implements ActionListener{
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            new View.UserSettings().setVisible(true);
-//            dashboard.dispose();
-//        }
-//        
-//    }
+
 }

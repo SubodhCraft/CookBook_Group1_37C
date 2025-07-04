@@ -23,8 +23,6 @@ public class BookmarkUIController {
         this.bookmarkPanel = bookmarkPanel;
         this.userId = userId;
         this.bookmarkDAO = new BookmarkDAO(new MySqlConnection());
-//        Database db = new MySqlConnection();
-//        this.bookmarkController = new BookmarkController(db, bookmarkPanel);
 
         loadBookmarkedRecipes();
     }
@@ -41,19 +39,7 @@ public class BookmarkUIController {
             }
         }
         bookmarkPanel.displayBookmarks(bookmarks);
-//        List<Recipe> bookmarks = bookmarkDAO.getBookmarksByUser(userId);
-//        bookmarkPanel.displayBookmarks(bookmarks);
 
-//        JPanel recipePanel = bookmarkView.getRecipePanel();
-//        recipePanel.removeAll();
-//
-//        for (Recipe recipe : recipes) {
-//            JPanel recipeCard = createBookmarkCard(recipe);
-//            bookmarkView.addBookmarkedRecipe(recipeCard);
-//        }
-//
-//        recipePanel.revalidate();
-//        recipePanel.repaint();
     }
     public void refreshBookmarks(){
         loadBookmarkedRecipes();

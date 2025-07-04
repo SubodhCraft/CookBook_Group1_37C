@@ -28,16 +28,7 @@ public class BookmarkController {
     private admin_dashboard dashboardView;
     private Home homeView;
     private Bookmark bookmarkView;
-//
-//    private RecipeDAO recipeDAO;
-//    private BookmarkDAO bookmarkDAO;
-    
-//    public BookmarkController(Database db, Bookmark bookmarkView){
-//        
-//        this.bookmarkView = bookmarkView;
-//        this.bookmarkDAO = new BookmarkDAO(db);
-//        this.recipeDAO = new RecipeDAO(db);
-//    }
+
     public BookmarkController(admin_dashboard dashboardView, Home homeView, Bookmark bookmarkView){
         this.dashboardView = dashboardView;
         this.homeView = homeView;
@@ -68,17 +59,7 @@ public class BookmarkController {
     public boolean isBookmarked(int userId, int recipeId){
         return bookmarkDAO.isBookmarked(userId, recipeId);
     }
-//    public BookmarkController(admin_dashboard dashboardView, Home homeView, Bookmark bookmarkView) {
-//        this.dashboardView = dashboardView;
-//        this.homeView = homeView;
-//        this.bookmarkView = bookmarkView;
-//
-//        Database db = new MySqlConnection();
-//        this.recipeDAO = new RecipeDAO(db);
-//        this.bookmarkDAO = new BookmarkDAO(db);
-//
-//        loadBookmarkedRecipes();
-//    }
+
 
     public void loadBookmarkedRecipes() {
         int userId = LoggedInUser.getId();
