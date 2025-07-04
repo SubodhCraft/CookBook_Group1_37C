@@ -28,27 +28,7 @@ public class NewPassword extends javax.swing.JFrame {
     public NewPassword() {
         initComponents();
     }
-//private boolean isValidPassword(String password) {
-//    if (password.length() != 6) {
-//        return false; // Not exactly 6 characters
-//    }
-//
-//    boolean hasLetter = false;
-//    boolean hasDigit = false;
-//    boolean hasSpecialChar = false;
-//
-//    for (char c : password.toCharArray()) {
-//        if (Character.isLetter(c)) {
-//            hasLetter = true;
-//        } else if (Character.isDigit(c)) {
-//            hasDigit = true;
-//        } else if ("!@#$%^&*()-_=+<>?/".contains(String.valueOf(c))) {
-//            hasSpecialChar = true;
-//        }
-//    }
-//
-//    return hasLetter && hasDigit && hasSpecialChar;
-//}
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
