@@ -116,42 +116,7 @@ public Recipe getRecipe() {
 
 }
 
-//   private void toggleCompletion() {
-//    Database db = new MySqlConnection(); 
-//    RecipeDAO recipeDAO = new RecipeDAO(db);
-//    int recipeId = currentRecipe.getId();
-//
-//    if (!isCompleted) {
-//        // Mark as complete: set reward to 2.5 (fixed)
-//        currentRecipe.setReward(2.5);
-//        MarkasComplete.setText("Marked as Complete");
-//    } else {
-//        // Unmark complete: set reward back to 0
-//        currentRecipe.setReward(0);
-//        MarkasComplete.setText("Mark as Complete");
-//    }
-//
-//    isCompleted = !isCompleted;
-//
-//    // Update reward in database
-//    recipeDAO.updateRecipeReward(recipeId, currentRecipe.getReward());
-//}
-//   private void toggleCompletion() {
-//    Database db = new MySqlConnection(); 
-//    RecipeDAO recipeDAO = new RecipeDAO(db);
-//    int recipeId = currentRecipe.getId();
-//
-//    if (!isCompleted) {
-//        currentRecipe.setReward(2.5);
-//        MarkasComplete.setText("Marked as Complete");
-//    } else {
-//        currentRecipe.setReward(0);
-//        MarkasComplete.setText("Mark as Complete");
-//    }
-//
-//    isCompleted = !isCompleted;
-//    recipeDAO.updateRecipeReward(recipeId, currentRecipe.getReward());
-//}
+
    private void toggleCompletion() {
     int userId = currentUserId;  // Logged in user id
     int recipeId = currentRecipe.getId();

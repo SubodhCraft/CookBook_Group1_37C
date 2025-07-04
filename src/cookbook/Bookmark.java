@@ -164,13 +164,6 @@ private JPanel createBookmarkCard(Recipe recipe){
     card.setPreferredSize(new Dimension(180,150));
     card.setBorder(BorderFactory.createTitledBorder(recipe.getName()));
     card.setBackground(Color.WHITE);
-//    card.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-    
-//    JLabel nameLabel = new JLabel(recipe.getName(), SwingConstants.CENTER);
-//    JLabel timeLabel = new JLabel("Time: "+recipe.getDuration()+ " mins", SwingConstants.CENTER);
-//    
-//    card.add(nameLabel,BorderLayout.NORTH);
-//    card.add(timeLabel,BorderLayout.CENTER);
 
 JLabel timeLabel = new JLabel("Duration: "+recipe.getDuration()+ "mins");
 JLabel nameLabel = new JLabel(recipe.getName());

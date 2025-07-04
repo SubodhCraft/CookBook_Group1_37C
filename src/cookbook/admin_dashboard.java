@@ -307,9 +307,6 @@ public JTextField getCategoryField() {
     home_panel.revalidate();
     home_panel.repaint();
 }
-//  public JButton getSettingsButton(){
-//      return Settings;
-//  }
 
     public void dispose() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
