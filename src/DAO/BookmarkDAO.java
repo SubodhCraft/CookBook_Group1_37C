@@ -47,13 +47,7 @@ public class BookmarkDAO {
             e.printStackTrace();
             return false;
         }
-    // Check if it's already bookmarked first
-//    if (getBookmarkedRecipeIds().contains(recipeId)) {
-//        return false; // Already bookmarked, do nothing
-//    }
-//
-//   
-//     
+
 }
     
     public boolean isBookmarked(int userId, int recipeId){
