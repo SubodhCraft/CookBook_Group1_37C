@@ -17,7 +17,7 @@ public class BookmarkUIController {
     private final Bookmark bookmarkPanel;
     private final BookmarkDAO bookmarkDAO;
 //    private final BookmarkController bookmarkController;
-    private final int userId; // CURRENT LOGGED-IN USER
+    private final int userId; 
 
     public BookmarkUIController(Bookmark bookmarkPanel, int userId) {
         this.bookmarkPanel = bookmarkPanel;
@@ -60,5 +60,5 @@ public class BookmarkUIController {
         return panel;
     }
 
-    // You can also add toggle or remove bookmark button handling here if needed
+    
 }
