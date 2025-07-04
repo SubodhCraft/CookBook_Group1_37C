@@ -29,9 +29,6 @@ public class BookmarkDAO {
                 return false;
             }
         
-//        if(isBookmarked(userId, recipeId)){
-//            return false;
-//        }
         
         String sql = "INSERT INTO bookmarks(user_id,recipe_id) VALUES (?,?)";
 //        try(Connection conn = db.openConnection();
