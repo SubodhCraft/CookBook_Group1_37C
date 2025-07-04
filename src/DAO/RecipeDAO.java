@@ -41,7 +41,6 @@ public class RecipeDAO {
                 }
             }
             return true;
-
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
